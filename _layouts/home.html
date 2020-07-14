@@ -11,7 +11,7 @@ layout: page
 {% assign pinned = site.posts | where_exp: "item", "item.pin == true"  %}
 {% assign default = site.posts | where_exp: "item", "item.pin == nil "  %}
 {% assign posts = "" | split: "" %}
-{% assign posts = site.posts | where:"hide", "false" %}
+
 
 <!-- Get pinned posts -->
 
@@ -29,6 +29,7 @@ layout: page
 
 <!-- Get default posts -->
 
+{% assign posts = site.posts | where:"hide", "false" %}
 {% assign default_beg = offset | minus: pinned.size %}
 
 {% if default_beg < 0 %}
