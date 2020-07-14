@@ -1,2 +1,2 @@
 Blog files.
-Powered by Jekyll.
+Powered by Jekyll with chirpy theme.
