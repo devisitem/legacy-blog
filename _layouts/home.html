@@ -29,7 +29,7 @@ layout: page
 
 <!-- Get default posts -->
 
-{% assign posts = site.posts | where:"hide", "false" %}
+
 {% assign default_beg = offset | minus: pinned.size %}
 
 {% if default_beg < 0 %}
@@ -45,7 +45,7 @@ layout: page
   {% endfor %}
 {% endif %}
 
-
+{% assign posts = site.posts | where:"hide", "false" %}
 <div id="post-list">
 
 
