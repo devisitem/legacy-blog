@@ -32,6 +32,10 @@ layout: default
             {{ site.author }}
           {% endif %}
           </span>
+		  
+		  <!-- 浏览量--> 
+		  浏览量:&nbsp;<span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}"> - </span>次.
+		  
         </div>
 
         <!-- lastmod -->
@@ -145,3 +149,7 @@ layout: default
 </div> <!-- .row -->
 
 {% include lozad.html %}
+
+
+
+
