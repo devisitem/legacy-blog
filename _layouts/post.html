@@ -120,10 +120,7 @@ layout: default
           </span>
         </div>
 		
-		<div>
-		<!-- 浏览量--> 
-		  浏览量:&nbsp;<span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}"> - </span>次.
-		</div>
+		
 
         <!-- lastmod -->
         {%- capture filename -%}
@@ -215,6 +212,13 @@ layout: default
   {% include panel.html %}
 
 </div> <!-- .row -->
+
+<div class="row">
+
+	<!-- 浏览量--> 
+	浏览量:&nbsp;<span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}"> - </span>次.
+
+</div>
 
 <div class="row">
   <div id="post-extend-wrapper" class="col-12 col-lg-11 col-xl-8">
