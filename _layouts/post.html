@@ -7,10 +7,9 @@ layout: default
 # MIT Licensed
 ---
 
-
-<!-- 同时兼容http与https -->
-<script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.6.1/dist/av-min.js"></script>
-<script>
+<!-- 同时兼容http与https 
+  <script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.6.1/dist/av-min.js"></script>
+  <script>
     // 第一个参数是appid，第二个参数是appkey，此处的只是示例
     AV.initialize("GiK8t1mCvzpE0ebvxCq1tubG-MdYXbMMI", "adONTtW8QldsgD2nMkmQPexS");
     // 自己创建的Class的名字
@@ -90,8 +89,8 @@ layout: default
       var Counter = AV.Object.extend(name);
       showCount(Counter);
     });
-</script>
-
+  </script>
+-->
 
 
 <div class="row">
@@ -120,7 +119,7 @@ layout: default
           {% endif %}
           </span>
 		  
-			<p>浏览量:&nbsp;<span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}"> - </span>次.</p>
+			<!-- <p>浏览量:&nbsp;<span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}"> - </span>次.</p> -->
 			
         </div>
 		
