@@ -90,7 +90,7 @@ $sidebar-display: "sidebar-display";
       font-size: 1.5rem;
       letter-spacing: .5px;
       &:hover {
-        color: #fff;
+        color: #000;
         text-decoration: none;
       }
     }
@@ -186,7 +186,7 @@ $sidebar-display: "sidebar-display";
     }
 
     a:hover, #mode-toggle-wrapper>i:hover {
-      color: #fff;
+      color: #000;
     }
 
     #mode-toggle-wrapper {
