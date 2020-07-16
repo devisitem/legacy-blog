@@ -44,10 +44,12 @@
 
   /* Sidebar */
 
-  --sidebar-bg: radial-gradient( 
+	/* old color 
+  --sidebar-bg: radial-gradient( */ 
    circle, rgba(42, 30, 107, 1) 0%, rgba(35, 37, 46, 1) 100%); 
+   */
 
-
+  --sidebar-bg:#bcb8b3;
   
   --nav-cursor-color: black;
 
