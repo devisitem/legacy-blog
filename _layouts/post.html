@@ -11,7 +11,7 @@ layout: default
 <script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
 <script>
     // 第一个参数是appid，第二个参数是appkey，此处的只是示例
-    AV.initialize("gQJjjB93fxTAN0W6cmFdlOrW-gzGzoHsz", "IcwsNtdTDwM9gdkJfLNJKcck");
+    AV.initialize("GiK8t1mCvzpE0ebvxCq1tubG-MdYXbMMI", "adONTtW8QldsgD2nMkmQPexS");
     // 自己创建的Class的名字
     var name='Counter';
     function createRecord(Counter){
@@ -100,6 +100,12 @@ layout: default
     <div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
 
       <h1 data-toc-skip>{{ page.title }}</h1>
+	  
+		<h2>
+		<!-- 浏览量--> 
+		浏览量:&nbsp;<span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}"> - </span>次.
+		</h2>
+		
 
       <div class="post-meta text-muted d-flex flex-column">
         <!-- Published date and author -->
@@ -213,12 +219,7 @@ layout: default
 
 </div> <!-- .row -->
 
-<div class="row">
 
-	<!-- 浏览量--> 
-	浏览量:&nbsp;<span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}"> - </span>次.
-
-</div>
 
 <div class="row">
   <div id="post-extend-wrapper" class="col-12 col-lg-11 col-xl-8">
