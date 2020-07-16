@@ -11,8 +11,6 @@
   type: twitter
   icon: 'fab fa-twitter'
   
-  type: sina
-  icon: 'fab sina'
 -
   type: email
   icon: 'fas fa-envelope'
