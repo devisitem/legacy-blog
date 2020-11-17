@@ -8,35 +8,33 @@
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 #--------------------------
 
-title: S3ner's Blog                         # the main title
+title: Kimchi-dev                      # the main title
 
-tagline: 𝘽𝙞𝙤  # it will display as the sub-title
+tagline: A developer, falled into puddle.  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+ A developer, falled into puddle.
 
 # Replace with the website url, e.g. 'https://username.github.io'
-url: 'https://S3ner.github.io'
+url: 'https://kimchi-dev.github.io'
 
-author: S3ner                  # change to your full name
+author: Kimchi-dev                  # change to your full name
 
 avatar: /assets/img/sample/avatar.jpg   # support internet resources
 
 github:
-  username: S3ner             # change to your github username
+  username: Kimchi-dev             # change to your github username
 
 twitter:
   username:             # change to your twitter username
 
 social:
-  name: S3ner                  # it will shows as the copyright owner in Footer
-  email: Cuihs97@outlook.com             # change to your email address
+  name: Kimchi-dev                  # it will shows as the copyright owner in Footer
+  email: jtg14@naver.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/S3ner       # change to your github homepage
+    # https://twitter.com/#      # change to your twitter homepage
+    - https://github.com/Kimchi-dev       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -51,7 +49,7 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 baseurl: ''
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Asia/Seoul
 
 google_analytics:
   id: ''          # Fill with your Google Analytics ID
@@ -78,7 +76,7 @@ disqus:
 #
 #     dark   - Use the dark color scheme
 #
-theme_mode: light
+theme_mode: dual
 
 # boolean type, global switch for ToC in posts.
 toc: true

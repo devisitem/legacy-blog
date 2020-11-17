@@ -1,0 +1,77 @@
+I"y<p>중복된 데이터를 찾을 때 사용할수있는 중요한팁 !</p>
+
+<!--more-->
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre><span class="k">WITH</span> <span class="n">PERSON</span> <span class="k">AS</span><span class="p">(</span>
+<span class="k">SELECT</span> <span class="s1">'D0010'</span> <span class="k">AS</span> <span class="n">CODE</span><span class="p">,</span><span class="s1">'김천재'</span> <span class="k">AS</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">TO_DATE</span><span class="p">(</span><span class="s1">'1990/08/09'</span><span class="p">)</span><span class="k">AS</span> <span class="n">BIRTH</span> <span class="k">FROM</span> <span class="n">DUAL</span> 
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">SELECT</span> <span class="s1">'D0012'</span> <span class="k">AS</span> <span class="n">CODE</span><span class="p">,</span><span class="s1">'코딩왕'</span> <span class="k">AS</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">TO_DATE</span><span class="p">(</span><span class="s1">'1992/09/04'</span><span class="p">)</span><span class="k">AS</span> <span class="n">BIRTH</span> <span class="k">FROM</span> <span class="n">DUAL</span> 
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">SELECT</span> <span class="s1">'D0011'</span> <span class="k">AS</span> <span class="n">CODE</span><span class="p">,</span><span class="s1">'편집왕'</span> <span class="k">AS</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">TO_DATE</span><span class="p">(</span><span class="s1">'1999/04/02'</span><span class="p">)</span><span class="k">AS</span> <span class="n">BIRTH</span> <span class="k">FROM</span> <span class="n">DUAL</span> 
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">SELECT</span> <span class="s1">'D0010'</span> <span class="k">AS</span> <span class="n">CODE</span><span class="p">,</span><span class="s1">'설계왕'</span> <span class="k">AS</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">TO_DATE</span><span class="p">(</span><span class="s1">'1983/02/13'</span><span class="p">)</span><span class="k">AS</span> <span class="n">BIRTH</span> <span class="k">FROM</span> <span class="n">DUAL</span> 
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">SELECT</span> <span class="s1">'D0013'</span> <span class="k">AS</span> <span class="n">CODE</span><span class="p">,</span><span class="s1">'김천재'</span> <span class="k">AS</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">TO_DATE</span><span class="p">(</span><span class="s1">'1989/05/22'</span><span class="p">)</span><span class="k">AS</span> <span class="n">BIRTH</span> <span class="k">FROM</span> <span class="n">DUAL</span> 
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">SELECT</span> <span class="s1">'D0014'</span> <span class="k">AS</span> <span class="n">CODE</span><span class="p">,</span><span class="s1">'보안관'</span> <span class="k">AS</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">TO_DATE</span><span class="p">(</span><span class="s1">'2001/11/17'</span><span class="p">)</span><span class="k">AS</span> <span class="n">BIRTH</span> <span class="k">FROM</span> <span class="n">DUAL</span> 
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">SELECT</span> <span class="s1">'D0015'</span> <span class="k">AS</span> <span class="n">CODE</span><span class="p">,</span><span class="s1">'날벼락'</span> <span class="k">AS</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">TO_DATE</span><span class="p">(</span><span class="s1">'1992/04/01'</span><span class="p">)</span><span class="k">AS</span> <span class="n">BIRTH</span> <span class="k">FROM</span> <span class="n">DUAL</span> 
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">SELECT</span> <span class="s1">'D0016'</span> <span class="k">AS</span> <span class="n">CODE</span><span class="p">,</span><span class="s1">'디비꾼'</span> <span class="k">AS</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">TO_DATE</span><span class="p">(</span><span class="s1">'1996/06/30'</span><span class="p">)</span><span class="k">AS</span> <span class="n">BIRTH</span> <span class="k">FROM</span> <span class="n">DUAL</span> 
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">SELECT</span> <span class="s1">'D0017'</span> <span class="k">AS</span> <span class="n">CODE</span><span class="p">,</span><span class="s1">'고질라'</span> <span class="k">AS</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">TO_DATE</span><span class="p">(</span><span class="s1">'2004/03/27'</span><span class="p">)</span><span class="k">AS</span> <span class="n">BIRTH</span> <span class="k">FROM</span> <span class="n">DUAL</span> 
+<span class="p">)</span>
+<span class="k">SELECT</span> <span class="o">*</span>  <span class="k">FROM</span> <span class="n">PERSON</span><span class="p">;</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>먼저 위코드처럼 테스트할 임시테이블을 만들어줍니다.</p>
+
+<p><img src="/assets/img/pexels/dupcheck1.png" alt="중복 체크용 테이블 전체 조회 이미지" /></p>
+
+<p>쿼리를 바로 조회하면 해당 이미지처럼 전체 조회가 가능합니다.</p>
+
+<p>위의 데이타는 code 컬럼에 중복이있습니다.</p>
+
+<p>바로 가시죠</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="k">SELECT</span> <span class="n">CODE</span><span class="p">,</span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">DUPCHK</span> <span class="k">FROM</span> <span class="n">PERSON</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">CODE</span> <span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위의 코드를 실행하면 같은 CODE를 가진 사람을 중복 확인 할수있습니다.</p>
+
+<p><img src="/assets/img/pexels/dupcheck2.png" alt="테이블 중복확인 조회 이미지" /></p>
+
+<p>임시테이블 선언은 제외하고 필요 쿼리만 보겠습니다.</p>
+
+<p>이렇게 이해하시면 편합니다.</p>
+
+<p>코드를 보면 바로 이해가시겠지만…TMI 를 필요로 하는분들도 있기에</p>
+
+<p>중복을 체크할 COLUMN을 GROUPING  해준후 그 카운트가 1보다크다면 CODE명이 같은게 한개 이상이라는 거겠죠?</p>
+
+:ET

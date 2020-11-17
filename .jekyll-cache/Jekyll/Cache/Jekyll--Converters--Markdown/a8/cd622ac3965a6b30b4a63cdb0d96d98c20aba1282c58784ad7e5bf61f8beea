@@ -1,0 +1,140 @@
+I"�<h2 id="采用-github-pages--jekyllchirpy">采用 Github Pages + Jekyll+<a href="https://chirpy.cotes.info/posts/write-a-new-post/">chirpy</a></h2>
+
+<h3 id="-添加新的分类catagories和标签-tags"><font color="red"> 添加新的分类（catagories）和标签 （tags）</font></h3>
+<h4 id="-注此操作仅为添加分类和标签具体将文章划分到什么位置由md文件的头部信息决定"><font color="green"> 注：此操作仅为添加分类和标签，具体将文章划分到什么位置，由md文件的头部信息决定</font></h4>
+
+<ul>
+  <li>1.在categories目录下新建<font color="yellow"> *<catagory_name>*.html &lt;/font&gt;,并添加以下内容：</catagory_name></font></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td> --><td class="rouge-code"><pre>---
+layout: category
+title: &lt;name&gt;
+category: &lt;name&gt;
+---
+
+以上部分分类名称“name”需一致，小写为二级目录，大写为一级目录
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>2.在tags目录下新建<font color="yellow"> *<tag_name>*.html &lt;/font&gt;,并添加以下内容：</tag_name></font></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td> --><td class="rouge-code"><pre>
+---
+layout: tag
+title: &lt;Tag_name&gt;   # 大小写均可
+tag: &lt;tag_name&gt;        # 小写
+---
+
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<h4 id="如何对post的文章进行隐藏">如何对post的文章进行隐藏?</h4>
+
+<pre><code class="language-Python">     1.找到home的页面代码，在'_layouts/'目录下的home.html，对此文件进行编辑。
+     2.找到 所在位置，在上一行添加即可。
+     3.弊端：添加完成后所有在HOME的文章目录会隐藏，此方法需要在md文件YAML部分添加或，来自定义显示或不显示。
+</code></pre>
+
+<p><br /></p>
+
+<pre><code class="language-Ruby">#在此处修改
+       \{\% assign posts = site.posts | where:"hide", "false" \%\} \转义
+       \{\% for post in posts \%\}
+
+</code></pre>
+
+<h4 id="此博客表格生成问题">此博客表格生成问题：</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre> 1. 注意在md文件中，生成表格时，去掉两侧 “|”
+ 2. 主要与上下标题或内容用行隔开
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h4 id="网页diy位置定位记录">网页DIY位置定位记录</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td> --><td class="rouge-code"><pre>1.Sidebar 背景色
+     路径：assets/css/_colors/light-typography.css
+     搜索：Sidebar 
+     原有背景色已记录
+
+2.Sidebar-link 选定前字体色
+     路径：assets/css/_addon/module.scss
+     搜索：sidebar-links 将($color:此处为新颜色值)修改
+
+3.subtitle 二级标题
+     路径：assets/css/_addon/main.scss
+     搜索：site-subtitle 修改color的值
+
+4.Sidebar active 已选定背景色
+     路径：assets/css/_addon/main.scss
+     搜索：nav-item 下active-&gt;nav-link-&gt;color的值
+
+5.Sidebar 光标放置颜色
+     路径：assets/css/_addon/main.scss
+     搜索：nav-item 下hover-&gt;nav-link-&gt;color的值
+
+6.Sidebar hover 光标放置颜色均已换成黑色
+
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="test-record">Test record:</h4>
+<ul>
+  <li>颜色无法修改</li>
+</ul>
+<font color="red"> 代码错误无法上传，待更新  </font>
+<p>$\color{red}{红色字}$</p>
+
+<ul>
+  <li>代码区域符号之类也会导致无法生成github pages</li>
+</ul>
+
+<p>####</p>
+:ET

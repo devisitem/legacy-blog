@@ -107,6 +107,40 @@
 
 } // .pagination
 
+.site-subtitle {
+    font-size: 95%;
+    text-align: center;
+    color: #828282;
+    line-height: 1.2rem;
+    word-spacing: 1px;
+    margin: 0.5rem 1.5rem 2rem 1.5rem;
+  }
+
+  .sidebar-bottom {
+    .icon-border + a { // the icon behide mode-toggle
+      margin-left: 0.1rem;
+    }
+  }
+  .nav-link {
+    border-radius: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .nav-item {
+    height: $tab-height;
+    &:hover {
+      .nav-link {
+        color: #f8f9facf;
+      }
+    }
+    &.active {
+      .nav-link {
+        color: #fcfcfc;
+      }
+    }
+  }
+
 @media all and (max-width: 576px) {
   #post-list .post-meta>span i:not(:first-child) {
     margin-left: 1rem;
