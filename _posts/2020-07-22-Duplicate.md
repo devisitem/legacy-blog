@@ -1,8 +1,10 @@
 ---
 layout: post
 title: -Oracle- 컬럼 중복 확인 (Duplication Check)
-tags: [SQL,Queries,Orcle,Duplication check]
+categories: [Subjects,Oracle]
+tags: [SQL,Oracle]
 excerpt_separator: <!--more-->
+hide: false
 ---
 
 중복된 데이터를 찾을 때 사용할수있는 중요한팁 !

@@ -1,0 +1,94 @@
+I"L<p>반도체도 
+Register는 수많은 논리소자(논리연산을 하는 최소단위의 회로)로 이루어져 있다.</p>
+
+<p>이소자들의크기는 한 두자리 나노미터 하고한다.</p>
+
+<!--more-->
+<p>그 크기를 가늠하는 방법은 이와 같다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>m</td>
+      <td>meter</td>
+      <td>1m</td>
+    </tr>
+    <tr>
+      <td>cm</td>
+      <td>centi</td>
+      <td>10^-2m</td>
+    </tr>
+    <tr>
+      <td>mm</td>
+      <td>milli</td>
+      <td>10^-3m</td>
+    </tr>
+    <tr>
+      <td>μm</td>
+      <td>micro</td>
+      <td>10^-6m</td>
+    </tr>
+    <tr>
+      <td><strong>nm</strong></td>
+      <td><strong>nano</strong></td>
+      <td><strong>10^-9m</strong></td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pico</td>
+      <td>10^-12m</td>
+    </tr>
+    <tr>
+      <td>fm</td>
+      <td>femto</td>
+      <td>10^-15m</td>
+    </tr>
+    <tr>
+      <td>am</td>
+      <td>atto</td>
+      <td>1m0^-18m</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>따라서 <strong>0.00000001m = 10nm</strong> 이다.</p>
+
+<p>한 두자리 나노미터 크기의 논리회로 감이안온다…<br />
+이렇게 작은크기들의 논리회로가 작은칩에 모인 수치를 집적도 라고한다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>![반도체]({{ “/assets/img/pexels/semiconductor1.png”</td>
+      <td>relative_url }})</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>집적회로중 집적도가 100이하의 것을 소규모집적회로<br />
+SSI (<strong>S</strong>mall <strong>S</strong>cale <strong>I</strong>tegration)</p>
+
+<p>100 ~ 1000 정도의 것을 중규모 집적회로<br />
+MSI (<strong>M</strong>edium <strong>S</strong>cale <strong>I</strong>tegration)</p>
+
+<p>1000 ~ 10000 정도의 것을 대규모 집적회로<br />
+LSI (<strong>L</strong>arge <strong>S</strong>cale <strong>I</strong>tegration)</p>
+
+<p>10000이상의 집적도를 갖는것을 것을 초대규모 집적회로<br />
+VLSI (<strong>V</strong>ery <strong>L</strong>arge <strong>S</strong>cale <strong>I</strong>tegration)</p>
+
+<p>라고 한다 몇mm 되는 칩에 1만개이상의 물리적 논리회로가 존재한다니 심지어 크기는 한 몇 mm …</p>
+
+<p>이것마저 현실감이 안오는데  더욱 놀라운건 반도체는 소자의 크기가 작아질수록 외부 전기간섭에 더 취약하다.</p>
+
+<p>반도체가 전달해야하는 전기신호(논리회로) 를 방해해 결국 회로 전체의 정보처리 속도가 낮아진다는 단점이있다.
+우리나라가 정말 대단하고 자랑스러운게 이 대단한걸 해냈다는것이다.</p>
+
+<p>반도체 소자에 외부 전기 간섭을 줄이려면 소자에 씌우는 절연체의 ‘유전율’을 낮춰야한다.</p>
+
+<p>태양의 자외선을 흡수해주는 지구의 오존층 처럼 내부에있는 소자를 외부전기로부터 취약하지않도록 절연체를 이루는 물질은
+ 전기가 거의 통하지 않는 물질로 만들어야한다.</p>
+
+<p>이러한 와중에도 소자의 크기줄이는데 노력하는 대한민국을 보면 반도체산없이 1등이 아닐수가 없다는 생각을한다.</p>
+
+:ET

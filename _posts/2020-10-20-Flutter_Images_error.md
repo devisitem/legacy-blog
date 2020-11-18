@@ -1,8 +1,10 @@
 ---
 layout: post
 title: -Flutter- 이미지 등록 오류 (Unable to load asset)
-tags: [Flutter,Images,Error,Unable to load asset,Exception]
+categories: [Subjects,Flutter]
+tags: [Flutter]
 excerpt_separator: <!--more-->
+hide: false
 ---
 Flutter앱에 이미지를 적용 도중 Exception이 발생한다.  
   

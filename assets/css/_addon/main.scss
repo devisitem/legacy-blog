@@ -110,6 +110,25 @@ $sidebar-display: "sidebar-display";
       margin-left: .1rem;
     }
   }
+    .nav-link {
+    border-radius: 0;
+    font-size: .95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .nav-item {
+    height: $tab-height;
+    &:hover {
+      .nav-link {
+        color: #white;
+      }
+    }
+    &.active {
+      .nav-link {
+        color: #dc3545;
+      }
+    }
+  }
   .nav-link {
     border-radius: 0;
     font-size: .95rem;
@@ -125,7 +144,7 @@ $sidebar-display: "sidebar-display";
     }
     &.active {
       .nav-link {
-        color: #996633;
+        color: #dc3545;
       }
     }
   }
@@ -231,8 +250,8 @@ $sidebar-display: "sidebar-display";
 #avatar {
   >a {
     display: block;
-    width: 6rem;
-    height: 6rem;
+    width: 12rem;
+    height: 12rem;
     border-radius: 50%;
     border: 2px solid #b6b6b6;
     overflow: hidden;

@@ -1,0 +1,75 @@
+I"�<p>특정값의 앞자리에 특정 숫자나 문자를 채워야 할 때 사용합니다.</p>
+
+<p>RPAD 와 LPAD는 서로 반대로 출력이므로 LPAD 만 설명 합니다.</p>
+
+<p><!--more--></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td> --><td class="rouge-code"><pre><span class="k">WITH</span> <span class="n">BOARD</span> <span class="k">AS</span> <span class="p">(</span>
+    <span class="k">SELECT</span> <span class="mi">1</span> <span class="n">BOARD_NUM</span><span class="p">,</span><span class="n">SYSDATE</span> <span class="n">REGDATE</span><span class="p">,</span> <span class="s1">'안녕하세요.'</span> <span class="n">TITLE</span><span class="p">,</span> <span class="s1">'인사드립니다. 웅덩이에 빠졌습니다.'</span> <span class="n">CONTENT</span> <span class="k">FROM</span> <span class="n">DUAL</span>
+<span class="p">)</span>
+
+<span class="k">SELECT</span> 
+     <span class="n">BOARD_NUM</span>
+     <span class="p">,</span> <span class="n">REGDATE</span>
+     <span class="p">,</span> <span class="n">TITLE</span>
+     <span class="p">,</span> <span class="n">CONTENT</span>
+    <span class="c1">-- , LPAD(DEPTNO, 5, 'A') --4</span>
+  <span class="k">FROM</span> <span class="n">BOARD</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/img/pexels/LPAD-01.jpg" alt="LPAD 추가 전 이미지" /></p>
+
+<p>LPAD 추가 전</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td> --><td class="rouge-code"><pre> <span class="k">SELECT</span> 
+    <span class="n">TO_CHAR</span><span class="p">(</span><span class="n">REGDATE</span><span class="p">,</span><span class="s1">'YYMMDD'</span><span class="p">)</span> <span class="o">||</span> <span class="n">LPAD</span><span class="p">(</span><span class="n">BOARD_NUM</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="n">BOARD_ID</span>
+     <span class="p">,</span> <span class="n">BOARD_NUM</span>
+     <span class="p">,</span> <span class="n">REGDATE</span>
+     <span class="p">,</span> <span class="n">TITLE</span>
+     <span class="p">,</span> <span class="n">CONTENT</span>
+    <span class="c1">-- , LPAD(DEPTNO, 5, 'A') --4</span>
+  <span class="k">FROM</span> <span class="n">BOARD</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/img/pexels/LPAD-02.jpg" alt="LPAD 추가 후 이미지" /></p>
+
+<p>LPAD 추가 후</p>
+
+<p>BOARD_NUM(글번호)가 있지만 날짜를 더해 BOARD_ID을 임의로 만들었습니다.</p>
+
+<p>(실제론 이렇게 사용하지 않습니다.)</p>
+
+<p>LPAD(값,공백갯수)
+LPAD(값,총 자릿수,채울문자)</p>
+
+<p>LPAD는 값을 받을 인자가 두가지로 나뉜다.</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td> --><td class="rouge-code"><pre>  <span class="k">SELECT</span> <span class="n">LPAD</span><span class="p">(</span><span class="s1">'-'</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="n">A</span><span class="p">,</span> <span class="n">LPAD</span><span class="p">(</span><span class="s1">'-'</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="s1">'1'</span><span class="p">)</span> <span class="n">B</span>  <span class="k">FROM</span> <span class="n">DUAL</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/img/pexels/LPAD-03.jpg" alt="최종설명 " /></p>
+
+<p>A : 5번째자리에 -를 넣겠다(쉬운 이해를 위해 공백을 드래그했음 저공백이 앞에 4개가있음을 의미)</p>
+
+<p>B : 총 6자리중에 -값을 넣고 앞에 1로 채우겠다.</p>
+
+:ET

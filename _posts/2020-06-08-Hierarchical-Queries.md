@@ -1,8 +1,8 @@
 ---
+layout: post
 title: -Oracle- 계층구조 쿼리(Hierarchical Queries)
-date: 2020-06-08 22:50:00 +0800
 categories: [Subjects,Oracle]
-tags: [SQL,Queries,Orcle]
+tags: [SQL,Oracle]
 excerpt_separator: <!--more-->
 hide: false
 ---
