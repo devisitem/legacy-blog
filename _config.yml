@@ -7,7 +7,7 @@
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 #--------------------------
-encoding: UTF-8
+#encoding: UTF-8
 title: Kimchi-dev                      # the main title
 
 tagline: A developer, falled into puddle.  # it will display as the sub-title
