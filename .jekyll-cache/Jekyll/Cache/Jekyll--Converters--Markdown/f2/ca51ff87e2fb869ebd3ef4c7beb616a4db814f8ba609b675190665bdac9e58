@@ -1,4 +1,4 @@
-I"c<p>오라클내 계층형구조 (주로 조직도, 메뉴 등) 로 표현해야하는 기능들을 사용 해야한다.
+I"_<p>오라클내 계층형구조 (주로 조직도, 메뉴 등) 로 표현해야하는 기능들을 사용 해야한다.
 계층 구조를 표현 할 수 있는 쿼리의 간단한 예제.</p>
 
 <!--more-->
@@ -8,12 +8,12 @@
 3
 4
 </pre></td><td class="rouge-code"><pre>
-<span class="k">SELECT</span> <span class="o">*</span> 
+<span class="k">SELECT</span> <span class="o">*</span>
     <span class="k">FROM</span> <span class="n">SCOTT</span><span class="p">.</span><span class="n">EMP</span><span class="p">;</span>
-    
+
 </pre></td></tr></tbody></table></code></pre></div></div>
 <p>먼저 기존의 테이블 구조를 확인하기위해 전체 조회
-<img src="/assets/img/pexels/emptable.jpg" alt="SelectAllEMPTable" /></p>
+<img src="/assets/img/bloging/sql/emptable.jpg" alt="SelectAllEMPTable" /></p>
 
 <p>다음은 7900번의 EMPNO를가지고 있는  JAMES 를기준으로 MGR(직속상관의 EMPNO) 과 다른사원의 EMPNO를 매칭 시킨뒤 계층형으로 나눈다.</p>
 
@@ -61,19 +61,19 @@
         <span class="k">CONNECT</span> <span class="k">BY</span>
             <span class="k">PRIOR</span> <span class="n">MGR</span> <span class="o">=</span> <span class="n">EMPNO</span>
         <span class="k">ORDER</span> <span class="n">SIBLINGS</span> <span class="k">BY</span>
-            <span class="n">EMPNO</span> 
+            <span class="n">EMPNO</span>
     <span class="p">)</span>
 <span class="k">ORDER</span> <span class="k">BY</span>
     <span class="n">lvl</span> <span class="k">DESC</span>  
     <span class="p">;</span>
-    
+
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>JAMES를 기준으로 JAMES의 MGR 을 EMPNO로 가진 사원은 다음 level로 올가가서 조회 된다 이과정을반복하여 최고 직속상관 까지 조회 할수있다.</p>
 
 <p>SIBLINGS BY 는 특정 컬럼에대한 정렬 인데 (자세한 설명은 아래) 여기선 굳이 안써도 된다.</p>
 
-<p><img src="/assets/img/pexels/orderByEmp7900.jpg" alt="SelectAllEMPTable" /></p>
+<p><img src="/assets/img/bloging/sql/orderByEmp7900.jpg" alt="SelectAllEMPTable" /></p>
 
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -123,7 +123,7 @@
     <span class="k">START</span> <span class="k">WITH</span> <span class="n">MGR</span> <span class="k">IS</span> <span class="k">NULL</span>
     <span class="k">CONNECT</span> <span class="k">BY</span> <span class="k">PRIOR</span> <span class="n">EMPNO</span> <span class="o">=</span> <span class="n">MGR</span>
     <span class="k">ORDER</span> <span class="n">SIBLINGS</span> <span class="k">BY</span> <span class="n">ENAME</span><span class="p">;</span>
-    
+
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>앞으로 자주 등장 하겠지만 본인은 개발을 할때 예약어를 보며 그 기능을 유추한다.</p>
