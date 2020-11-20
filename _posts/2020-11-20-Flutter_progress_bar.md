@@ -3,6 +3,7 @@ layout: post
 title: -Flutter- 프로그래스바 (Progress bar widget)
 categories: [Subjects,Flutter]
 tags: [Flutter]
+date: 2020-11-20 17:09:00 +0900
 excerpt_separator: <!--more-->
 hide: false
 ---
