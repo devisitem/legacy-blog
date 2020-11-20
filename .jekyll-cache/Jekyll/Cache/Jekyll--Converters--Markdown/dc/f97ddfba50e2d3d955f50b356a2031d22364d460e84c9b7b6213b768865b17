@@ -1,0 +1,38 @@
+I"�<p>특정한 목록 및 프로젝트의 진행률을 표시할수 있는 프로그래스바 입니다.</p>
+
+<p><!--more--></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>![프로그래스바 이미지]({{ “/assets/img/bloging/Flutter/progressbar.png”</td>
+      <td>relative_url }})</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">Progressbar</code>는 각종 진행률을 시각화 해줄수있는 아주 기본적인 위젯입니다.</p>
+<pre><code class="language-Dart">Column(
+          children: &lt;Widget&gt;[
+            Text(
+              '깃 브랜치 작업',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 5),
+              width: 300,
+              height: 20,
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                child: LinearProgressIndicator(
+                  value: 0.4622,
+                  backgroundColor: Colors.grey,
+                ),
+              ),
+            ),
+          ],
+        ),
+</code></pre>
+:ET

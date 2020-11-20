@@ -107,4 +107,4 @@ SELECT
 
 
 
-시각화를 위해 [LPAD](/2020/06/09/LPAD.html) 사용 하여 조회
+시각화를 위해 [LPAD](/posts/LPAD.html) 사용 하여 조회

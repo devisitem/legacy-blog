@@ -1,0 +1,18 @@
+I"<p>특정한 목록 및 프로젝트의 진행률을 표시할수 있는 프로그래스바 입니다.</p>
+
+<p><!--more--></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>![프로그래스바 이미지]({{ “/assets/img/bloging/Flutter/progressbar.png”</td>
+      <td>relative_url }})</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>You <strong>can’t</strong> set the <strong>title</strong> to the <strong>empty string</strong>
+flutter 에서 사용할수있는 기본 프로그래스바 위젯 입니다.</p>
+</blockquote>
+:ET
