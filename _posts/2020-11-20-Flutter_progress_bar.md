@@ -12,7 +12,7 @@ hide: false
 
   <!--more-->
 
-![프로그래스바 이미지]({{ "/assets/img/bloging/Flutter/progressbar.png" | relative_url }})
+![프로그래스바 이미지]({{ "/assets/img/bloging/flutter/progressbar.png" | relative_url }})
 
 `Progressbar`는 각종 진행률을 시각화 해줄수있는 아주 기본적인 위젯입니다.
 ```
