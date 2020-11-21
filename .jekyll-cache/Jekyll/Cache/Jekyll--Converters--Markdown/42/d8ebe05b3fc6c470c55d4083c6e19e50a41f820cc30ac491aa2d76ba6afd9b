@@ -1,0 +1,35 @@
+I"¨
+<div id="tags" class="d-flex flex-wrap ml-xl-2 mr-xl-2">
+
+
+
+
+
+
+  <div>
+    <a class="tag" href="/tags/diary/">diary<span class="text-muted">1</span></a>
+  </div>
+
+  <div>
+    <a class="tag" href="/tags/flutter/">Flutter<span class="text-muted">2</span></a>
+  </div>
+
+  <div>
+    <a class="tag" href="/tags/hardware/">Hardware<span class="text-muted">1</span></a>
+  </div>
+
+  <div>
+    <a class="tag" href="/tags/oracle/">Oracle<span class="text-muted">3</span></a>
+  </div>
+
+  <div>
+    <a class="tag" href="/tags/react/">React<span class="text-muted">1</span></a>
+  </div>
+
+  <div>
+    <a class="tag" href="/tags/sql/">SQL<span class="text-muted">3</span></a>
+  </div>
+
+
+</div>
+:ET

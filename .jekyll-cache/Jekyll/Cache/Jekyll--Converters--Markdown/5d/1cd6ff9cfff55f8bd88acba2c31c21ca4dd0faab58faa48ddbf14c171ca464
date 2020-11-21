@@ -1,0 +1,15 @@
+I"�<p>MissionFamily의 미션들을 관리할 수 있는 WebSite가 필요했는데 마침 공부도할겸</p>
+
+<p>React 프로젝트로 진행하기로 하였습니다.</p>
+
+<!--more-->
+
+<table>
+  <tbody>
+    <tr>
+      <td>![리액트 로고]({{ “/assets/img/bloging/react/reactLogo.png”</td>
+      <td>relative_url }}){: width =”50%” height = “50%”}</td>
+    </tr>
+  </tbody>
+</table>
+:ET
