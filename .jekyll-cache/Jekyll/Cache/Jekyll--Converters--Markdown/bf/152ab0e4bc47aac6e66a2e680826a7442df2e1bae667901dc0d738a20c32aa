@@ -1,0 +1,6 @@
+I")<p>IOS에서 리스트를 당기면 고무줄 처럼 다시돌아오는 기능을 플러터에서 구현합니다.
+<!--more--></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td> --><td class="rouge-code"><pre><span class="nc">String</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+:ET
