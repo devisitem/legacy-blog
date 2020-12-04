@@ -16,5 +16,5 @@ function copyLink(url) {
   document.execCommand("copy");
   $temp.remove();
 
-  alert("Link copied successfully!");
+  alert("링크복사해줘서 고마워요~\r\n클립보드에 복사했어요.");
 }
