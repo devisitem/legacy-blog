@@ -1,7 +1,7 @@
 ---
 layout: post
 title: -Flutter- 당겨지는 리스트 (AlwaysScrollableScrollPhysics property)
-categories: [Subjects,Flutter]
+categories: [Development,Flutter]
 tags: [Flutter]
 date: 2020-11-24 17:20:00 +0900
 excerpt_separator: <!--more-->

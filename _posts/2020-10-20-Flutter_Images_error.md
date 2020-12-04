@@ -1,7 +1,7 @@
 ---
 layout: post
 title: -Flutter- 이미지 등록 오류 (Unable to load asset)
-categories: [Subjects,Flutter]
+categories: [Development,Flutter]
 tags: [Flutter]
 excerpt_separator: <!--more-->
 hide: false

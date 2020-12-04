@@ -1,7 +1,7 @@
 ---
 layout: post
 title: -Oracle- 계층구조 쿼리(Hierarchical Queries)
-categories: [Subjects,Oracle]
+categories: [Development,Oracle]
 tags: [SQL,Oracle]
 excerpt_separator: <!--more-->
 hide: false

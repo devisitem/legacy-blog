@@ -1,7 +1,7 @@
 ---
 layout: post
 title: -React- 프로젝트 시작하기
-categories: [Subjects,React]
+categories: [Development,React]
 tags: [React]
 date: 2020-11-21 20:24:00 +0900
 excerpt_separator: <!--more-->

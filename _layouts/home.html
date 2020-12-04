@@ -49,7 +49,7 @@ layout: page
 
 <div id="post-list">
 
-{% assign posts = site.posts | where:"hide", "false" %}
+{% assign posts = paginator.posts | where:"hide", "false" %}
 {% for post in posts %}
 
   <div class="post-preview">

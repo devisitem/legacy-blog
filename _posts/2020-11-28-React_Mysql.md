@@ -1,7 +1,7 @@
 ---
 layout: post
 title: -React- Mysql 연동 -1/2-
-categories: [Subjects,React]
+categories: [Development,React]
 tags: [React,SQL]
 date: 2020-11-28 21:18:00 +0900
 excerpt_separator: <!--more-->

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: -Oracle- 컬럼 중복 확인 (Duplication Check)
-categories: [Subjects,Oracle]
+categories: [Development,Oracle]
 tags: [SQL,Oracle]
 excerpt_separator: <!--more-->
 hide: false
@@ -44,7 +44,7 @@ SELECT *  FROM PERSON;
 
 ![중복 체크용 테이블 전체 조회 이미지]({{ "/assets/img/bloging/sql/dupcheck1.png" | relative_url }})
 
-  
+
 쿼리를 바로 조회하면 해당 이미지처럼 전체 조회가 가능합니다.
 
 
