@@ -71,7 +71,7 @@ Database접속에 필요한 정보들을 가져올 json 형식의 파일을 작�
 
 
 ## server.js 작성
-```terminal
+```console
 const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
