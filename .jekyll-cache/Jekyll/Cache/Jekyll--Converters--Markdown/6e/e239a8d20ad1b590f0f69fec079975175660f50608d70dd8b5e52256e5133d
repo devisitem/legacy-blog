@@ -1,0 +1,2 @@
+I"z<p><code class="language-plaintext highlighter-rouge">Node</code>에서 <code class="language-plaintext highlighter-rouge">Mysql</code>모듈 사용 시 <code class="language-plaintext highlighter-rouge">Error: ER_NOT_SUPPORTED_AUTH_MODE: Client does not support authentication protocol requested by server; consider upgrading MySQL client</code> 에러가 발생합니다.</p>
+:ET

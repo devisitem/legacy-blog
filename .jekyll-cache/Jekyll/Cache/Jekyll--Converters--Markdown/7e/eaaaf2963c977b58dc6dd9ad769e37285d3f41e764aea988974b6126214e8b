@@ -1,0 +1,27 @@
+I"�<p><code class="language-plaintext highlighter-rouge">Node</code>에서 <code class="language-plaintext highlighter-rouge">Mysql</code>모듈 사용 시 <code class="language-plaintext highlighter-rouge">Error: ER_NOT_SUPPORTED_AUTH_MODE: Client does not support authentication protocol requested by server; consider upgrading MySQL client</code> 에러가 발생합니다.<br />
+<!--more--></p>
+
+<p>현재 <code class="language-plaintext highlighter-rouge">Mysql</code> version이 8.x 일때 이런 오류가 발생하는것 같습니다.</p>
+
+<p>완벽한 오류 해결 법은 아니지만 해결은 할수있습니다.<br />
+<code class="language-plaintext highlighter-rouge">window</code> 버튼을 눌러 <code class="language-plaintext highlighter-rouge">MySQL Installer - Comumnity</code> 를 찾아 실행합니다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>![MySQL Installer - Comumnity 실행]({{ “/assets/img/bloging/node/mysql_error1.png”</td>
+      <td>relative_url }})</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위화면처럼 실행이되었다면 <code class="language-plaintext highlighter-rouge">MySQL Server</code> 옆에있는 <code class="language-plaintext highlighter-rouge">Reconfigure</code> 을 클릭<br />
+그리고 다음의 순서대로 진행합니다. <br />
+![MySQL Installer - Comumnity 실행]({{ “/assets/img/bloging/node/mysql_error2.png” | relative_url }})<br />
+![MySQL Installer - Comumnity 실행]({{ “/assets/img/bloging/node/mysql_error3.png” | relative_url }})<br />
+![MySQL Installer - Comumnity 실행]({{ “/assets/img/bloging/node/mysql_error4.png” | relative_url }})</p>
+
+<p>선택이 모두 끝났다면 <code class="language-plaintext highlighter-rouge">Next</code> 를 눌러 진행하며 <code class="language-plaintext highlighter-rouge">excute</code> 로 필요한 파일 들을 다운 받고 <code class="language-plaintext highlighter-rouge">finish</code> 합니다.</p>
+
+<p>이상입니다.</p>
+:ET
