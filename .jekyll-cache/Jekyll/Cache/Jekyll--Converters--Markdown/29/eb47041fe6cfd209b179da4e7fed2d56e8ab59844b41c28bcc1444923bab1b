@@ -1,0 +1,57 @@
+I"<p>Spring,Spring boot 에서 dependency 만 추가한다고 lombok 이 적용 되지는 않습니다.
+<!--more--></p>
+<h2 id="lombok-의-필요성">lombok 의 필요성</h2>
+<p>프로젝트를 수행하다보면 spring은 자바로 해야하기 때문에 명시적으로 사용할 것 이다 라고 해줘야 하는 경우가 많습니다.<br />
+특히 <code class="language-plaintext highlighter-rouge">VO(dto)</code>같은 경우는 <code class="language-plaintext highlighter-rouge">getter</code>와 <code class="language-plaintext highlighter-rouge">setter</code> 가 거의 필수적으로 필요하기 때문이죠.<br />
+하지만 프로젝트가 커지면서 필요한 데이터를 계속 만들면 만들수록 VO의 내용이 계속 추가 되기 때문에 사용하기,<br />
+복잡할정도로 이 <code class="language-plaintext highlighter-rouge">Column</code>이 어떤 역할를 하는지 어디에 써야하는지 헷갈릴수도 있습니다.</p>
+
+<p>그래서 저희는 <code class="language-plaintext highlighter-rouge">lombok</code>을 사용합니다.<br />
+<code class="language-plaintext highlighter-rouge">lombok</code>은 <code class="language-plaintext highlighter-rouge">@Anotation</code> 을 사용하여 <code class="language-plaintext highlighter-rouge">Getter</code> 와 <code class="language-plaintext highlighter-rouge">Setter</code>등 VO 사용에 필요한 요소들을 자동적으로,<br />
+생성하여 유저입장에서 복잡함 없이 단순히 <code class="language-plaintext highlighter-rouge">field</code>만 정의하면 편하게 개발할 수 있습니다.</p>
+
+<h2 id="dependency-의존성-주입">dependency 의존성 주입</h2>
+
+<p><code class="language-plaintext highlighter-rouge">pom.xml</code> 에 <code class="language-plaintext highlighter-rouge">dependency</code>를 추가 합니다.</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td> --><td class="rouge-code"><pre>	<span class="nt">&lt;dependency&gt;</span>
+		<span class="nt">&lt;groupId&gt;</span>org.projectlombok<span class="nt">&lt;/groupId&gt;</span>
+		<span class="nt">&lt;artifactId&gt;</span>lombok<span class="nt">&lt;/artifactId&gt;</span>
+		<span class="nt">&lt;version&gt;</span>1.18.16<span class="nt">&lt;/version&gt;</span>
+		<span class="nt">&lt;scope&gt;</span>provided<span class="nt">&lt;/scope&gt;</span>
+	<span class="nt">&lt;/dependency&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>추가가 했다 아래에 화면처럼 실행합니다.<br />
+프로젝트 우클릭 후<br />
+<img src="/assets/img/bloging/spring/lombok1.png" alt="maven update" /><br />
+실행한다면<br />
+<img src="/assets/img/bloging/spring/lombok2.png" alt="maven update2" /></p>
+
+<h2 id="lombok-설치">lombok 설치</h2>
+<p>update가 완료 되었다면,<br />
+<img src="/assets/img/bloging/spring/lombok3.png" alt="lombok 설치" /><br />
+<img src="/assets/img/bloging/spring/lombok4.png" alt="lombok 설치" /><br />
+위경로를 복사하고 <code class="language-plaintext highlighter-rouge">Apply and Close</code> 합니다.<br />
+<img src="/assets/img/bloging/spring/lombok5.png" alt="lombok 설치" /><br />
+실행해줍니다.<br />
+<img src="/assets/img/bloging/spring/lombok6.png" alt="lombok 설치" /><br />
+<img src="/assets/img/bloging/spring/lombok7.png" alt="mlombok 설치" /><br />
+<img src="/assets/img/bloging/spring/lombok8.png" alt="lombok 설치" /><br />
+설치가 완료 되었다면 <code class="language-plaintext highlighter-rouge">본인이클립스.ini 파일에</code> 에 다음에 내용을 추가 합니다.</p>
+<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td> --><td class="rouge-code"><pre><span class="go">--add-modules=ALL-SYSTEM
+-javaagent:E:\sts-4.8.1.RELEASE\lombok.jar
+
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>이제 <code class="language-plaintext highlighter-rouge">Eclipse</code>를 재시작 한다면, vo에 적용 되있는걸 볼 수 있습니다.<br />
+<img src="/assets/img/bloging/spring/lombok9.png" alt="maven update2" /></p>
+:ET

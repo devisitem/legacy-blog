@@ -51,12 +51,12 @@ update가 완료 되었다면,
 ![lombok 설치]({{ "/assets/img/bloging/spring/lombok6.png" | relative_url }})  
 ![mlombok 설치]({{ "/assets/img/bloging/spring/lombok7.png" | relative_url }})  
 ![lombok 설치]({{ "/assets/img/bloging/spring/lombok8.png" | relative_url }})  
-설치가 완료 되었다면 `본인이클립.ini 파일에` 에 다음에 내용을 추가 합니다.  
+설치가 완료 되었다면 `본인이클립스.ini 파일에` 에 다음에 내용을 추가 합니다.  
 ```terminal
 --add-modules=ALL-SYSTEM
 -javaagent:E:\sts-4.8.1.RELEASE\lombok.jar
 
 ```  
 
-이제 `Eclipse`를 재시작 한다면, vo에 적용되있는 걸 볼수있습니다.  
+이제 `Eclipse`를 재시작 한다면, vo에 적용 되있는걸 볼 수 있습니다.  
 ![maven update2]({{ "/assets/img/bloging/spring/lombok9.png" | relative_url }})  
