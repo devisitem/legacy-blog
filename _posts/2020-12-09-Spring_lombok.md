@@ -35,7 +35,7 @@ Spring,Spring boot 에서 dependency 만 추가한다고 lombok 이 적용 되�
 	</dependency>
 ```  
 
-추가가 했다 아래에 화면처럼 실행합니다.  
+추가를 했다면 아래에 화면처럼 실행합니다.  
 프로젝트 우클릭 후  
 ![maven update]({{ "/assets/img/bloging/spring/lombok1.png" | relative_url }})  
 실행한다면  
