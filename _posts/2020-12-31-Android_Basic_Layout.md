@@ -31,23 +31,23 @@ hide: false
 
 그럼 이제 이 레이아웃의 화면을 확인하면,  
 
-![레이아웃 설정화면]({{ "/assets/img/bloging/android/layoutBasic0.png" | relative_url }})   
+![레이아웃 설정화면]({{ "/assets/img/bloging/android/basicLayout0.png" | relative_url }})   
 
 아무것도 안나옵니다. 배치할 틀을 만든거지 배치를 하지않았어요.  
 
 `Flutter`에서 **Text 위젯** 처럼 `TextView` 태그를 사용합니다.  
 
 
-![텍스트 뷰 사용]({{ "/assets/img/bloging/android/layoutBasic1.png" | relative_url }})   
+![텍스트 뷰 사용]({{ "/assets/img/bloging/android/basicLayout1.png" | relative_url }})   
 
 이런식으로 `<Tex` 까지만 쳤는데도 똑똑한 안스는 바로 캐치해줍니다.  
 엔터를 누르게되면,
 
-![텍스트 뷰 사용]({{ "/assets/img/bloging/android/layoutBasic2.png" | relative_url }})  
+![텍스트 뷰 사용]({{ "/assets/img/bloging/android/basicLayout2.png" | relative_url }})  
 바로 위에서 봤듯이 크기를 설정해달라고 숟가락으로 밥떠먹여줘요.  
 이클립스와 비슷한게 `ctrl + space`  (Mac은 `command + space`)로 보면 아래처럼 확인할 수있습니다.  
 
-![텍스트 뷰 사용]({{ "/assets/img/bloging/android/layoutBasic3.png" | relative_url }})  
+![텍스트 뷰 사용]({{ "/assets/img/bloging/android/basicLayout3.png" | relative_url }})  
 뭐 다른것도 있지만 오늘은 두가지만 알아봅니다.  
 `match_parent : `**부모의 크기만큼 차지합니다.**  
 `wrap_content : `**해당 컴포넌트 만큼(본인크기) 차지합니다.**  
@@ -91,4 +91,4 @@ hide: false
 </RelativeLayout>
 ```  
 
-![레이아웃 활용 ]({{ "/assets/img/bloging/android/layoutBasic4.png" | relative_url }})  
+![레이아웃 활용 ]({{ "/assets/img/bloging/android/basicLayout4.png" | relative_url }})  
