@@ -35,7 +35,7 @@ Spring,Spring boot 에서 dependency 만 추가한다고 lombok 이 적용 되�
 	</dependency>
 ```  
 
-추가가 했다 아래에 화면처럼 실행합니다.  
+추가를 했다면 아래에 화면처럼 실행합니다.  
 프로젝트 우클릭 후  
 ![maven update]({{ "/assets/img/bloging/spring/lombok1.png" | relative_url }})  
 실행한다면  
@@ -49,7 +49,7 @@ update가 완료 되었다면,
 ![lombok 설치]({{ "/assets/img/bloging/spring/lombok5.png" | relative_url }})  
 실행해줍니다.  
 ![lombok 설치]({{ "/assets/img/bloging/spring/lombok6.png" | relative_url }})  
-![mlombok 설치]({{ "/assets/img/bloging/spring/lombok7.png" | relative_url }})  
+![lombok 설치]({{ "/assets/img/bloging/spring/lombok7.png" | relative_url }})  
 ![lombok 설치]({{ "/assets/img/bloging/spring/lombok8.png" | relative_url }})  
 설치가 완료 되었다면 `본인이클립스.ini 파일에` 에 다음에 내용을 추가 합니다.  
 ```terminal
