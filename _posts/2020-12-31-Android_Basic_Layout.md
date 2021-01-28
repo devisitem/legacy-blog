@@ -9,7 +9,7 @@ hide: false
 ---
  안드로이드를 시작하며 앱,웹 의 기본인 레이아웃을 알아봅니다.
 <!--more-->
-#RelativeLayout  
+##RelativeLayout  
 ```terminal
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
