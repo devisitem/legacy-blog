@@ -3,7 +3,7 @@ layout: post
 title: -Android- RelativeLayout(안드로이드 레이아웃)
 categories: [Development,Android]
 tags: [Android]
-date: 2020-12-31 16:18:00 +0900
+date: 2020-12-31 15:00:00 +0900
 excerpt_separator: <!--more-->
 hide: false
 ---
