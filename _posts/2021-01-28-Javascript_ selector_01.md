@@ -8,8 +8,9 @@ excerpt_separator: <!--more-->
 hide: false
 ---
  체크박스,라디오 제어  
-<!--more-->
-##Radio
+<!--more-->  
+
+## Radio
 ```
 name 및 value로 체크
 $("input:radio[name='selectAges']:input[value='"+찾을 값이름+"']").prop("checked",true)
@@ -18,7 +19,7 @@ $("input:radio[name='selectAges']:input[value='"+찾을 값이름+"']").prop("ch
 $("input:radio[name='selectAges']:checked").val();
 ```
 
-##CheckBox
+## CheckBox
 ```
 체크값 가져오기
 
