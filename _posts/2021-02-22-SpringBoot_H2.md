@@ -39,7 +39,7 @@ logging.level:
 이틀동안 이것떄문에 엄청 나게 고생했다.  
 
 ## Repository
-```Java
+```java
 @Repository
 public class MemberRepository {
 
@@ -57,7 +57,7 @@ public class MemberRepository {
 
 ```  
 ## RepositoryTest
-```Java
+```java
 @SpringBootTest
 class MemberRepositoryTest {
     @Autowired
@@ -82,7 +82,7 @@ class MemberRepositoryTest {
 }
 ```
 ## Entity
-```Java
+```java
 @Entity
 @Getter @Setter
 public class Member {
