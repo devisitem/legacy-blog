@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Text and Typography
-date: 2021-22-22 11:33:00 +0900
 categories: [Development,github]
 tags: [github]
+date: 2021-02-22 11:33:00 +0900
 math: true
 mermaid: true
 image:

@@ -7,7 +7,7 @@ date: 2021-02-23 21:45:00 +0900
 excerpt_separator: <!--more-->
 hide: false
 ---
- 스프링 부트 프로젝트 일반 설정
+ 스프링 부트 프로젝트 일반 설정 변경
 <!--more-->  
 ## spring.io
 
