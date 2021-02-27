@@ -1,6 +1,6 @@
 ---
+layout: post
 title: Text and Typography
-author: Cotes Chung
 date: 2021-22-22 11:33:00 +0900
 categories: [Development,github]
 tags: [github]

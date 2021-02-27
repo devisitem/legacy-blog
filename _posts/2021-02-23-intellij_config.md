@@ -7,7 +7,7 @@ date: 2021-02-23 21:58:00 +0900
 excerpt_separator: <!--more-->
 hide: false
 ---
- 인텔리제이 기본설정
+ 인텔리제이 기본설정 변경
 <!--more-->
 
 ##  Live Template
