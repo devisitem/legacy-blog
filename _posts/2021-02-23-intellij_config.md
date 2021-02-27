@@ -13,11 +13,11 @@ hide: false
 ##  Live Template
 Setting > Live Template 검색  
 custom 으로 등록  
-![Live Template 설정]({{ "/assets/img/bloging/intellj/intellij1.png" | relative_url }})  
+![Live Template 설정]({{ "/assets/img/bloging/intellij/intellij1.png" | relative_url }})  
 
 ## Build 환경 설정  
 Setting > Gradle 검색  
-![Gradle 빌드 설정]({{ "/assets/img/bloging/intellj/intellij1.png" | relative_url }})
+![Gradle 빌드 설정]({{ "/assets/img/bloging/intellij/intellij1.png" | relative_url }})
 
 위 `build` 설정은 testCase를 만들시 gradle에서 빌드하던것을 intellij 로 빌드 하도록 바꿔준 것이다.
 
