@@ -41,7 +41,8 @@ logging.level:
 ```  
 database 및 jpa ,logger 설정  
 ## 외부 라이브러리  
-[P6spy 설정](gavlyukovskiy/spring-boot-data-source-decorator)  
+[**P6spy 설정**](https://github.com/gavlyukovskiy/spring-boot-data-source-decorator)  
+
 
 ```python
 implementation 'org.springframework.boot:spring-boot-devtools'
