@@ -49,7 +49,7 @@ public class ParentClass{
 
 /* 자식객체1 */
 @DiscriminatorValue("child1")
-public class FirstChildClass{
+public class FirstChildClass extends ParentClass {
   ...field
 }
 
@@ -58,7 +58,7 @@ public class FirstChildClass{
 
 /* 자식객체2 */
 @DiscriminatorValue("child2")
-public class SecondChildClass{
+public class SecondChildClass extends ParentClass {
   ...field
 }
 
