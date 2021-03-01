@@ -90,6 +90,6 @@ Enum DeliveryStatus{
 
 
 ## 생성된 테이블 확인
-[생성된 테이블 이미지]("{{ "/assets/img/bloging/database/jpashop_erd.png" | relative_url }}")  
+![생성된 테이블 이미지]("{{ "/assets/img/bloging/database/jpashop_erd.png" | relative_url }}")  
 
 생성된 `ERD`는 이미지로 내보낼수있고 데이터베이스 테이블을 가져와서 `ERD`를 만들수도 있습니다.

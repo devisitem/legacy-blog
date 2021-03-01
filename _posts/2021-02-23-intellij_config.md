@@ -22,3 +22,6 @@ Setting > Gradle 검색
 위 `build` 설정은 testCase를 만들시 gradle에서 빌드하던것을 intellij 로 빌드 하도록 바꿔준 것이다.
 
 testCase 빌드 안될시 체크.
+
+## Annotation Error  
+![AnnotationError]({{ "/assets/img/bloging/intellij/tableAnnotationError.png" | relative_url }})
