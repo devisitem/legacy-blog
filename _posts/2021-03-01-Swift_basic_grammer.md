@@ -21,7 +21,7 @@ lower**C**amel
 
 ### 변수와 상수  
 
-```python
+```
 import UIKit
 
 
@@ -54,9 +54,10 @@ let constant : Int = 212
 //constant  = 20 Error Can't Initialize
 
 ```  
+![Swift console]({{ "/assets/img/bloging/swift/swift_console.png" | relative_url }})  
 
 ### 기본 자료형  
-```python
+```
 //Bool Type
 var someBool : Bool = true
 //Integer Type
@@ -80,7 +81,7 @@ var someAnyObject: AnyObject = SomeClass()
 ```  
 
 ### 컬렉션  
-```python
+```
 /**
 Array - Orderd Collaction
 Dictionary - Collaction like HashMap in Java
