@@ -85,7 +85,7 @@ public class SecondChildClass{
 
   2. 내장타입이 되는 객체의 `Annotation`  
 
-  ```Java
+  ```java
 
   @Embeddable
   public class Address{
@@ -128,4 +128,3 @@ public class Order{
 ## 번외, 기본  
 `@OneTomany`,`@ManyToOne`,`@OneToOne`,`@ManyToMany`과 같은 기본적인 객체관계맵핑 중에서,  
 `@OneToOne`은 맵핑관계에 있어서 **Access**가 많이 발생하는 테이블을 기준으로 *FK를 정한다.  
-  
