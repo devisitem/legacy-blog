@@ -3,7 +3,7 @@ layout: post
 title: -SpringBoot- 객체 관계 맵핑 (ORM)
 categories: [Development,Spring]
 tags: [Spring]
-date: 2021-03-01 23:10:00 +0900
+date: 2021-03-01 21:10:00 +0900
 excerpt_separator: <!--more-->
 hide: false
 ---
