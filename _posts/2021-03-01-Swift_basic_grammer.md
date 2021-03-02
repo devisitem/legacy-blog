@@ -11,7 +11,7 @@ hide: false
 <!--more-->
 
 ## 기본 문법  
-### 이름짓기 규칙  
+### 이름짓기 규칙  
 
 Lower Camel Case : function, methods, variable, constant  
 Upper Camel Case: type(class, struct, enum, extension …)  
