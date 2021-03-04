@@ -1,6 +1,6 @@
 ---
 layout: post
-title: -Spring- ORM 객체 분석설계 (Entity Design)
+title: -Spring- ORM 객체 분석설계 1편 (Entity Design)
 categories: [Development,Spring]
 tags: [Spring]
 date: 2021-03-03 23:14:00 +0900
