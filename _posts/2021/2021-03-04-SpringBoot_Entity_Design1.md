@@ -18,15 +18,41 @@ hide: false
 
 ```java
 
-public class KimchiProject{
+public class Kimchi{
 
-  @Id @GeneratedValue
-  @Column(name = "kimchi_pj_id")
-  private Long id;
-
-  @OneToMay(mappedBy = "kimchiProject")
-  private List<Person> maker = new ArrayList<>();
+  @ManyToOne
+  private List<Source> sources = new ArrayList<>();
 
 }
 
-```
+최초의 `@XToOne`은 `fetch` 타입이 `**EAGER**`이다. 이건 즉시로딩을 의미하는데, 즉시로딩 ( EAGER )는 예측이어렵고 어떤 SQL이 실행될지 추적하기 어렵다. 특히 JPQL을 실행할 때 N+1 문제가 자주발생한다. 그러므로 실무에선 모든 연관관계를 지연로딩 `( LAZY )`로 설정해야한다.  
+
+다음은 지연로딩으로 설정하는방법이다.  
+```java
+
+public class Kimchi{
+
+  @ManyToOne(fetch = FetchType.LAZY) // or @ManyToOne(FetchType.LAZY)
+  private List<Source> sources = new ArrayList<>();
+
+}
+```  
+
+컬렉션을 소유한 객체를 영속화 시키게 되면, 컬렉션을 감싸서 하이버네이트가 제공하는 내장 컬렉션으로 변경한다. 내장 컬렉션으로 변경하는 이유는 영속화가 될시 하이버네이트는 요소를 추적해야하기 위해서이다. 컬렉션은 field 레벨에서 생성 하는것이 가장 안전하고, 코드도 간결하다.  
+
+## DB테이블 네이밍  
+
+`@Table` 키워드에 name을 설정하지 않았을 경우 `SpringPhysicalNamingStrategy`클래스가 자동으로 다음과 같이 변경한다.  
+
+1. camelCase -> underscore(memberName = member_name)  
+2. .(dot) -> _(underscore)  
+3. UpperCase -> lowercase  
+
+논리명 생성 : 명시적으로 컬럼, 테이블명을 직접 적지않으면 ImplicitNamingStrategy 클래스를 사용한다.  
+물리명 적용 spring.jpa.hibernate.naming.phygical-strategy: 모든 논리명에 적용됨, 실제 테이블에 적용  
+(Username -> usernm 등으로 회사 룰로 바꿀수 있음)  
+
+## Cascade Persistance  
+
+cascade = CascadeType.ALL을 적용시 연관관계의 주인만 영속화를 시켜도 cascade가 등록된 인스턴스 까지 한번에 영속화를 진행한다.  
+delete할때도 같다.
