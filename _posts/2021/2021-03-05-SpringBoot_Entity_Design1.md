@@ -3,7 +3,7 @@ layout: post
 title: -Spring- ORM 객체 분석설계 2편 (Entity Design)
 categories: [Development,Spring]
 tags: [Spring]
-date: 2021-03-04 22:18:00 +0900
+date: 2021-03-05 22:18:00 +0900
 excerpt_separator: <!--more-->
 hide: false
 ---
@@ -101,7 +101,7 @@ public class Order{
     this.delivery = delivery;
     delivery.setOrder(this);
   }
-  
+
 }
 
 ```
