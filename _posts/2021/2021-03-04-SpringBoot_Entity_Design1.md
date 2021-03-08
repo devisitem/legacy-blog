@@ -24,6 +24,7 @@ public class Kimchi{
   private List<Source> sources = new ArrayList<>();
 
 }
+```  
 
 최초의 `@XToOne`은 `fetch` 타입이 `**EAGER**`이다. 이건 즉시로딩을 의미하는데, 즉시로딩 ( EAGER )는 예측이어렵고 어떤 SQL이 실행될지 추적하기 어렵다. 특히 JPQL을 실행할 때 N+1 문제가 자주발생한다. 그러므로 실무에선 모든 연관관계를 지연로딩 `( LAZY )`로 설정해야한다.  
 
@@ -55,4 +56,52 @@ public class Kimchi{
 ## Cascade Persistance  
 
 cascade = CascadeType.ALL을 적용시 연관관계의 주인만 영속화를 시켜도 cascade가 등록된 인스턴스 까지 한번에 영속화를 진행한다.  
-delete할때도 같다.
+delete할때도 같다.  
+
+```java
+
+public class KimchiOrder{
+
+  @OneToMany(mappedBy = "kimchiOrder", cascade = CascadeType.ALL)
+  private List<Kimchi> kimchies =  new ArrayList<>();
+
+}
+
+```  
+연관관계의 주인만 영속화 시켜도 `cascade`가 등록된 인스턴스까지 한번에 영속화를 진행한다.  
+`delete`할때도 같다.  
+
+## 양방향 연관관계 편의 메서드  
+양방향 연관관계에 있어서 객체를 `setting`할 떄는 `setter`를 만들기보다는 `Business Method`를 만든다.  
+상대 객체의 프로퍼티를 세팅함과 동시에 해당 객체의 프로퍼티에도 상대객체의 프로퍼티를 등록하는 다음의 코드를 보자.  
+
+```java
+
+public class Order{
+
+
+  Fields...
+
+
+  @ManyToOne(fetch = LAZY)
+  @JoinColumn(name = "member_id")
+  private Member member;
+
+  @OneToOne(fetch = LAZY)
+  @JoinColumn(name = "delivery_id")
+  private Delivery delivery;
+
+  public void setMember(Memeber member){
+    this.member = member;
+    member.getOrders().add(this);
+  }
+  /* JPQL을 보낼때 값세팅을 쉽게할 수 있도록 작성 */
+
+  public void setDelivery(Delivery delivery){
+    this.delivery = delivery;
+    delivery.setOrder(this);
+  }
+  
+}
+
+```
