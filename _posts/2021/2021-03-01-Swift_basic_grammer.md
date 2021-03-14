@@ -144,6 +144,7 @@ let subtracting : Set<Int>  = setA.subtracting(setB)
 ⇧ : Shift
 ⌃ : control
 ↩ : return
+⌥ : option
 
 ⇧ + return : 현재 행까지 실행
 ⌘ + ⇧ + return : 전체 실행
