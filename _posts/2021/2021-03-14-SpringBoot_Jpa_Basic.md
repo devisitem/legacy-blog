@@ -86,7 +86,7 @@ public class KimhciService{
 일반 엔티티 설계시  `Setter` 설계와 동일한 구조로 설계한다. Setter Injection의 장점은 Test코드를 작성할때 Mock을 주입할 수 있다. Field는 주입하기가 까다롭다. 그래도 Runtime에는 각 인스턴스의 조립이 끝나기 때문에 Constuctor Injection (생성자 주입)을 사용하기도한다. 다음은 생성자 주입의 예 이다.  
 
 ### Constuctor Injection  
-  
+
 ```java
 
 @Service
@@ -126,7 +126,7 @@ final로 선언을 하고 `@RequiredArgsConstructor` 어노테이션을 붙여�
 
 ### TDD  
   - 단위 테스트 진행시 Transcational 때문에 저장은 안되지만 쿼리가 적용되는걸 굳이 보고싶다면 다음 처럼 적용할 수 있다.  
-  ```java
+```java
 
   @SpringBootTest
   @Transcational
@@ -156,7 +156,7 @@ final로 선언을 하고 `@RequiredArgsConstructor` 어노테이션을 붙여�
 
   }
 
-  ```  
+```  
   영속화된 객체를 `EntityManager`의 `flush` method로 출력할 수 있다.  
 
   - JUNIT4 와 JUNIT5의 예외처리 작성  
