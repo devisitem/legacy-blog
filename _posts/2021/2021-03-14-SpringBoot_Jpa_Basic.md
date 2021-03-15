@@ -1,4 +1,4 @@
----
+ ---
 layout: post
 title: -Spring- JPA 도메인 서비스 개발 (Domain Service)
 categories: [Development,Spring]
@@ -126,6 +126,7 @@ final로 선언을 하고 `@RequiredArgsConstructor` 어노테이션을 붙여�
 
 ### TDD  
   - 단위 테스트 진행시 Transcational 때문에 저장은 안되지만 쿼리가 적용되는걸 굳이 보고싶다면 다음 처럼 적용할 수 있다.  
+  
 ```java
 
   @SpringBootTest
