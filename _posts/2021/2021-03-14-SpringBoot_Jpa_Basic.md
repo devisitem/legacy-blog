@@ -164,7 +164,7 @@ final로 선언을 하고 `@RequiredArgsConstructor` 어노테이션을 붙여�
   : `@Test(expected = Exception.class)`  
   JUNIT5  
   :
-  ```java
+```java
   @Test
   public void 김치_재료추가(){
     //given
@@ -184,7 +184,7 @@ final로 선언을 하고 `@RequiredArgsConstructor` 어노테이션을 붙여�
     assertEquals(e.getMessage(),"테스트 로직에서 발생한 메세지")
   }
 
-  ```  
+```  
 
 ### Protected Constuctor (기본생성자 생성 주의)  
 특정인스턴스를 설계할때 인스턴스의 기본생성을 막아야하는 경우가있다 보통 이경우는 `protected` access modifier를 사용하는데, 다음과 같은 어노 테이션으로 간단히 작성할 수 있다.  
