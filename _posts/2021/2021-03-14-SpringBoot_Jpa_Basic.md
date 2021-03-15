@@ -126,7 +126,7 @@ final로 선언을 하고 `@RequiredArgsConstructor` 어노테이션을 붙여�
 
 ### TDD  
   - 단위 테스트 진행시 Transcational 때문에 저장은 안되지만 쿼리가 적용되는걸 굳이 보고싶다면 다음 처럼 적용할 수 있다.  
-  
+
 ```java
 
   @SpringBootTest
@@ -164,26 +164,27 @@ final로 선언을 하고 `@RequiredArgsConstructor` 어노테이션을 붙여�
   JUNIT4  
   : `@Test(expected = Exception.class)`  
   JUNIT5  
-  :
+  :  
+  
 ```java
-  @Test
-  public void 김치_재료추가(){
-    //given
-    Kimchi kimchi = new kimchi();
+@Test
+public void 김치_재료추가(){
+  //given
+  Kimchi kimchi = new kimchi();
 
-    //when
-    kimchi.addSources("lemon")
-    em.persist(kimchi);
-    em.flush();
+  //when
+  kimchi.addSources("lemon")
+  em.persist(kimchi);
+  em.flush();
 
-    //then
-    assertEquals("lemon",kimchi.getSources().get(0),"첫번째 재료가 일치하지 않는다.");
-    Exception e = assertThrown(Exception.class,() -> {
-        예외 처리 테스트 로직
-    },"예외 메세지");
+  //then
+  assertEquals("lemon",kimchi.getSources().get(0),"첫번째 재료가 일치하지 않는다.");
+  Exception e = assertThrown(Exception.class,() -> {
+      예외 처리 테스트 로직
+  },"예외 메세지");
 
-    assertEquals(e.getMessage(),"테스트 로직에서 발생한 메세지")
-  }
+  assertEquals(e.getMessage(),"테스트 로직에서 발생한 메세지")
+}
 
 ```  
 
