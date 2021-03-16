@@ -13,7 +13,8 @@ hide: false
 <!--more-->
 ## Git Basic Command  
 
-1. git init
+1. git init  
+
 ```terminal
 
 $ git init
@@ -23,7 +24,7 @@ $ git init
 이 디렉토리는 `github`에 `remote repository`와 연결되며 변경된 파일을 받거나 보낼수있다.  
 
 2. git status  
-
+  
 ```terminal
 
 $ git status
