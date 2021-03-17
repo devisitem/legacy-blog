@@ -17,7 +17,7 @@ custom 으로 등록
 
 ## Build 환경 설정  
 Setting > Gradle 검색  
-![Gradle 빌드 설정]({{ "/assets/img/bloging/intellij/intellij1.png" | relative_url }})
+![Gradle 빌드 설정]({{ "/assets/img/bloging/intellij/intellij2.png" | relative_url }})
 
 위 `build` 설정은 testCase를 만들시 gradle에서 빌드하던것을 intellij 로 빌드 하도록 바꿔준 것이다.
 
@@ -78,5 +78,5 @@ private Member createMember() {
 
 ### 라인 북마크 등록 및 이동  
 
-  - 등록  : `⇧` + `⇧` + `원하는 번호`  
+  - 등록  : `⌃` + `⇧` + `원하는 번호`  
   - 이동  : `⇧` + `등록한 번호`  
