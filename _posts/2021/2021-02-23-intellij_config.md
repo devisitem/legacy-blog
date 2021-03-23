@@ -74,9 +74,32 @@ private Member createMember() {
 ```
 ### 이전 또는 이후 커서의 위치로 이동  
 
-`⌥` + `⌘` + `Left`  
+`⌥` + `⌘` + ( `Left` or `Right` )
 
 ### 라인 북마크 등록 및 이동  
 
   - 등록  : `⌃` + `⇧` + `원하는 번호`  
   - 이동  : `⇧` + `등록한 번호`  
+
+### 자료형 및 변수명 자동생성  
+
+```java
+public class Kimchi{
+
+  ...
+
+  public void kimchi(Source source){
+    kimchiService.make(source);                 // 커서를 왼쪽끝에두고
+    Kimchi kimchi = kimchiService.make(source); //사용후
+  }
+
+}
+```  
+`⌥` + `⌘` + 'V'  
+
+### 프로젝트 익스플로러로 이동
+
+`⌘` + '1'  
+### 멀티라인 셀렉트
+
+`⌥` + `⌥` 누른상태에서 `Down`
