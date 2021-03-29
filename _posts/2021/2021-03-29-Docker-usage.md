@@ -1,14 +1,14 @@
 ---
 layout: post
 title: -Docker- 도커 명령어 (docker)
-categories: [Development,Spring]
-tags: [Spring]
+categories: [Development,Docker]
+tags: [Docker]
 date: 2021-03-29 21:02:00 +0900
 excerpt_separator: <!--more-->
 hide: false
 ---
 
-도커 명령어
+도커 명령어 정리
 
 <!--more-->
 
@@ -129,7 +129,7 @@ yml 파일 작성후 실행
 | ARGS | 빌드타임 환경변수 설정 |
 | LABEL | key - value 데이터 |
 | ONBUILD | 다른 빌드의 베이스로 사용될때 사용하는 명령어 |
-  
+
 ## Git을 설치한 ubuntu 이미지  
 1. dockerfile 생성  
 ```
