@@ -22,6 +22,12 @@
       padding-top: 15px;
       padding-bottom: 15px;
       vertical-align: top;
+
+      >image {
+        overflow: hidden;
+        width: 100%;
+      }
+
     }
 
     .content-area {
@@ -63,7 +69,11 @@
     }
 
   } // .post-preview
-
+  .post-preview :hover {
+    backgrount: rgb(228, 226, 226);
+    transition: .4s;
+    border-radius: 20px
+  }
 } // #post-list
 
 .pagination {

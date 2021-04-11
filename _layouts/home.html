@@ -51,50 +51,50 @@ layout: page
 
 {% assign posts = paginator.posts | where:"hide", "false" %}
 {% for post in posts %}
-
-  <div class="post-preview">
-    {% if post.thumbnail %}
-    <div class="image-area col-lg-3">
-        <img src="{{ post.thumbnail }}" />
-    </div>
-    <div class="content-area col-lg-8">
-    {% endif %}
-      <div class="d-flex justify-content-between pr-xl-2">
-        <h1><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h1>
-        {% if post.pin %}
-          <i class="fas fa-thumbtack fa-fw text-muted mt-1 ml-2 mt-xl-2" data-toggle="tooltip" data-placement="left"
-          title="Pinned"></i>
-        {% endif %}
+  <a href="{{ post.url | relative_url }}">
+    <div class="post-preview">
+      {% if post.thumbnail %}
+      <div class="image-area col-lg-3">
+          <img src="{{ post.thumbnail }}" />
       </div>
-      <div class="post-content">
-        <p>
-        {% assign _content = post.excerpt %}
-        {% include no-linenos.html %}
-        {{ _content | markdownify | strip_html | truncate: 200 }}
-        </p>
-      </div>
+      <div class="content-area col-lg-8">
+      {% endif %}
+        <div class="d-flex justify-content-between pr-xl-2">
+          <h1>{{ post.title }}</h1>
+          {% if post.pin %}
+            <i class="fas fa-thumbtack fa-fw text-muted mt-1 ml-2 mt-xl-2" data-toggle="tooltip" data-placement="left"
+            title="Pinned"></i>
+          {% endif %}
+        </div>
+        <div class="post-content">
+          <p>
+          {% assign _content = post.excerpt %}
+          {% include no-linenos.html %}
+          {{ _content | markdownify | strip_html | truncate: 200 }}
+          </p>
+        </div>
 
-      <div class="post-meta text-muted">
-        <!-- posted date -->
-        <i class="far fa-clock fa-fw"></i>
-        <span class="timeago" data-toggle="tooltip" data-placement="bottom"
-          title="{{ post.date | date: site.data.date_format.tooltip }}">
-        {{ post.date | date: site.data.date_format.post }}
-        <i class="unloaded">{{ post.date | date_to_xmlschema }}</i>
-        </span>
-        <!-- page views -->
-        {% if site.google_analytics.pv.enabled %}
-        <i class="far fa-eye fa-fw"></i>
-        <span id="pv_{{-post.title-}}" class="pageviews">
-          <i class="fas fa-spinner fa-spin fa-fw"></i>
-        </span>
-        {% endif %}
+        <div class="post-meta text-muted">
+          <!-- posted date -->
+          <i class="far fa-clock fa-fw"></i>
+          <span class="timeago" data-toggle="tooltip" data-placement="bottom"
+            title="{{ post.date | date: site.data.date_format.tooltip }}">
+          {{ post.date | date: site.data.date_format.post }}
+          <i class="unloaded">{{ post.date | date_to_xmlschema }}</i>
+          </span>
+          <!-- page views -->
+          {% if site.google_analytics.pv.enabled %}
+          <i class="far fa-eye fa-fw"></i>
+          <span id="pv_{{-post.title-}}" class="pageviews">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </span>
+          {% endif %}
+        </div>
+      {% if post.thumbnail %}
       </div>
-    {% if post.thumbnail %}
-    </div>
-    {% endif %}
-  </div> <!-- .post-review -->
-
+      {% endif %}
+    </div> <!-- .post-review -->
+  </a>
 {% endfor %}
 
 </div> <!-- #post-list -->
