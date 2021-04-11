@@ -53,7 +53,12 @@ layout: page
 {% for post in posts %}
 
   <div class="post-preview">
+    {% if post.thumbnail }
+    <div class="image-area">
+        {% assign image = posts.images[0]. %}
+    </div>
     <div class="content-area">
+    {% endif %}
       <div class="d-flex justify-content-between pr-xl-2">
         <h1><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h1>
         {% if post.pin %}
