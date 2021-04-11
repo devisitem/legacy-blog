@@ -53,6 +53,14 @@ layout: page
 {% for post in posts %}
 
   <div class="post-preview">
+    {% if post.thumbnail }
+    <div class="image-area col-lg-3">
+        <img src="{{ post.thumbnail }}" />
+    </div>
+    <div class="content-area col-lg-8">
+    {% else %}
+    <div>
+    {% endif %}
       <div class="d-flex justify-content-between pr-xl-2">
         <h1><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h1>
         {% if post.pin %}
@@ -84,6 +92,7 @@ layout: page
         </span>
         {% endif %}
       </div>
+    </div>
   </div> <!-- .post-review -->
 
 {% endfor %}

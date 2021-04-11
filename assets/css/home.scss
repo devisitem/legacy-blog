@@ -17,6 +17,19 @@
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--main-border-color);
 
+    .image-area {
+      display: inline-block;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      vertical-align: top;
+    }
+
+    .content-area {
+      display: inline-block;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
     h1 {
       font-size: 1.4rem;
       margin: 0;
