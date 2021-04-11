@@ -13,7 +13,7 @@ thumbnail: "/assets/img/bloging/docker/dead-docker.png"
 
 <!--more-->
 # docker  
-
+  
 ![docker_Image]({{ "/assets/img/bloging/docker/dead-docker.png" | relative_url }})  
 
 ---
