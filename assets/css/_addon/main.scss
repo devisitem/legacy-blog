@@ -263,6 +263,8 @@ $sidebar-display: "sidebar-display";
 
   &:hover>a {
     border-color: #fff;
+    border-radius: 7% 70%;
+    transition: .6s;
   }
 
   img {
@@ -1139,6 +1141,7 @@ table {
   /* Solved jumping scrollbar */
   html {
     overflow-y: scroll;
+    scroll-behavior: smooth;
   }
 
   #main-wrapper {
