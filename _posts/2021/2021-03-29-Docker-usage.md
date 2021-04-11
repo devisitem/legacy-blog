@@ -6,12 +6,18 @@ tags: [Docker]
 date: 2021-03-29 21:02:00 +0900
 excerpt_separator: <!--more-->
 hide: false
+thumbnail: "/assets/img/bloging/docker/dead-docker.png"
 ---
 
 도커 명령어 정리
 
 <!--more-->
+# docker  
 
+[docker_Image]({{ "/assets/img/bloging/docker/dead-docker.png" | relative_url }})  
+
+---
+<br>  
 ## run - 컨테이너 실행  
 
 `docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] {ARG...}`  
