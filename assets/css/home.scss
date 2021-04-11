@@ -67,13 +67,12 @@
         -webkit-box-orient: vertical;
       }
     }
-
+    &:hover {
+      background: rgb(228, 226, 226);
+      transition: .4s;
+      border-radius: 20px
+    }
   } // .post-preview
-  .post-preview :hover {
-    background: rgb(228, 226, 226);
-    transition: .4s;
-    border-radius: 20px
-  }
 } // #post-list
 
 .pagination {
