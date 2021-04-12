@@ -6,6 +6,7 @@ tags: [Swift]
 date: 2021-03-01 22:57:00 +0900
 excerpt_separator: <!--more-->
 hide: false
+thumbnail: "/assets/img/bloging/swift/swift_console.png"
 ---
  Swift 기본 문법
 <!--more-->
