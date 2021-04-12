@@ -27,13 +27,8 @@
 
       .image-cover {
         height:140px;
-        >img {
-          overflow: hidden;
-          width: 100%;
-          border-radius: 20px;
-          background-repeat: no-repeat;
-          background-size: 100%;
-        }
+        background-repeat: no-repeat;
+        background-size: 100%;
       }
 
     }
