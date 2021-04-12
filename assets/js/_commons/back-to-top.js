@@ -17,9 +17,9 @@ $(function() {
   });
 
   $("#avatar a").hover(function() {
-    $("#loveSping").show('slow')
+    $("#loveSpring").fadeIn('slow')
   },function(){
-    $("#loveSping").hide('slow')
+    $("#loveSpring").fadeIn('slow')
   })
 
 });
