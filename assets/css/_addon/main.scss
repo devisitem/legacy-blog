@@ -283,7 +283,12 @@ $sidebar-display: "sidebar-display";
     }
   }
 } // #avatar
-
+#loveSping span{
+  text-align: center;
+  color: #27d02d;
+  font-size: 1.5em;
+  font-weight: 400;
+}
 #search-result-wrapper {
   display: none;
   position: fixed;
