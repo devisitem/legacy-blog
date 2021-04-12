@@ -9,7 +9,7 @@ hide: false
 thumbnail: "/assets/img/bloging/spring/validation_thumbnail.png"
 ---
 
-Spring boot 객체 Dto 객체 설계와 유효성 검층을 편하게 사용할 수 있는 라이브러리
+Spring boot 객체 Dto 객체 설계와 유효성 검증을 편하게 사용할 수 있는 라이브러리
 
 <!--more-->
 
