@@ -39,7 +39,7 @@ Spring boot 2.3이후부터 validation이 별도의 모듈로 분리되었다. �
 
 ```java
  @PostMapping
-    public ResponseEntity createEvent(@RequestBody @Valid EventDto eventDto, 		Errors errors){
+    public ResponseEntity createEvent(@RequestBody @Valid EventDto eventDto, Errors errors){
         if(errors.hasErrors()){
             System.out.println("Bad Request !");
             return ResponseEntity.badRequest().build();

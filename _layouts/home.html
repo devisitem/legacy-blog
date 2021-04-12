@@ -55,7 +55,9 @@ layout: page
     <div class="post-preview">
       {% if post.thumbnail %}
       <div class="image-area col-lg-3 col-md-3">
-          <img src="{{ post.thumbnail }}" />
+          <div class="image-cover">
+            <img src="{{ post.thumbnail }}" />
+          </div>
       </div>
       <div class="content-area col-lg-8 col-md-8">
       {% endif %}

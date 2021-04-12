@@ -24,10 +24,15 @@
       padding-bottom: 15px;
       vertical-align: top;
       background-color: initial;
-      >img {
-        overflow: hidden;
-        width: 100%;
 
+      .image-cover {
+        height:140px;
+        border-radius: 20px;
+        >img {
+          overflow: hidden;
+          width: 100%;
+
+        }
       }
 
     }
