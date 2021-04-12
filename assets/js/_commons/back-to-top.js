@@ -19,7 +19,7 @@ $(function() {
   $("#avatar a").hover(function() {
     $("#loveSpring").fadeIn('slow')
   },function(){
-    $("#loveSpring").fadeIn('slow')
+    $("#loveSpring").fadeOut('slow')
   })
 
 });

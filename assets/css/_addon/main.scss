@@ -266,6 +266,7 @@ $sidebar-display: "sidebar-display";
     border-color: #fff;
     border-radius: 7% 70%;
     transition: .6s;
+    background: #18f54b;
   }
 
   img {
@@ -280,6 +281,8 @@ $sidebar-display: "sidebar-display";
       -moz-transform: scale(1.2);
       -webkit-transform: scale(1.2);
       transform: scale(1.2);
+      filter: hue-rotate(90deg) opacity(30%);
+
     }
   }
 } // #avatar
