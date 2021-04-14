@@ -86,12 +86,12 @@ title: 웅덩이에 빠진 개발자
 <br>  
 <div id="accordion">
   <div class="card">
-    <div class="card-header" id="headingOne">
-        <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+    <div class="card-header" id="headingOne" style="height: 50px;">
+        <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
         <h2 data-toc-skip style="padding: 7% 0;">정보시스템 통합운영 및 유지관리 ( 2020.03 ~ 2020.06 )</h2>
-      </button> 
+      </button>
     </div>
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
         <ul>
             <li>정보시스템 통합운영 관리 프로세스 Back-End 유지보수</li>
@@ -110,12 +110,12 @@ title: 웅덩이에 빠진 개발자
     </div>
   </div>
   <div class="card">
-    <div class="card-header" id="headingTwo">
-        <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+    <div class="card-header" id="headingTwo" style="height: 50px;">
+        <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
           <h2 data-toc-skip style="padding: 7% 0;">통합공간 정보시스템 기능개선 및 활용 확대사업 ( 2020.07 ~ 2020.09 )</h2>
         </button>
     </div>
-    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body">
         <ul>
             <li>서울시 공간정보 제공 시스템 고도화 개발</li>
@@ -141,12 +141,12 @@ title: 웅덩이에 빠진 개발자
     </div>
   </div>
   <div class="card">
-    <div class="card-header" id="headingThree">
-        <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+    <div class="card-header" id="headingThree" style="height: 50px;">
+        <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
           <h2 data-toc-skip style="padding: 7% 0;">2020 기술사업화 역량강화 사업 주문관리 플랫폼 개발 ( 2020.09 ~ 2021.02 )</h2>
         </button>
     </div>
-    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
         <ul>
             <li>주문관리 플랫폼 신규 구축</li>
