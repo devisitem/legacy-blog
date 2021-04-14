@@ -19,6 +19,8 @@ title: 웅덩이에 빠진 개발자
 - 저에게 문제는 저를 더욱더 발전시킬 수 있는 좋은 기회의 발판 이에요.
 - 비개발 직군과 소통하는 것이 어렵지 않아요.
 
+<br>
+
 ---
 <br>
 
@@ -49,7 +51,6 @@ title: 웅덩이에 빠진 개발자
 - React.js
 - Redux (React - Hooks)
 - HTML5, CSS3, JavaScript (ECMA Script 6)
-
 - JSP
 
 
@@ -76,7 +77,6 @@ title: 웅덩이에 빠진 개발자
 - Spring Cloud
 - Spring Core
 
-<br>
 ---
 <br>
 ## Work Experience  
@@ -84,7 +84,7 @@ title: 웅덩이에 빠진 개발자
 **CUBIC INC** 2020.04. ~  
 <br>  
 
-- 정보시스템 통합운영 및 유지관리 ( 2020.03 ~ 2020.06 )  
+- <h2 data-toc-skip>정보시스템 통합운영 및 유지관리 ( 2020.03 ~ 2020.06 )</h2>  
 
   - 정보시스템 통합운영 관리 프로세스 Back-End 유지보수  
 
