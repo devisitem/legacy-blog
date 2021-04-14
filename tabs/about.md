@@ -84,7 +84,29 @@ title: 웅덩이에 빠진 개발자
 
 **CUBIC INC** 2020.04. ~  
 <br>  
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <h2 data-toc-skip>정보시스템 통합운영 및 유지관리 ( 2020.03 ~ 2020.06 )</h2>  
+        </button>
+      </h5>
+    </div>
 
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+  - **(Java, Spring, Javascript, Oracle, Mybatis, SVN)**  
+  - SNS 공유 파라미터 중복 요청오류 처리기능 로직변경  
+  - 클라우드 서버 파일 다운로드 계층화 기능 개선  
+  - 대민서비스 내 마이크로 서비스 디자인 개편  
+  - 미디어 플랫폼 공유 서버 신규 구축  
+    - B2B, B2C 간 소식을 쉽게 공유할 수있는 Cloud 및 Contents-Board 시스텝 개발(SNS 와 유사)  
+  - Staging Server 개별 WAS 구축  
+      </div>
+    </div>
+  </div>
+</div>
 - <h2 data-toc-skip>정보시스템 통합운영 및 유지관리 ( 2020.03 ~ 2020.06 )</h2>  
 
   - 정보시스템 통합운영 관리 프로세스 Back-End 유지보수  
