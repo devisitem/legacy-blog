@@ -87,8 +87,8 @@ title: 웅덩이에 빠진 개발자
 <div id="accordion">
   <div class="card">
     <div class="card-header" id="headingOne" style="height: 50px;">
-        <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-        <h2 data-toc-skip style="padding: 7% 0;">정보시스템 통합운영 및 유지관리 ( 2020.03 ~ 2020.06 )</h2>
+        <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="padding: 0;margin-top:0;">
+        <h2 data-toc-skip style="padding: 0;">정보시스템 통합운영 및 유지관리 ( 2020.03 ~ 2020.06 )</h2>
       </button>
     </div>
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
@@ -111,7 +111,7 @@ title: 웅덩이에 빠진 개발자
   </div>
   <div class="card">
     <div class="card-header" id="headingTwo" style="height: 50px;">
-        <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="padding: 0;margin-top:0;">
           <h2 data-toc-skip style="padding: 6% 0;">통합공간 정보시스템 기능개선 및 활용 확대사업 ( 2020.07 ~ 2020.09 )</h2>
         </button>
     </div>
@@ -142,7 +142,7 @@ title: 웅덩이에 빠진 개발자
   </div>
   <div class="card">
     <div class="card-header" id="headingThree" style="height: 50px;">
-        <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="padding: 0;margin-top:0;">
           <h2 data-toc-skip style="padding: 5% 0;">2020 기술사업화 역량강화 사업 주문관리 플랫폼 개발 ( 2020.09 ~ 2021.02 )</h2>
         </button>
     </div>
