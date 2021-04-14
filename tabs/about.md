@@ -93,20 +93,94 @@ title: 웅덩이에 빠진 개발자
         </button>
       </h5>
     </div>
-
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
-  - **(Java, Spring, Javascript, Oracle, Mybatis, SVN)**  
-  - SNS 공유 파라미터 중복 요청오류 처리기능 로직변경  
-  - 클라우드 서버 파일 다운로드 계층화 기능 개선  
-  - 대민서비스 내 마이크로 서비스 디자인 개편  
-  - 미디어 플랫폼 공유 서버 신규 구축  
-    - B2B, B2C 간 소식을 쉽게 공유할 수있는 Cloud 및 Contents-Board 시스텝 개발(SNS 와 유사)  
-  - Staging Server 개별 WAS 구축  
+        <ul>
+          <li>정보시스템 통합운영 관리 프로세스 Back-End 유지보수<li>
+          <li><strong>(Java, Spring, Javascript, Oracle, Mybatis, SVN)</strong><li>
+          <li>SNS 공유 파라미터 중복 요청오류 처리기능 로직변경</li>  
+          <li>클라우드 서버 파일 다운로드 계층화 기능 개선</li>  
+          <li>대민서비스 내 마이크로 서비스 디자인 개편</li>  
+          <li>미디어 플랫폼 공유 서버 신규 구축
+            <ul>
+              <li> B2B, B2C 간 소식을 쉽게 공유할 수있는 Cloud 및 Contents-Board 시스텝 개발(SNS 와 유사)</li>
+            </ul
+          </li>   
+          <li>Staging Server 개별 WAS 구축</li>  
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <h2 data-toc-skip>통합공간 정보시스템 기능개선 및 활용 확대사업 ( 2020.07 ~ 2020.09 )</h2>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        <ul>
+          <li>서울시 공간정보 제공 시스템 고도화 개발<li>
+          <li><strong>(Java, Spring, Javascript, Oracle, Mybatis, SVN)</strong><li>
+          <li>시계열서비스 (시각화, 시간 단축) 기능 개선
+              <ul>
+                  <li>기존 날짜단위 공간 정보조회에서 공간단위 시계열로 조회 분류방법 변경</li>
+                  <li>공간정보의 시계열 목록 7초 -> 2초 시간 단축</li>
+              </ul>
+          </li>  
+          <li>시계열 공간 다운로드 편의 기능 신규개발
+              <ul>
+                  <li>Client Cookie를 이용한 공간 선택목록 Caching (페이지 이동시에도 기존 선택항목 재선택) 기능 개발</li>
+              </ul>
+          </li>  
+          <li>공간정보 다운로드 시스템 서버통신 리팩토링
+            <ul>
+              <li>기개발된 다운로드 프로세스(10개파일을 다운로드 한다면  10번을 서버에 다녀와서 압축파일로 만들어 사용자에게 제공)를 한번의 서버통신으로 10개의 다운로드 파일을 묶어서 압축파일로 제공하도록 변경</li>  
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+          <h2 data-toc-skip>2020 기술사업화 역량강화 사업 주문관리 플랫폼 개발 ( 2020.09 ~ 2021.02 )</h2>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+        <ul>
+          <li>주문관리 플랫폼 신규 구축<li>
+          <li><strong>(Java, Spring Boot, Spring security, Javascript, Mysql, Mybatis)<li>
+          <li>(B2C) 방문서비스 매칭 시스템 구축
+              <ul>
+                  <li>요양, 간호, 목욕 서비스 매칭 서비스 개발</li>
+                  <li>실시간 관리자 모니터링 서버 개발</li>
+                  <li>고객관리(고객정보, 서비스이용정보) 시스템 개발</li>
+                  <li>실시간 통계 (별점 및 후기 통계,일 단위 서비스 신청 통계) 시스템 개발</li>
+              </ul>
+          </li>  
+          <li>(B2B) 차량 주문 관리시스템 구축
+              <ul>
+                  <li>주문 견적서(비정형 데이터) 관리 시스템 개발</li>
+                  <li>실시간 차량 공정 모니터링 프로세스 개발</li>
+              </ul>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 </div>
+
+<br>
+
+---
+<br>
 - <h2 data-toc-skip>정보시스템 통합운영 및 유지관리 ( 2020.03 ~ 2020.06 )</h2>  
 
   - 정보시스템 통합운영 관리 프로세스 Back-End 유지보수  
