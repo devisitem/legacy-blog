@@ -1,8 +1,8 @@
 ---
 layout: post
 title: -Spring- Validation
-categories: [Development,Docker]
-tags: [Docker]
+categories: [Development,Spring]
+tags: [Spring]
 date: 2021-04-12 13:30:00 +0900
 excerpt_separator: <!--more-->
 hide: false
