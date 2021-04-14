@@ -88,7 +88,8 @@ title: 웅덩이에 빠진 개발자
   <div class="card">
     <div class="card-header" id="headingOne">
         <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        <h2 data-toc-skip style="padding: 7% 0;">정보시스템 통합운영 및 유지관리 ( 2020.03 ~ 2020.06 )</h2>  
+        <h2 data-toc-skip style="padding: 7% 0;">정보시스템 통합운영 및 유지관리 ( 2020.03 ~ 2020.06 )</h2>
+      </button> 
     </div>
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
