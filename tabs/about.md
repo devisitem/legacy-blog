@@ -112,7 +112,7 @@ title: 웅덩이에 빠진 개발자
   <div class="card">
     <div class="card-header" id="headingTwo" style="height: 50px;">
         <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="padding: 0;margin-top:0;">
-          <h2 data-toc-skip style="padding: 6% 0;">통합공간 정보시스템 기능개선 및 활용 확대사업 ( 2020.07 ~ 2020.09 )</h2>
+          <h2 data-toc-skip style="padding: 0;">통합공간 정보시스템 기능개선 및 활용 확대사업 ( 2020.07 ~ 2020.09 )</h2>
         </button>
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
@@ -143,7 +143,7 @@ title: 웅덩이에 빠진 개발자
   <div class="card">
     <div class="card-header" id="headingThree" style="height: 50px;">
         <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="padding: 0;margin-top:0;">
-          <h2 data-toc-skip style="padding: 5% 0;">2020 기술사업화 역량강화 사업 주문관리 플랫폼 개발 ( 2020.09 ~ 2021.02 )</h2>
+          <h2 data-toc-skip style="padding: 0;">2020 기술사업화 역량강화 사업 주문관리 플랫폼 개발 ( 2020.09 ~ 2021.02 )</h2>
         </button>
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
