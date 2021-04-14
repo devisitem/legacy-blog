@@ -14,7 +14,7 @@ Spring 에서 제공하는 validation의 Errors객체는 자바빈 표준스펙�
 <!--more-->
 ## [Error] No serializer found for class
 
-![Serialization Error]({{ "/assets/img/bloging/spring/serializationError.png | relative_url "}})
+![Serialization Error]({{ "/assets/img/bloging/spring/serializationError.png" | relative_url }})
 
 ---
 <br>
