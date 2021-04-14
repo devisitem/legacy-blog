@@ -87,10 +87,8 @@ title: 웅덩이에 빠진 개발자
 <div id="accordion">
   <div class="card">
     <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        <h2 data-toc-skip>정보시스템 통합운영 및 유지관리 ( 2020.03 ~ 2020.06 )</h2>  
-        </button>
+        <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <h2 data-toc-skip style="padding: 7% 0;">정보시스템 통합운영 및 유지관리 ( 2020.03 ~ 2020.06 )</h2>  
       </h5>
     </div>
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
@@ -113,11 +111,9 @@ title: 웅덩이에 빠진 개발자
   </div>
   <div class="card">
     <div class="card-header" id="headingTwo">
-      <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <h2 data-toc-skip>통합공간 정보시스템 기능개선 및 활용 확대사업 ( 2020.07 ~ 2020.09 )</h2>
+        <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <h2 data-toc-skip style="padding: 7% 0;">통합공간 정보시스템 기능개선 및 활용 확대사업 ( 2020.07 ~ 2020.09 )</h2>
         </button>
-      </h5>
     </div>
     <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body">
@@ -146,11 +142,9 @@ title: 웅덩이에 빠진 개발자
   </div>
   <div class="card">
     <div class="card-header" id="headingThree">
-      <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-          <h2 data-toc-skip>2020 기술사업화 역량강화 사업 주문관리 플랫폼 개발 ( 2020.09 ~ 2021.02 )</h2>
+        <button class="btn btn-link  collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+          <h2 data-toc-skip style="padding: 7% 0;">2020 기술사업화 역량강화 사업 주문관리 플랫폼 개발 ( 2020.09 ~ 2021.02 )</h2>
         </button>
-      </h5>
     </div>
     <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
