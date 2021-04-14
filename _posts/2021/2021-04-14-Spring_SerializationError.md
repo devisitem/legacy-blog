@@ -2,7 +2,7 @@
 layout: post
 title: -Spring- Validation
 categories: [Development,Spring]
-tags: [Spring]
+tags: [유효성 검증]
 date: 2021-04-14 17:30:00 +0900
 excerpt_separator: <!--more-->
 hide: false
