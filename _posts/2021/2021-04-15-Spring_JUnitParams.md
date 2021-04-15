@@ -23,11 +23,11 @@ thumbnail: "/assets/img/bloging/spring/junit_logo.png"
 public void 사용자_삭제_테스트(){
   //given
   Member member = Member.build()
-    				.deleteYn("Y")
-    				.build();
+            .deleteYn("Y")
+            .build();
   
   //when
-  member.update();//
+  member.update();
   
   
   //given
@@ -42,9 +42,9 @@ public void 사용자_삭제_테스트(){
 ```java
 public Member createMember(){
   Member member = Member.build()
-    				.name("Kimchi-dev")
-    				.deleteYn("Y")
-    				.build();
+            .name("Kimchi-dev")
+            .deleteYn("Y")
+            .build();
 }
 
 @Test
