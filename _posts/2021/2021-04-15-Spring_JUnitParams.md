@@ -2,7 +2,7 @@
 layout: post
 title: -Spring- JUnitParams (단위 테스트 편하게하기)
 categories: [Development,Spring]
-tags: [단위-테스트,테스트 파라미터,Spring]
+tags: [단위 테스트,테스트 파라미터,Spring]
 date: 2021-04-14 17:30:00 +0900
 excerpt_separator: <!--more-->
 hide: false
