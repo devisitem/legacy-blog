@@ -50,7 +50,7 @@ git push -u origin main
 - `main` 브랜치로 `develop`브랜치를 생성.
 
 ```terminal
-(master)$ git checkout -b develop 
+(master)$ git checkout -b develop
 (develop)$
 ```
 
@@ -77,16 +77,16 @@ git push -u origin main
 
 <br>
 
-### Release
+### Release  
 
-- 기능을 개발 하였다면 테스트를 해야 하지 않겠는가 ! QA를 위한 `release` 브랜치를 생성 해보자.
+- 기능을 개발 하였다면 테스트를 해야 하지 않겠는가 ! QA를 위한 `release` 브랜치를 생성 해보자.  
 
 ```terminal
 (develop)$ git checkout -b release-1.1
 (release-1.1)$
 ```
 
-- 테스트를 완료하고 배포를 위한 `master` 브랜치로 이동하여, 병합하자.
+- 테스트를 완료하고 배포를 위한 `master` 브랜치로 이동하여, 병합하자.  
 
 ```terminal
 (release-1.1)$ git checkout master
@@ -94,4 +94,22 @@ git push -u origin main
 (master)$ git tag -a 1.1
 ```
 
+### Hotfix
 
+- 배포전 오류가 발생했을시 `master`브랜치에서 분기하여, 오류수정후 `develop`과 `master`로 병합한다.  
+
+```terminal
+(master)$ git checkout -b hotfix-1.1.1 
+
+(오류 수정 후)
+
+(hotfix-1.1.1)$ git checkout master
+
+(master)$ git merge --no-ff hotfix-1.1.1
+(master)$ git tage -a 1.1.1
+(master)$ git checkout develop
+
+(develop)$ git merge --no-ff hotfix-1.2.1
+
+
+```
