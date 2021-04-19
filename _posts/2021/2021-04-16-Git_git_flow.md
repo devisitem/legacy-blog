@@ -1,6 +1,6 @@
 ---
 layout: post
-title: -Git- Git Flow (깃 플로우)
+title: -Git- Git을 이용한 Git flow (깃 플로우)
 categories: [Development,github]
 tags: [Git Flow,깃 플로우,github]
 date: 2021-04-16 17:10:00 +0900
@@ -99,7 +99,7 @@ git push -u origin main
 - 배포전 오류가 발생했을시 `master`브랜치에서 분기하여, 오류수정후 `develop`과 `master`로 병합한다.  
 
 ```terminal
-(master)$ git checkout -b hotfix-1.1.1 
+(master)$ git checkout -b hotfix-1.1.1
 
 (오류 수정 후)
 
