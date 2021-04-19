@@ -1,6 +1,6 @@
 ---
 layout: post
-title: -Spring- Validation
+title: -Spring- SerializationError
 categories: [Development,Spring]
 tags: [유효성 검증]
 date: 2021-04-14 17:30:00 +0900
@@ -9,7 +9,7 @@ hide: false
 thumbnail: "/assets/img/bloging/spring/serializationError.png"
 ---
 
-Spring 에서 제공하는 validation의 Errors객체는 자바빈 표준스펙을 준수하지않기 때문에 serializing시 에러가 발생한다. 
+Spring 에서 제공하는 validation의 Errors객체는 자바빈 표준스펙을 준수하지않기 때문에 serializing시 에러가 발생한다.
 
 <!--more-->
 ## [Error] No serializer found for class

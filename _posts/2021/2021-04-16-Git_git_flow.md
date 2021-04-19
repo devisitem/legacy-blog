@@ -6,7 +6,7 @@ tags: [Git Flow,깃 플로우,github]
 date: 2021-04-16 17:10:00 +0900
 excerpt_separator: <!--more-->
 hide: false
-thumbnail: "/assets/img/bloging/git/gitflow.png"
+thumbnail: "/assets/img/bloging/git/git_thumnail.png"
 ---
 
 기본브랜치만 만들어서 충돌나 날려먹지말고 Git flow를 사용하여 체계적인 프로젝트 운용관리와 안전한 협업 프로세스를 구축해보자.
@@ -14,7 +14,7 @@ thumbnail: "/assets/img/bloging/git/gitflow.png"
 <!--more-->
 
 
-![IMAGE GIT]({{ "/assets/img/bloging/git/gitflow.png" | relative_url }})
+![IMAGE GIT]({{ "/assets/img/bloging/git/git_thumnail.png" | relative_url }})
 
 <br>
 ## 원시시대적 코드반영  
