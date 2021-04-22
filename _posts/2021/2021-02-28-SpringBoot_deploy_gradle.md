@@ -1,6 +1,6 @@
 ---
 layout: post
-title: -SpringBoot- jar파일 배포 (SpringBoot App Distribution)
+title: -SpringBoot- Gladle jar파일 배포 (SpringBoot App deploy)
 categories: [Development,Spring]
 tags: [Spring]
 date: 2021-02-28 23:10:00 +0900
