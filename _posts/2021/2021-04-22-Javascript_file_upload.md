@@ -13,6 +13,8 @@ thumbnail: "/assets/img/bloging/javascript/javascript.png"
 
 <!--more-->
 
+![Drag and Drop]({{ "/assets/img/bloging/javascript/file_upload.png"}})
+
 
 ## File drag and drop
 
