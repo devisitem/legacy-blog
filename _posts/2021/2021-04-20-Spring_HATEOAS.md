@@ -9,9 +9,6 @@ hide: true
 #thumbnail: "/assets/img/bloging/git/git_thumnail.png"
 ---
 
-Spring HATEOAS
+Spring HATEOAS 에대해배우고 Restful 한 API를 만들어 보자
 
 <!--more-->
-
-
-![IMAGE GIT]({{ "/assets/img/bloging/git/git_thumnail.png" | relative_url }})
