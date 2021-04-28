@@ -12,7 +12,7 @@ No ParameterResolver registerd for parameter
 
 <!--more-->
 
-![JUnit5 DI]({{ "/assets/img/bloging/spring/TestError01" | relative_url }})
+![JUnit5 DI]({{ "/assets/img/bloging/spring/TestError01.png" | relative_url }})
 
 ## JUnit 5 에선 안돼?
 
