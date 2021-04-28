@@ -3,7 +3,7 @@ layout: post
 title: -Spring- JUnit Test Error (No ParameterResolver)
 categories: [Development,Spring]
 tags: [No ParameterResolver,테스트 에러]
-date: 2021-04-25 17:54:00 +0900
+date: 2021-04-28 15:00:00 +0900
 thumbnail: "/assets/img/bloging/spring/junit_logo.png"
 excerpt_separator: <!--more-->
 hide: false
