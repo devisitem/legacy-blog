@@ -1,6 +1,6 @@
 ---
 layout: post
-title: -Spring- 종속성 순환 에  (The dependencies of some of the beans in the application context form a cycle)
+title: -Spring- 종속성 순환 에러 (The dependencies of some of the beans in the application context form a cycle)
 categories: [Development,Spring]
 tags: [The dependencies of some of the beans in the application context form a cycle,테스트 에러]
 date: 2021-04-28 16:46:00 +0900
