@@ -4,7 +4,7 @@ title: -Spring- API 문서화 (Spring Rest Docs) 1/2
 categories: [Development,Spring]
 tags: [문서화,API 문서,Spring Rest Docs]
 date: 2021-05-03 21:39:00 +0900
-thumbnail: "/assets/img/bloging/spring/junit_logo.png"
+thumbnail: "/assets/img/bloging/spring/rest_docs.png"
 excerpt_separator: <!--more-->
 hide: false
 ---
