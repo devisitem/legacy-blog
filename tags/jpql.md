@@ -1,5 +1,5 @@
 ---
 layout: tag
-title: JPA    # TAG names should always be lowercase
-tag: JPA     # TAG names should always be lowercase
+title: JPQL    # TAG names should always be lowercase
+tag: JPQL     # TAG names should always be lowercase
 ---
