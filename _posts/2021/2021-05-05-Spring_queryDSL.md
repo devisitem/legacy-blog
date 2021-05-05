@@ -4,7 +4,7 @@ title: -Spring- JPA, 강력한 ORM 쿼리 라이브러리 (QueryDSL)
 categories: [Development,Spring]
 tags: [QueryDSL,Spring,JPA,JPQL]
 date: 2021-05-05 20:30:00 +0900
-thumbnail: "/assets/img/bloging/spring/qeurydsl_logo.png"
+thumbnail: "/assets/img/bloging/spring/querydsl_logo.png"
 excerpt_separator: <!--more-->
 hide: false
 ---
