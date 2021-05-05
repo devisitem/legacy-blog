@@ -1,5 +1,5 @@
 ---
 layout: tag
-title: drag and drop    # TAG names should always be lowercase
-tag: drag and drop    # TAG names should always be lowercase
+title: Drag And Drop    # TAG names should always be lowercase
+tag: Drag And Drop    # TAG names should always be lowercase
 ---
