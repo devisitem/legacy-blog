@@ -87,14 +87,14 @@ ASCII Doctor를 이용한 API 문서화
 
 아래 사진처럼 IDE에서 실행하면 바로 생성된다.
 
-![문서 빌드]( {{ "/assets/img/bloging/spring/build-docs01.png" | relative_url }} )
+![문서 빌드]({{ "/assets/img/bloging/spring/build-docs01.png" | relative_url }})
 
 문서를 빌드하면 `target > generated-docs`  라는 경로에 `index.html` 이 생성되는데 이를 실행해보면 `HTML` 기반으로 생성된 문서를 볼 수 있다.
 
-![문서 빌드]( {{ "/assets/img/bloging/spring/build-docs02.png" | relative_url }} )
+![생성된 문서]({{ "/assets/img/bloging/spring/build-docs02.png" | relative_url }})
 
 
 
 ### 문서 생성
 
-![문서 빌드]( {{ "/assets/img/bloging/spring/build-docs03.png" | relative_url }} )
+![문서 확인]({{ "/assets/img/bloging/spring/build-docs03.png" | relative_url }})
