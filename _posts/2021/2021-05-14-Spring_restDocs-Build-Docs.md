@@ -16,7 +16,7 @@ ASCII Doctor를 이용한 API 문서화
 
 `API` 를 문서화 하려면 테스트로 만들어진 문서조각들을 가지고 `API`문서를 빌드해야한다.  
 그러기 위해선 다음의 `plug in` 추가가 필요하다.  
-  
+
 
 
 ### AsciiDoctor Plug in 설치  
@@ -84,14 +84,14 @@ ASCII Doctor를 이용한 API 문서화
 플러그인 설치가 완료 되었다면 메이븐으로 빌드한다.  
 아래 사진처럼 IDE에서 실행하면 바로 생성된다.  
 
-![문서 빌드]({{ "/assets/img/bloging/spring/build-docs01.png" | relative_url }})  
+![문서 빌드]({{ "/assets/img/bloging/spring/build_docs01.png" | relative_url }})  
 
 문서를 빌드하면 `target > generated-docs`  라는 경로에 `index.html` 이 생성되는데 이를 실행해보면 `HTML` 기반으로 생성된 문서를 볼 수 있다.  
 
-![생성된 문서]({{ "/assets/img/bloging/spring/build-docs02.png" | relative_url }})  
+![생성된 문서]({{ "/assets/img/bloging/spring/build_docs02.png" | relative_url }})  
 
 
 
 ### 문서 생성  
 
-![문서 확인]({{ "/assets/img/bloging/spring/build-docs03.png" | relative_url }})
+![문서 확인]({{ "/assets/img/bloging/spring/build_docs03.png" | relative_url }})
