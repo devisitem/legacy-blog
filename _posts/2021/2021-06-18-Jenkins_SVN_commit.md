@@ -11,7 +11,7 @@ hide: false
 SVN과 Jenkins로 연동으로 CI 구성을 해보자.
 
 <!--more-->
-
+![젠킨스 로고]({{ "/assets/img/bloging/jenkins/jenkins-logo.png" | relative_url }})
 ## 개요  
 <br>
 > 이 포스트는 SVN에서 커밋이 발생할 때 Jenkins에서 해당 Repository의 소스를 가져와 빌드를 하는것이 목적이기 때문에 SVN Server 설치와 Jenkins 설치는 다루지 않습니다.
@@ -36,7 +36,7 @@ SVN과 Jenkins로 연동으로 CI 구성을 해보자.
 
 ![계정 접근]({{ "/assets/img/bloging/jenkins/svn-jenkins01.png" | relative_url }})
 
-![계정 접근2]({{ "/assets/img/bloging/jenkins/svn-jenkins01.png" | relative_url }})
+![계정 접근2]({{ "/assets/img/bloging/jenkins/svn-jenkins02.png" | relative_url }})
 
 위 이미지를 보면 본인은 이미`API_Token`을 발급받아 존재하지만, 처음 발급받으면 `Add new Token`을 눌러 해싱 할 임의의 값을 입력한다.  
 테스트를 위해 그냥 `svn-post-commit`으로 하였다.. 무튼 아무값이나 넣고 `Generate`하면 해싱된 `API_Key`를 받는다.  
