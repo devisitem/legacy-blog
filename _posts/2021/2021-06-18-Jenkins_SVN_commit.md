@@ -2,11 +2,11 @@
 layout: post
 title: -Spring- SVN 커밋 시 젠킨스 빌드 (SVN commit jenkins build)
 categories: [Development,Jenkins]
-tags: [Jenkins,CI/CD,SVN,SVN 커밋 시 젠킨스 빌드]
+tags: [Jenkins,CI CD,SVN,SVN 커밋 시 젠킨스 빌드]
 date: 2021-06-18 16:26:00 +0900
-thumbnail: "/assets/img/bloging/spring/rest_docs.png"
+thumbnail: "/assets/img/bloging/jenkins/jenkins-logo.png"
 excerpt_separator: <!--more-->
-hide: true
+hide: false
 ---
 SVN과 Jenkins로 연동으로 CI 구성을 해보자.
 
