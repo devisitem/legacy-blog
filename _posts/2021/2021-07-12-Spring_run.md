@@ -37,3 +37,5 @@ public static ConfigurableApplicationContext run(Class<?> primarySource, String.
 }
 
 ```
+
+클래스를 배열로받는 매개변수가 존제한다.
