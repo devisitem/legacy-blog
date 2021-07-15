@@ -49,7 +49,7 @@ public static ConfigurableApplicationContext run(Class<?> primarySource, String.
 ### .run() Method
 
 |순서|메소드명|static ?|리턴타입|매개변수|
-|——|———|———|—-——|———————-|
+|---|---|-----|-----|
 |1|run| none | ConfigurableApplicationContext | String… args |
 |2|^^| static | ConfigurableApplicationContext | Class<?> primarySource, String… args |
 |3|^^| static |ConfigurableApplicationContext | Class<?>[] primarySources, String[] args |
@@ -98,3 +98,5 @@ public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySourc
 }
 
 ```
+
+새로운`SpringApplication` 인스턴스를 생성 합니다. `ApplicationContext`는 지정된 주요소스로 부터 `Bean`들을 로드 합니다. 인스턴스는 *1* 이 호출되기 전에 변경될 수 있습니다. `webApplicationType`은 `REACTIVE`인지 	`NONE`인지 `SERVLET`인지를 정합니다.

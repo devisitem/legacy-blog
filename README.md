@@ -35,11 +35,11 @@ public static ConfigurableApplicationContext run(Class<?> primarySource, String.
 
 ### .run() Method
 
-|순서|메소드명|static ?|리턴타입|매개변수|
-|——|———|———|—-——|———————-|
-|1|run| none | ConfigurableApplicationContext | String… args |
-|2|^^| static | ConfigurableApplicationContext | Class<?> primarySource, String… args |
-|3|^^| static |ConfigurableApplicationContext | Class<?>[] primarySources, String[] args |
+|순서|static ?|리턴타입|매개변수|
+|---|---|-----|-----|
+|1| none | ConfigurableApplicationContext | String… args |
+|2| static | ConfigurableApplicationContext | Class<?> primarySource, String… args |
+|3| static |ConfigurableApplicationContext | Class<?>[] primarySources, String[] args |
 
 **2**,**3** 의 경우 static이기 때문에 외부에서 기본설정으로 실행하는 방법으로 쓰일수도 있습니다. 하지만 내부적으로 보면, 순서가 **2** -> **3** -> **1** 의 순서를 가지고 있기때문에 **2** 에서 시작하든 **3** 에서 시작하던 넘겨주는 시점에 `Parameter`만 다른것이지 결국 **1** 로 이어 집니다.
 
@@ -85,3 +85,5 @@ public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySourc
 }
 
 ```
+
+새로운`SpringApplication` 인스턴스를 생성 합니다. `ApplicationContext`는 지정된 주요소스로 부터 `Bean`들을 로드 합니다. 인스턴스는 *1* 이 호출되기 전에 변경될 수 있습니다. `webApplicationType`은 `REACTIVE`인지 	`NONE`인지 `SERVLET`인지를 정합니다.
