@@ -99,4 +99,11 @@ public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySourc
 
 ```
 
-새로운`SpringApplication` 인스턴스를 생성 합니다. `ApplicationContext`는 지정된 주요소스로 부터 `Bean`들을 로드 합니다. 인스턴스는 *1* 이 호출되기 전에 변경될 수 있습니다. `webApplicationType`은 `REACTIVE`인지 	`NONE`인지 `SERVLET`인지를 정합니다.
+
+`resourceLoader`는 사용할 리소스 로더입니다. `primaraySource`는 주요`Bean` 소스들 입니다.
+새로운`SpringApplication` 인스턴스를 생성 합니다. `ApplicationContext`는 지정된 주요소스로 부터 `Bean`들을 로드 합니다. 인스턴스는 **1** 이 호출되기 전에 변경될 수 있습니다. 들어온 `primarySource`를 `LinkedHashSet`로 생성합니다.
+순서는있지만 중복되지않도록 생성한다.. 뭔가 상상은 가지만 아직은 모르기때문에 넘어갑니다. `webApplicationType`은 `REACTIVE`인지 `NONE`인지 `SERVLET`인지를 정합니다.
+
+### BootStrapper.class
+
+여기서 부터 좀 중요한거같습니다. `getSpringFactoriesInstances(Class<T> type)` 메소드로 보
