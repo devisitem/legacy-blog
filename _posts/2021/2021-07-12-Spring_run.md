@@ -106,4 +106,4 @@ public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySourc
 
 ### BootStrapper.class
 
-여기서 부터 좀 중요한거같습니다. `getSpringFactoriesInstances(Class<T> type)` 메소드로 보
+여기서 부터 좀 중요한거같습니다. `getSpringFactoriesInstances(Class<T> type)` 메소드의 인자로
