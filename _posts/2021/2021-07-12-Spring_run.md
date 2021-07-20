@@ -189,4 +189,4 @@ public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySourc
 
 ```
 
-해당 생성자로 Bean들을 로드하고 `Initializer`와 `Listeners`들을 초기화시켜주고 `run()`메서드를 실행합니다.
+`getSpringFactoriesInstance(Class<T> type)` 메소드 안을 보시면 `createSpringFactoriesInstances()` 메소드를 볼수있습니다. 여기서 각 `BootStrapper`, `ApplicationContextInitailizer`, `ApplicationListener` 클래스 들의 FactoryName 들을가지고 인스턴스를 생성하여 할당합니다. 그러므로 각 해당 생성자로 Bean들을 로드하고 `Initializer`와 `Listeners`들을 초기화시켜주고 `run()`메서드를 실행합니다. 
