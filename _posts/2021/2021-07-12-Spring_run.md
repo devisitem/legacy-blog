@@ -170,9 +170,10 @@ private static Map<String, List<String>> loadSpringFactories(ClassLoader classLo
 
 
 ```
+
 이름에서부터 알수 있겠지만 SpringFactory 생성하는 메소드 입니다. 첫번째 메소드에서 names라는 `Set`객체에 담아주는 이유는 중복을 방지하고 고유한 이름이 보장되게 사용하기 위함입니다. `loadFactoryNames` 메소드는 주어진 클래스로더를 사용하여 `META-INF/spring.factories` 로부터 주어진 유형의 팩토리 구현체의 모든 조건에 부합되는 클래스명을 로드합니다. `Spring framework 5.3`부터 특정구현체 이름이 주어진 팩토리 타입에대해 두번이상 발견된다면 중복은 무시됩니다. 클래스로더로부터 로드하여 캐싱된 `Bean`들이 존재하지 않는다면 새로 생성합니다.
 
-아래 이미지를 보면 알겠지만 각 `spring.factories`라는 파일에서 Bean 으로 띄울 구현체들이 작성되어있습니다. `loadSpringFactories` 메소드는 해당파일에서 리소스 정보를 읽어들여 순서대로 `LinkedHashset` 에 중복되지않는 Bean으로 컬렉트 하는 겁니다. 다시 생성자로 돌어가서 보면 `BootStrappers`, `ApplicationContextInitializer`, `ApplicatgionListener`를 각각 초기화시켜주면서 필요한 빈들을 읽어들여 생성합니다.
+아래 이미지를 보면 알겠지만 각 `spring.factories`라는 파일에서 Bean 으로 띄울 구현체들이 작성되어있습니다. `getSpringFactoriesInstances` 메소드를 안을 보시면 `SpringFactoryLoader.loadSpringFactories` 가 작성 되어있습니다. classLoader 는 `spring.factories` 파일에서 리소스 정보를 읽어들여 순서대로 factory 이름에 있는 Bean들을 인스턴스화하여 Application Context에 추가합니다.
 
 ```java
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -189,4 +190,8 @@ public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySourc
 
 ```
 
-`getSpringFactoriesInstance(Class<T> type)` 메소드 안을 보시면 `createSpringFactoriesInstances()` 메소드를 볼수있습니다. 여기서 각 `BootStrapper`, `ApplicationContextInitailizer`, `ApplicationListener` 클래스 들의 FactoryName 들을가지고 인스턴스를 생성하여 할당합니다. 그러므로 각 해당 생성자로 Bean들을 로드하고 `Initializer`와 `Listeners`들을 초기화시켜주고 `run()`메서드를 실행합니다. 
+`getSpringFactoriesInstance(Class<T> type)` 메소드 안을 보시면 `createSpringFactoriesInstances()` 메소드를 볼수있습니다. 여기서 각 `BootStrapper`, `ApplicationContextInitailizer`, `ApplicationListener` 클래스 들의 FactoryName 들을가지고 인스턴스를 생성하여 할당합니다. ClassLoader는 `resourceLoader` 가 Null 이 아니라면, 설정된 클래스로더를 사용하고 만약 없다면 Spring ClassUtils class의 기본 classLoader를 사용하게 됩니다.
+
+정리하자면, Spring이 Bean을 추가하는과정은 META-INF/spring.factories의 파일들을 읽어 Bean들의 이름을 가진 LinkedHashSet을 가지고, classLoader를 이용해 instanceClass를 생성한 뒤 BeanUtils 의 instantiateClass 메소드를 이용하여 각 Bean을 추가한다.
+
+그렇다면 `BootStrapper`, `ApplicationContextInitailizer`, `ApplicationListener` 는 각각 무슨역할을 하는 걸까?

@@ -86,4 +86,100 @@ public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySourc
 
 ```
 
-새로운`SpringApplication` 인스턴스를 생성 합니다. `ApplicationContext`는 지정된 주요소스로 부터 `Bean`들을 로드 합니다. 인스턴스는 *1* 이 호출되기 전에 변경될 수 있습니다. `webApplicationType`은 `REACTIVE`인지 	`NONE`인지 `SERVLET`인지를 정합니다.
+
+
+`resourceLoader`는 사용할 리소스 로더입니다. `primaraySource`는 주요`Bean` 소스들 입니다.
+새로운`SpringApplication` 인스턴스를 생성 합니다. `ApplicationContext`는 지정된 주요소스로 부터 `Bean`들을 로드 합니다. 인스턴스는 **1** 이 호출되기 전에 변경될 수 있습니다. 들어온 `primarySource`를 `LinkedHashSet`로 생성합니다.
+순서는있지만 중복되지않도록 생성한다.. 뭔가 상상은 가지만 아직은 모르기때문에 넘어갑니다. `webApplicationType`은 `REACTIVE`인지 `NONE`인지 `SERVLET`인지를 정합니다.
+
+### BootStrapper.class
+
+여기서 부터 좀 중요한거같습니다. `getSpringFactoriesInstances(Class<T> type)` 메소드로 보낸 `Class` 인자에 BootStrap.class를 보냅니다. 다음은 `overloading` 된 `getSpringFactoriesInstances` 메소드입니다.
+```java
+/* SpringApplicagtion.java */
+private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, Class<?>[] parameterTypes, Object... args) {
+	ClassLoader classLoader = getClassLoader();
+	// Use names and ensure unique to protect against duplicates
+	Set<String> names = new LinkedHashSet<>(SpringFactoriesLoader.loadFactoryNames(type, classLoader));
+	List<T> instances = createSpringFactoriesInstances(type, parameterTypes, classLoader, args, names);
+	AnnotationAwareOrderComparator.sort(instances);
+	return instances;
+}
+
+
+
+/* SpringFactoriesLoader.java */
+public static List<String> loadFactoryNames(Class<?> factoryType, @Nullable ClassLoader classLoader) {
+	ClassLoader classLoaderToUse = classLoader;
+	if (classLoaderToUse == null) {
+		classLoaderToUse = SpringFactoriesLoader.class.getClassLoader();
+	}
+	String factoryTypeName = factoryType.getName();
+	return loadSpringFactories(classLoaderToUse).getOrDefault(factoryTypeName, Collections.emptyList());
+}
+
+private static Map<String, List<String>> loadSpringFactories(ClassLoader classLoader) {
+	Map<String, List<String>> result = cache.get(classLoader);
+	if (result != null) {
+		return result;
+	}
+
+	result = new HashMap<>();
+	try {
+		Enumeration<URL> urls = classLoader.getResources(FACTORIES_RESOURCE_LOCATION);
+		while (urls.hasMoreElements()) {
+			URL url = urls.nextElement();
+			UrlResource resource = new UrlResource(url);
+			Properties properties = PropertiesLoaderUtils.loadProperties(resource);
+			for (Map.Entry<?, ?> entry : properties.entrySet()) {
+				String factoryTypeName = ((String) entry.getKey()).trim();
+				String[] factoryImplementationNames =
+						StringUtils.commaDelimitedListToStringArray((String) entry.getValue());
+				for (String factoryImplementationName : factoryImplementationNames) {
+					result.computeIfAbsent(factoryTypeName, key -> new ArrayList<>())
+							.add(factoryImplementationName.trim());
+				}
+			}
+		}
+
+		// Replace all lists with unmodifiable lists containing unique elements
+		result.replaceAll((factoryType, implementations) -> implementations.stream().distinct()
+				.collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList)));
+		cache.put(classLoader, result);
+	}
+	catch (IOException ex) {
+		throw new IllegalArgumentException("Unable to load factories from location [" +
+				FACTORIES_RESOURCE_LOCATION + "]", ex);
+	}
+	return result;
+}
+
+
+
+
+```
+
+이름에서부터 알수 있겠지만 SpringFactory 생성하는 메소드 입니다. 첫번째 메소드에서 names라는 `Set`객체에 담아주는 이유는 중복을 방지하고 고유한 이름이 보장되게 사용하기 위함입니다. `loadFactoryNames` 메소드는 주어진 클래스로더를 사용하여 `META-INF/spring.factories` 로부터 주어진 유형의 팩토리 구현체의 모든 조건에 부합되는 클래스명을 로드합니다. `Spring framework 5.3`부터 특정구현체 이름이 주어진 팩토리 타입에대해 두번이상 발견된다면 중복은 무시됩니다. 클래스로더로부터 로드하여 캐싱된 `Bean`들이 존재하지 않는다면 새로 생성합니다.
+
+아래 이미지를 보면 알겠지만 각 `spring.factories`라는 파일에서 Bean 으로 띄울 구현체들이 작성되어있습니다. `getSpringFactoriesInstances` 메소드를 안을 보시면 `SpringFactoryLoader.loadSpringFactories` 가 작성 되어있습니다. classLoader 는 `spring.factories` 파일에서 리소스 정보를 읽어들여 순서대로 factory 이름에 있는 Bean들을 인스턴스화하여 Application Context에 추가합니다.
+
+```java
+@SuppressWarnings({ "unchecked", "rawtypes" })
+public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySources) {
+	this.resourceLoader = resourceLoader;
+	Assert.notNull(primarySources, "PrimarySources must not be null");
+	this.primarySources = new LinkedHashSet<>(Arrays.asList(primarySources));
+	this.webApplicationType = WebApplicationType.deduceFromClasspath();
+	this.bootstrappers = new ArrayList<>(getSpringFactoriesInstances(Bootstrapper.class));
+	setInitializers((Collection) getSpringFactoriesInstances(ApplicationContextInitializer.class));
+	setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));
+	this.mainApplicationClass = deduceMainApplicationClass();
+}
+
+```
+
+`getSpringFactoriesInstance(Class<T> type)` 메소드 안을 보시면 `createSpringFactoriesInstances()` 메소드를 볼수있습니다. 여기서 각 `BootStrapper`, `ApplicationContextInitailizer`, `ApplicationListener` 클래스 들의 FactoryName 들을가지고 인스턴스를 생성하여 할당합니다. ClassLoader는 `resourceLoader` 가 Null 이 아니라면, 설정된 클래스로더를 사용하고 만약 없다면 Spring ClassUtils class의 기본 classLoader를 사용하게 됩니다.
+
+정리하자면, Spring이 Bean을 추가하는과정은 META-INF/spring.factories의 파일들을 읽어 Bean들의 이름을 가진 LinkedHashSet을 가지고, classLoader를 이용해 instanceClass를 생성한 뒤 BeanUtils 의 instantiateClass 메소드를 이용하여 각 Bean을 추가한다.
+
+그렇다면 `BootStrapper`, `ApplicationContextInitailizer`, `ApplicationListener` 는 각각 무슨역할을 하는 걸까?
