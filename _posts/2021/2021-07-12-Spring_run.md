@@ -15,8 +15,10 @@ Spring Boot run method
 # SpringApplication.run()
 #SpringBoot/run
 
-스프링부트는 스프링개발자가 빠르고 쉽게 어플리케이션을 확장할 수 있도록 도와주는 프레임워크다. 스프링부트는 `run`으로 부터 시작하여 어플리케이션을 실행한다. 다음과 같이 구성되는 데 `@SpringBootApplication`은 오늘 기록하지 않기때문에 `run`부터 스프링부트가 어떻게 실행되는지 알아볼 것이다.
-스프링부트앱을 생성한다면 항상 앱 실행 파일이 존재한다.
+스프링부트는 스프링개발자가 빠르고 쉽게 어플리케이션을 확장할 수 있도록 도와주는 프레임워크 입니다.. 스프링부트는 `run`으로 부터 시작하여  다음과 같이 구성되는데 `run`부터 스프링부트가 어떻게 실행되는지 알아볼 것이에요. (제일궁금한 Bean을 추가 하는 과정)
+
+
+스프링부트앱을 생성한다면 항상 앱 실행 파일이 존재해요.
 
 ### Application.java
 
@@ -28,7 +30,7 @@ public class KimnchiApplication {
 }
 ```
 
-일반 `Java Application`처럼 `main`메소드로 실행하며 매개변수를 받는다. 안으로 들어가보자.
+일반 `Java Application`처럼 `main`메소드로 실행하며 매개변수를 받아요.
 ```java
 
 public static ConfigurableApplicationContext run(Class<?> primarySource, String... args) {
@@ -49,7 +51,7 @@ public static ConfigurableApplicationContext run(Class<?> primarySource, String.
 ### .run() Method
 
 |순서|메소드명|static ?|리턴타입|매개변수|
-|---|---|-----|-----|
+|——|———|———|—-——|———————-|
 |1|run| none | ConfigurableApplicationContext | String… args |
 |2|^^| static | ConfigurableApplicationContext | Class<?> primarySource, String… args |
 |3|^^| static |ConfigurableApplicationContext | Class<?>[] primarySources, String[] args |
@@ -104,9 +106,6 @@ public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySourc
 새로운`SpringApplication` 인스턴스를 생성 합니다. `ApplicationContext`는 지정된 주요소스로 부터 `Bean`들을 로드 합니다. 인스턴스는 **1** 이 호출되기 전에 변경될 수 있습니다. 들어온 `primarySource`를 `LinkedHashSet`로 생성합니다.
 순서는있지만 중복되지않도록 생성한다.. 뭔가 상상은 가지만 아직은 모르기때문에 넘어갑니다. `webApplicationType`은 `REACTIVE`인지 `NONE`인지 `SERVLET`인지를 정합니다.
 
-### BootStrapper.class
-
-여기서 부터 좀 중요한거같습니다. `getSpringFactoriesInstances(Class<T> type)` 메소드로 보낸 `Class` 인자에 BootStrap.class를 보냅니다. 다음은 `overloading` 된 `getSpringFactoriesInstances` 메소드입니다.
 ```java
 /* SpringApplicagtion.java */
 private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, Class<?>[] parameterTypes, Object... args) {
@@ -192,6 +191,12 @@ public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySourc
 
 `getSpringFactoriesInstance(Class<T> type)` 메소드 안을 보시면 `createSpringFactoriesInstances()` 메소드를 볼수있습니다. 여기서 각 `BootStrapper`, `ApplicationContextInitailizer`, `ApplicationListener` 클래스 들의 FactoryName 들을가지고 인스턴스를 생성하여 할당합니다. ClassLoader는 `resourceLoader` 가 Null 이 아니라면, 설정된 클래스로더를 사용하고 만약 없다면 Spring ClassUtils class의 기본 classLoader를 사용하게 됩니다.
 
-정리하자면, Spring이 Bean을 추가하는과정은 META-INF/spring.factories의 파일들을 읽어 Bean들의 이름을 가진 LinkedHashSet을 가지고, classLoader를 이용해 instanceClass를 생성한 뒤 BeanUtils 의 instantiateClass 메소드를 이용하여 각 Bean을 추가한다.
+정리하자면, Spring이 Bean을 추가하는과정은 META-INF/spring.factories의 파일들을 읽어 Bean들의 이름을 가진 LinkedHashSet을 가지고, classLoader를 이용해 instanceClass를 생성한 뒤 BeanUtils 의 instantiateClass 메소드를 이용하여 각 Bean을 추가해요.
 
-그렇다면 `BootStrapper`, `ApplicationContextInitailizer`, `ApplicationListener` 는 각각 무슨역할을 하는 걸까?
+그렇다면 `BootStrapper`, `ApplicationContextInitailizer`, `ApplicationListener` 는 각각 무슨역할을 하는 걸까요?
+
+### Bootstrapper.class
+Spring Boot 2.4.0 부터 생겨났으며 `BootstrapRegistry` 가 사용되기 전에 초기화 될 수 있는 `Callback Interface`이다.
+그렇다면 `BootstrapRegistry` 는 뭘까. 공식 문서에보면 다음과 같이 나와있다. `ApplicationContext` 가 준비된 시점까지 시작 이후와 일련의 처리과정을 거친 후에 사용가능한 간단한 객체 레지스트리 입니다.
+생성하는데 많은 비용이 들어 갈 수 있거나, `ApplicationContext` 가 이용가능한 상태가 되기전에 공유될 필요로 레지스트리 인스턴스 등록에 사용될 수있습니다. **(ApplicationContext 준비되기 전 `Bean`을 사용할 수 없을때 `BootsrapRegistry`로 Bean 을 등록하는데 사용할 수있다는 얘기입니다.)**
+레지스트리는 클래스를 key로 사용합니다. 즉, 주어진 유형의 단일 인스턴스만 저장될 수 있습니다. `addCloseListener(ApplicationListener)` 메소드는 `ApplicationContext`가 완전히 준비되고 `BootstrapContext`닫혔을때 액션을 수행할 수 있는 리스너 추가에 사용될 수 있습니다.
