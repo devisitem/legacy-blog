@@ -185,7 +185,12 @@ public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySourc
 그렇다면 `BootStrapper`, `ApplicationContextInitailizer`, `ApplicationListener` 는 각각 무슨역할을 하는 걸까요?
 
 ### Bootstrapper.class
-Spring Boot 2.4.0 부터 생겨났으며 `BootstrapRegistry` 가 사용되기 전에 초기화 될 수 있는 `Callback Interface`이다.
-그렇다면 `BootstrapRegistry` 는 뭘까. 공식 문서에보면 다음과 같이 나와있다. `ApplicationContext` 가 준비된 시점까지 시작 이후와 일련의 처리과정을 거친 후에 사용가능한 간단한 객체 레지스트리 입니다.
+Spring Boot 2.4.0 부터 생겨났으며 `BootstrapRegistry` 가 사용되기 전에 초기화 될 수 있는 `Callback Interface`이에요.
+그렇다면 `BootstrapRegistry` 는 뭘까요. 공식 문서에보면 다음과 같이 나와 있어요. `ApplicationContext` 가 준비된 시점까지 시작 이후 그리고, 일련의 처리과정을 거친 후에 사용가능한 간단한 객체 레지스트리 입니다.
 생성하는데 많은 비용이 들어 갈 수 있거나, `ApplicationContext` 가 이용가능한 상태가 되기전에 공유될 필요로 레지스트리 인스턴스 등록에 사용될 수있습니다. **(ApplicationContext 준비되기 전 `Bean`을 사용할 수 없을때 `BootsrapRegistry`로 Bean 을 등록하는데 사용할 수있다는 얘기입니다.)**
-레지스트리는 클래스를 key로 사용합니다. 즉, 주어진 유형의 단일 인스턴스만 저장될 수 있습니다. `addCloseListener(ApplicationListener)` 메소드는 `ApplicationContext`가 완전히 준비되고 `BootstrapContext`닫혔을때 액션을 수행할 수 있는 리스너 추가에 사용될 수 있습니다.
+레지스트리는 클래스를 key로 사용합니다. 즉, 주어진 유형의 단일 인스턴스만 저장될 수 있습니다. `addCloseListener(ApplicationListener)` 메소드는 `ApplicationContext`가 완전히 준비되고 `BootstrapContext`닫혔을때 액션을 수행할 수 있는 리스너 추가에 사용될 수 있습니다. 한 가지 예로, 인스턴스는 어플리케이션이 사용할 수 있도록 `Spring Bean` 그 자체로 등록하도록 선택 할 수도 있습니다.
+
+### ApplicationContextInitailizer.class
+
+스프링 `ConfigurableApplicationContext` 가 리프레쉬 되기 전에 초기화하는 Callback 인터 페이스 입니다.
+일반적으로 프로그래밍적인 `Application Context`의 초기화를 필요로하는 웹 어플리케이션 안에서 사용됩니다.
