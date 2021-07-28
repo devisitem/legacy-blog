@@ -193,4 +193,4 @@ Spring Boot 2.4.0 부터 생겨났으며 `BootstrapRegistry` 가 사용되기 �
 ### ApplicationContextInitailizer.class
 
 스프링 `ConfigurableApplicationContext` 가 리프레쉬 되기 전에 초기화하는 Callback 인터 페이스 입니다.
-일반적으로 프로그래밍적인 `Application Context`의 초기화를 필요로하는 웹 어플리케이션 안에서 사용됩니다. 예를 들어, 속성 소스를 등록하거나 context 의 환경에 반대되는 profiles 를 활성화 합니다. contextInitializerClasses 의 context-param 과 init-param선언에 대한 `ContextLoader` 와 `FrameworkServlet`의 지원을 각각 참조하세요. `ApplicationContextInitializer` 의 프로세서들은 스프링의 `Ordered` 인터페이스가 구현된게 되거나 만약 `@Order` 어노테이션이 제공되고
+일반적으로 프로그래밍적인 `Application Context`의 초기화를 필요로하는 웹 어플리케이션 안에서 사용됩니다. 예를 들어, 속성 소스를 등록하거나 context 의 환경에 반대되는 profiles 를 활성화 합니다. contextInitializerClasses 의 context-param 과 init-param선언에 대한 `ContextLoader` 와 `FrameworkServlet`의 지원을 각각 참조하세요. `ApplicationContextInitializer` 의 프로세서들은  Spring의 Ordered 인터페이스가 구현되었는지 또는 @Order 어노테이션이 있는지 감지하고 호출전에 인스턴스를 적절하게 정렬하도록  권장합니다.
