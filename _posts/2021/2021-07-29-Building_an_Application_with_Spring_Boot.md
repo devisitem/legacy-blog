@@ -818,3 +818,4 @@ Spring Boot의 “starters”중 일부를 봤는데요. [이 소스코드](http
 마지막 예제는 선생님이 필요한게 뭔지 모르는 것에 Spring Boot가 bean들을 연결하도록 하는 방법, 또한, 편리한 관리서비스를 켜는 방법을 보여줬어요.
 
 하지만 그게 끝이아니에요. Spring Boot의 loader module 덕분에 전통적인 WAR파일 배포를 지원할 뿐만아니라 실행가능한 JAR 파일울 함께 넣을 수 있어요. 다양한 가이드는 `spring-boot-gradle-plugin` 과 `spring-boot-maven-plugin`을 통하여 이러한 이중 지원을 보여줍니다.
+오늘은 휴무
