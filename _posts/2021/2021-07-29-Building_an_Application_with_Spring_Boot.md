@@ -1,12 +1,12 @@
 ---
 layout: post
-title: -Spring- 스프링부트로 어플리케이션 설계하기 (Building an Application With Spring Boot)
+title: -Spring- 스프링부트로 어플리케이션 설계하기 번역 (Building an Application With Spring Boot)
 categories: [Development,Spring]
 tags: [Spring,Spring Boot]
 date: 2021-07-29 11:12:00 +0900
-thumbnail: "/assets/img/bloging/jenkins/jenkins-logo.png"
+thumbnail: "/assets/img/bloging/spring/spring_boot_logo.png"
 excerpt_separator: <!--more-->
-hide: true
+hide: false
 ---
 스프링부트로 어플리케이션 설계하기
 
@@ -832,5 +832,45 @@ class ThisWillActuallyRun {
 
 }
 ```
+> 파일이 어디있던 상관 없어요. [단일 트윗](https://mobile.twitter.com/rob_winch/status/364871658483351552) 안으로 어플리케이션을 작게 맞추실 수도 있어요.
 
-> 파일이 어디있던 상관 없어요. [단일 트윗](https://mobile.twitter.com/rob_winch/status/364871658483351552) 조금 안에서,어플리케이션을 맞추실 수도 있어요.
+다음,  [Spring Boot 의 CLI 설치](https://docs.spring.io/spring-boot/docs/2.5.0/reference/htmlsingle/#getting-started-installing-the-cli) .
+다음의 실행 명령어로 Groovy 어플리케이션을 실행 합니다.
+```
+$ spring run app.groovy
+```
+
+> 포트 충돌을 방지하기 위해 이전 어플리케이션을 종료하세요.
+
+다른 터미널 창에서 다음의 명령어를 입력하세요.
+```
+$ curl localhost:8080
+Hello, World!
+```
+
+Spring Boot는 선생님이 소스에 동적으로 key 어노테이션을 추가하고, [Groovy Grape](http://docs.groovy-lang.org/latest/html/documentation/grape.html)를 사용하여 앱응 실행하는데 필요한 라이브러리들을 다운로드 합니다.
+
+## Summary
+Congratulations! You built a simple web application with Spring Boot and learned how it can ramp up your development pace. You also turned on some handy production services. This is only a small sampling of what Spring Boot can do. See  [Spring Boot’s online docs](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle)  for much more information.
+## See Also
+The following guides may also be helpful:
+	* 	 [Securing a Web Application](https://spring.io/guides/gs/securing-web/)
+	* 	 [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
+Want to write a new guide or contribute to an existing one? Check out our  [contribution guidelines](https://github.com/spring-guides/getting-started-guides/wiki) .
+
+All guides are released with an ASLv2 license for the code, and an  [Attribution, NoDerivatives creative commons license](https://creativecommons.org/licenses/by-nd/3.0/)  for the writing.
+
+
+## 요약
+
+축하해요! Spring Boot로 간단한 웹 어플리케이션을 설계하고, 선생님의 개발속도를 올리는법을 배웠어요. 몇가지 유용한 제작 서비스도 켰었구요.
+이건 Spring Boot로 뭘 할 수 있는지의 대한 작은 샘플링 들이에요. 더 많은 정보는 [Spring Boot 온라인 문서](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle)를 보세요.
+
+## 이것도 보세요
+다음의 가이드도 도움이 될 거에요.
+* [웹 어플리케이션 지키기](https://spring.io/guides/gs/securing-web/)
+* [Spring MVC로 웹 컨텐트 제공하기](https://spring.io/guides/gs/serving-web-content/)
+
+새로운 가이드를 작성하거나 이미 존재하는 것에 기여하고 싶나요? [기여 지침](https://github.com/spring-guides/getting-started-guides/wiki)을 확인 하세요.
+
+> 모든 가이드는 코드에 대한 ASLv2 라이센스와 작성을 위한 저작자 표기, 변경금지 CCL로 공개 되어 있습니다.
