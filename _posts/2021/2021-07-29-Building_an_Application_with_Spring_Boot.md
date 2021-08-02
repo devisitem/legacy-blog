@@ -15,7 +15,6 @@ hide: false
 
 [원문](https://spring.io/guides/gs/spring-boot/)
 
-This guide provides a sampling of how [Spring Boot](https://github.com/spring-projects/spring-boot)  helps you accelerate application development. As you read more Spring Getting Started guides, you will see more use cases for Spring Boot. This guide is meant to give you a quick taste of Spring Boot. If you want to create your own Spring Boot-based project, visit [Spring Initializr](https://start.spring.io/) , fill in your project details, pick your options, and download a bundled up project as a zip file.
 
 이 가이드는 스프링부트가 당신의 빠른 어플 개발을 어떻게 돕는지 샘플을 제공해요. 스프링 시작하기 가이드를 읽을 수록 스프링부트 유즈케이스를 더 볼거 에요. 이 가이드는 스프링부트의 빠른 맛보기에요. 직접 스프링부트로 기반된 프로젝트를 만들고 싶다면 [Spring initializr](https://start.spring.io) 에 방문하여 옵션을 고르고 세부사항을 입력한 것을 `zip file` 로 묶어 다운로드 할 수 있습니다.
 
@@ -60,7 +59,7 @@ Spring Boot 는 어플리케이션을 빌드하는 빠른 방법을 권장해요
 
 ### Spring Initializr 로 시작하기
 
-메이븐 쓰시면 [Spring Initializr](Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.0&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=spring-boot&name=spring-boot&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.spring-boot&dependencies=web)에 방문하여 필요한 의존성(Spring Web)과 새로운 프로젝트를 생성할수 있어요.
+메이븐 쓰시면 [Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.0&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=spring-boot&name=spring-boot&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.spring-boot&dependencies=web)에 방문하여 필요한 의존성(Spring Web)과 새로운 프로젝트를 생성할수 있어요.
 다음의 표시된 `pom.xml` 파일은 메이븐을 선택하여 생성했을때 입니다.
 
 ```xml
