@@ -11,104 +11,58 @@ hide: false
 스프링부트로 어플리케이션 설계하기
 
 <!--more-->
-# Building an Application with Spring Boot
-#SpringBoot
+# 스프링부트로 어플리케이션 설계하기
 
 [원문](https://spring.io/guides/gs/spring-boot/)
 
-This guide provides a sampling of how  [Spring Boot](https://github.com/spring-projects/spring-boot)  helps you accelerate application development. As you read more Spring Getting Started guides, you will see more use cases for Spring Boot. This guide is meant to give you a quick taste of Spring Boot. If you want to create your own Spring Boot-based project, visit  [Spring Initializr](https://start.spring.io/) , fill in your project details, pick your options, and download a bundled up project as a zip file.
+This guide provides a sampling of how [Spring Boot](https://github.com/spring-projects/spring-boot)  helps you accelerate application development. As you read more Spring Getting Started guides, you will see more use cases for Spring Boot. This guide is meant to give you a quick taste of Spring Boot. If you want to create your own Spring Boot-based project, visit [Spring Initializr](https://start.spring.io/) , fill in your project details, pick your options, and download a bundled up project as a zip file.
 
-이 가이드는 스프링부트가 당신의 빠른 어플 개발을 어떻게 돕는지 샘플을 제공해요. 스프링 시작하기 가이드를 읽을 수록 스프링부트 유즈케이스를 더 볼거 에요. 이 가이드는 스프링부트의 빠른 맛보기에요.  직접 스프링부트로 기반된 프로젝트를 만들고 싶다면 [Spring initializr](https://start.spring.io) 에 방문하여 옵션을 고르고 세부사항을 입력한 것을 `zip file` 로 묶어 다운로드 할 수 있습니다.
-
-
-##  What You Will build
-You will build a simple web application with Spring Boot and add some useful services to it.
+이 가이드는 스프링부트가 당신의 빠른 어플 개발을 어떻게 돕는지 샘플을 제공해요. 스프링 시작하기 가이드를 읽을 수록 스프링부트 유즈케이스를 더 볼거 에요. 이 가이드는 스프링부트의 빠른 맛보기에요. 직접 스프링부트로 기반된 프로젝트를 만들고 싶다면 [Spring initializr](https://start.spring.io) 에 방문하여 옵션을 고르고 세부사항을 입력한 것을 `zip file` 로 묶어 다운로드 할 수 있습니다.
 
 ## 뭘 만드나요?
 `SpringBoot`로 간단한`Application`을 설계하고 여기에 몇가지 유용한 서비스를 추가할 거에요.
 
-## What You Need
-	- About 15 minutes
-	- 	A favorite text editor or IDE
-	- 	 [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)  or later
-	- 	 [Gradle 4+](http://www.gradle.org/downloads)  or  [Maven 3.2+] (https://maven.apache.org/download.cgi)
-	-   	You can also import the code straight into your IDE:
-	  - [Spring Tool Suite (STS)](https://spring.io/guides/gs/sts)
-	  - 	 [IntelliJ IDEA](https://spring.io/guides/gs/intellij-idea/)
-
 ## 뭐가 필요한가요?
-       - 여기에 쓸 15분
-       - 텍스트 에디터 또는 IDE
-       - JDK 1.8 또는 이후 버젼
-       - [Gradle 4+](http://www.gradle.org/downloads)버전 또는  [Maven 3.2+] 버전 (https://maven.apache.org/download.cgi)  
-       - 코드를 IDE로 바로 가져올 수도 있어요
-	  - [Spring Tool Suite (STS)](https://spring.io/guides/gs/sts)
-	  - 	 [IntelliJ IDEA](https://spring.io/guides/gs/intellij-idea/)
-
-
-## How to complete this guide
-Like most Spring  [Getting Started guides](https://spring.io/guides) , you can start from scratch and complete each step or you can bypass basic setup steps that are already familiar to you. Either way, you end up with working code.
-To start from scratch, move on to Starting with Spring Initializr.
+   - 여기에 쓸 15분
+   - 텍스트 에디터 또는 IDE
+   - JDK 1.8 또는 이후 버젼
+   - [Gradle 4+](http://www.gradle.org/downloads)버전 또는  [Maven 3.2+] 버전 (https://maven.apache.org/download.cgi)  
+   - 코드를 IDE로 바로 가져올 수도 있어요
+ 	   - [Spring Tool Suite (STS)](https://spring.io/guides/gs/sts)
+ 	   - [IntelliJ IDEA](https://spring.io/guides/gs/intellij-idea/)
 
 ## 가이드를 끝내는 방법
 대부분의 [스프링 가이드](https://spring.io/guides) 처럼 처음부터 시작해서 각단계를 완료하거나 이미 선생님한테 익숙하다면 기본단계를 건너뛸 수 있어요.
 처음부터 시작해서 Spring Initializr 로 시작하기 까지 건너뛸 수 있어요.
 
-To skip the basics, do the following:
-	* 	 [Download](https://github.com/spring-guides/gs-spring-boot/archive/main.zip)  and unzip the source repository for this guide, or clone it using  [Git](https://spring.io/understanding/Git) : ### git clone  https://github.com/spring-guides/gs-spring-boot.git
 
-[https://github.com/spring-guides/gs-spring-boot.git](https://github.com/spring-guides/gs-spring-boot.git)
-
-	* 	cd into `gs-spring-boot/initial
-	* 	Jump ahead to Create a Simple Web Application.
-*When you finish*, you can check your results against the  in `gs-spring-boot/complete`
-.
 아래 적힌대로 해서 기본단계를 넘어갈 수 있어요.
-	* 이 가이드의 소스 저장소에서 [다운로드](https://github.com/spring-guides/gs-spring-boot/archive/main.zip) 해서 풀거나 [깃](https://spring.io/understanding/Git)을 써서 클론하세요. `$ git clone https://github.com/spring-guides/gs-spring-boot.
+	- 이 가이드의 소스 저장소에서 [다운로드](https://github.com/spring-guides/gs-spring-boot/archive/main.zip) 해서 풀거나 [깃](https://spring.io/understanding/Git)을 써서 클론하세요. `$ git clone https://github.com/spring-guides/gs-spring-boot`.
 
 [https://github.com/spring-guides/gs-spring-boot.git](https://github.com/spring-guides/gs-spring-boot.git)
 
-	* `cd` 명령어를 사용해 `gs-spring-boot/initial` 의 경로를 이동합니다.
-	* Create simple Web Application 으로 넘어 가세요.
+	- `cd` 명령어를 사용해 `gs-spring-boot/initial` 의 경로를 이동합니다.
+  - Create simple Web Application 으로 넘어 가세요.
 *다 끝났다면*, `gs-spring-boot/complete` 안에 붙은 코드를 확인할수 있어요.
 
-## Learn What You Can Do with Spring Boot
-Spring Boot offers a fast way to build applications. It looks at your classpath and at the beans you have configured, makes reasonable assumptions about what you are missing, and adds those items. With Spring Boot, you can focus more on business features and less on infrastructure.
-
-## SpringBoot 로 뭘 할 수 있지?
-Spring Boot 는 어플리케이션을 빌드하는 빠른 방법을 권장해요. 선생님이 무엇을 놓쳤는지에 대해 `classPath`와 설정된`bean` 들을보며 근거있는 추정을 하고, 그것들을 추가합니다. SpringBoot를 사용하면 비즈니스 기능에 집중하고 인프라에 신경을 덜 쓸 수 있어요.
-
-The following examples show what Spring Boot can do for you:
-	* 	Is Spring MVC on the classpath? There are several specific beans you almost always need, and Spring Boot adds them automatically. A Spring MVC application also needs a servlet container, so Spring Boot automatically configures embedded Tomcat.
-	* 	Is Jetty on the classpath? If so, you probably do NOT want Tomcat but instead want embedded Jetty. Spring Boot handles that for you.
-	* 	Is Thymeleaf on the classpath? If so, there are a few beans that must always be added to your application context. Spring Boot adds them for you.
+## SpringBoot로 뭘 할 수 있는지 배워요
+Spring Boot 는 어플리케이션을 빌드하는 빠른 방법을 권장해요. 선생님의 `classPath`와 설정된`bean` 들을보고 무엇을 놓쳤는지에 대해 근거있는 추정을 만들어 그것들을 추가합니다. SpringBoot를 사용하면 비즈니스 기능에 집중하고 인프라에 신경을 덜 쓸 수 있어요.
 
 다음은 Spring Boot 가 선생님을 위해 뭘 할수 있는지에대한 예) 입니다.
-	* Spring MVC 를 사용하나요? 대부분, 항상 필요로 하는 빈들이 몇 가지 있고 Spring Boot 가 자동으로 추가해줘요. Spring MVC 도 `servlet container` 를 필요로 하는데, 이것 또한 Spring Boot 가 내장 톰캣을 설정해줘요.
-	* Jetty 를 사용하시나요? 그렇다면 선생님은 아마도 톰캣을 안쓰고 대신에 내장 제티를 원하겠군요. Spring Boot 가 처리 해줄거에요.
-	* 타임 리프를 사용 하시나요?  그렇다면, 선생님 앱에 항상 추가되어야만 하는 많은 빈들이 있어요. Spring Boot 가 그걸 추가 해줄거에요.
+	- Spring MVC 를 사용하나요? 대부분, 항상 필요로 하는 빈들이 몇 가지 있고 Spring Boot 가 자동으로 추가해줘요. Spring MVC 도 `servlet container` 를 필요로 하는데, 이것 또한 Spring Boot가 내장 톰캣을 설정해줘요.
+	- Jetty 를 사용하시나요? 그렇다면 선생님은 아마도 톰캣을 안쓰고 대신에 내장 제티를 원하겠군요. Spring Boot 가 처리 해줄거에요.
+	- 타임 리프를 사용 하시나요? 그렇다면, 선생님 앱에 항상 추가되어야만 하는 많은 빈들이 있어요. Spring Boot 가 그걸 추가 해줄거에요.
 
-These are just a few examples of the automatic configuration Spring Boot provides. At the same time, Spring Boot does not get in your way. For example, if Thymeleaf is on your path, Spring Boot automatically adds a `SpringTemplateEngine`   
- to your application context. But if you define your own `SpringTemplateEngine` with your own settings, Spring Boot does not add one. This leaves you in control with little effort on your part.
+위 내용은 Spring Boot가 제공하는 자동 설정의 몇가지 예일 뿐이에요. 동시에 스프링 부트는 방해되지 않아요. 예를 들어 `Thymeleaf` 가 있을때 Spring Boot 는 자동으로 선생님의  `ApplicationContext`에 `SpringTemplateEngine` 을 추가 하지만 선생님이 `SpringTemplateEngine` 를 직접 추가한다면  Spring Boot 는 이걸 추가하지 않아요. 이렇게 선생님이 조금만 설정해도 제어할 수 있어요.
 
-* 위 내용은 Spring Boot 가 제공하는 자동 설정의 몇가지 예일 뿐이에요. 동시에 스프링 부트는 방해되지 않아요. 예를 들어 `Thymeleaf` 가 있을때 Spring Boot 는 자동으로 선생님의  `ApplicationContext`에 `SpringTemplateEngine` 을 추가 하지만 선생님이 `SpringTemplateEngine` 를 직접 추가한다면  Spring Boot 는 이걸 추가하지 않아요. 이렇게 선생님이 조금만 설정해도 제어할 수 있어요.
 
-> Spring Boot does not generate code or make edits to your files. Instead, when you start your application, Spring Boot dynamically wires up beans and settings and applies them to your application context.
-
-> SpringBoot 가 코드를 만든다던가 선생님의 파일을 수정하진 않아요. 대신에 선생님이 앱을 시작할때, 설정정보와 `Bean` 들을 동적으로 연결해서 선생님의 `ApplicationContext` 에 적용해주지요.
-
-### Starting with Spring Initializr
-
-If you use Maven, visit the  [Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.0&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=spring-boot&name=spring-boot&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.spring-boot&dependencies=web)  to generate a new project with the required dependencies (Spring Web).
-The following listing shows the ### `pom.xml`
- file that is created when you choose Maven:
-
+> Spring Boot가 코드를 만든다던가 선생님의 파일을 수정하진 않아요. 대신에 선생님이 앱을 시작할때, 설정정보와 `Bean` 들을 동적으로 연결해서 선생님의 `Application Context` 에 적용해주지요.
 
 ### Spring Initializr 로 시작하기
 
-메이븐 쓰시면 [Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.0&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=spring-boot&name=spring-boot&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.spring-boot&dependencies=web)  에서 필요한 의존성(Spring Web) 골라 만드시면 돼요.
+메이븐 쓰시면 [Spring Initializr](Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.0&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=spring-boot&name=spring-boot&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.spring-boot&dependencies=web)에 방문하여 필요한 의존성(Spring Web)과 새로운 프로젝트를 생성할수 있어요.
+다음의 표시된 `pom.xml` 파일은 메이븐을 선택하여 생성했을때 입니다.
 
-메이븐으로 선택하여 생성했을 때  `pom.xml`  파일:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -153,11 +107,10 @@ The following listing shows the ### `pom.xml`
 </project>
 ```
 
-
 그레이들 쓰시면 똑같이  [Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.0&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=spring-boot&name=spring-boot&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.spring-boot&dependencies=web)  프로젝트를 생성 해서 그레이들로만 선택하면 됩니다.
 
-그레이들로 생성했을때 `build.gradle`  파일:
-```
+그레이들로 생성했을때 `build.gradle` 파일:
+```gradle
 plugins {
 	id 'org.springframework.boot' version '2.5.0'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'

@@ -4,7 +4,7 @@ title: -Spring- JWT 토큰을 이용한 인증 및 인가 (feat.jjwt)
 categories: [Development,Spring]
 tags: [JWT,Spring Security,Token]
 date: 2021-06-13 20:50:00 +0900
-thumbnail: "/assets/img/bloging/spring/jwt-lgo.png"
+thumbnail: "/assets/img/bloging/spring/jwt-logo.png"
 excerpt_separator: <!--more-->
 hide: false
 ---
