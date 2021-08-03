@@ -13,13 +13,19 @@ hide: false
 <!--more-->
 # 스프링부트로 어플리케이션 설계하기
 
-[원문](https://spring.io/guides/gs/spring-boot/)
+[원문 Building an Application With Spring Boot](https://spring.io/guides/gs/spring-boot/)
 
 
 이 가이드는 스프링부트가 당신의 빠른 어플 개발을 어떻게 돕는지 샘플을 제공해요. 스프링 시작하기 가이드를 읽을 수록 스프링부트 유즈케이스를 더 볼거 에요. 이 가이드는 스프링부트의 빠른 맛보기에요. 직접 스프링부트로 기반된 프로젝트를 만들고 싶다면 [Spring initializr](https://start.spring.io) 에 방문하여 옵션을 고르고 세부사항을 입력한 것을 `zip file` 로 묶어 다운로드 할 수 있습니다.
 
+<br>
+
+
 ## 뭘 만드나요?
 `SpringBoot`로 간단한`Application`을 설계하고 여기에 몇가지 유용한 서비스를 추가할 거에요.
+
+<br>
+
 
 ## 뭐가 필요한가요?
    - 여기에 쓸 15분
@@ -30,21 +36,27 @@ hide: false
  	   - [Spring Tool Suite (STS)](https://spring.io/guides/gs/sts)
  	   - [IntelliJ IDEA](https://spring.io/guides/gs/intellij-idea/)
 
+
+<br>
+
 ## 가이드를 끝내는 방법
 대부분의 [스프링 가이드](https://spring.io/guides) 처럼 처음부터 시작해서 각단계를 완료하거나 이미 선생님한테 익숙하다면 기본단계를 건너뛸 수 있어요.
 처음부터 시작해서 Spring Initializr 로 시작하기 까지 건너뛸 수 있어요.
 
 
 아래 적힌대로 해서 기본단계를 넘어갈 수 있어요.
-	- 이 가이드의 소스 저장소에서 [다운로드](https://github.com/spring-guides/gs-spring-boot/archive/main.zip) 해서 풀거나 [깃](https://spring.io/understanding/Git)을 써서 클론하세요. `$ git clone https://github.com/spring-guides/gs-spring-boot`.
+- 이 가이드의 소스 저장소에서 [다운로드](https://github.com/spring-guides/gs-spring-boot/archive/main.zip) 해서 풀거나 [깃](https://spring.io/understanding/Git)을 써서 클론하세요. `$ git clone https://github.com/spring-guides/gs-spring-boot`.
 
 [https://github.com/spring-guides/gs-spring-boot.git](https://github.com/spring-guides/gs-spring-boot.git)
 
-	- `cd` 명령어를 사용해 `gs-spring-boot/initial` 의 경로를 이동합니다.
-  - Create simple Web Application 으로 넘어 가세요.
+- `cd` 명령어를 사용해 `gs-spring-boot/initial` 의 경로를 이동합니다.
+- Create simple Web Application 으로 넘어 가세요.
 *다 끝났다면*, `gs-spring-boot/complete` 안에 붙은 코드를 확인할수 있어요.
 
+<br>
+
 ## SpringBoot로 뭘 할 수 있는지 배워요
+
 Spring Boot 는 어플리케이션을 빌드하는 빠른 방법을 권장해요. 선생님의 `classPath`와 설정된`bean` 들을보고 무엇을 놓쳤는지에 대해 근거있는 추정을 만들어 그것들을 추가합니다. SpringBoot를 사용하면 비즈니스 기능에 집중하고 인프라에 신경을 덜 쓸 수 있어요.
 
 다음은 Spring Boot 가 선생님을 위해 뭘 할수 있는지에대한 예) 입니다.
@@ -221,12 +233,19 @@ public class Application {
 `main()` 메소드는 어플리케이션을 실행하는 Spring Boot 의 `SpringApplicstion.run()` 메소드를 사용합니다. 여기엔 XML이 단 한줄도 없고 web.xml 파일도 없다는걸 둘중 하나라도 눈치 채셨나요? 이 웹 어플리케이션은 순수 100% 자바인데 어떠한 연결 작업을 하거나 인프라 설정을 처리할 필요가 없었을거에요.
 `@Bean` 으로 표시 된 `CommandLineRunner` 메소드도 있는데, 시작할때 동작합니다. 이건 Spring Boot 로 부터 자동으로 추가되거나, 선생님의 어플리케이션 으로부터 생성된 모든 bean 을 가져옵니다. 그 bean 들을 순서대로 출력해 줍니다.
 
+<br>
+
 ## 어플리케이션 실행하기
 
 다음의 명령을 터미널 (`complete` 디렉토리)에서 실행해봐요.
-`./gradlew bootRun`
+```console
+$ ./gradlew bootRun
+```
+
 메이븐을 사용 한다면 다음의 명령을 실행해봐요.
-`./mvnw spring-boot:run`
+```console
+$ ./mvnw spring-boot:run
+```
 다음의 내용처럼 출력될거에요.
 ```
 Let's inspect the beans provided by Spring Boot:
@@ -269,10 +288,12 @@ viewControllerHandlerMapping
 정리된 `org.springframework.boot.autoconfigure` bean 들을 볼수 있을거에요. `tomcatEmbeddedServletContainerFactory` 도 있어요.
 이제 서비스를 실행하고 curl (다른 터미널 창) 로 다음의 명령을 실행하세요. (출력된 내용)
 
-```terminal
+```console
 $ curl localhost:8080
 Greetings from Spring Boot!
 ```
+
+<br>
 
 ## 단위테스트 추가하기
 
@@ -357,6 +378,7 @@ public class HelloControllerIT {
 
 `webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT`속성 때문에 내장서버는 포트를 랜덤으로  시작합니다. 실제포트는 `TestRestTemplate` 의 기본포트로 설정됩니다.
 
+<br>
 
 ## 제작-등급 서비스 추가하기
 
@@ -375,13 +397,15 @@ Maven을 사용하시면 다음의 파일에 의존성을 추가 합니다. `pom
 ```
 
 재시작 하고 난 다음,  `complete`  디렉토리안으로 이동하여 다음의 명령어를 실행하세요.
+
 Gradle:
+```console
+$ ./gradlew bootRun
 ```
-./gradlew bootRun
-```
+
 Maven:
-```
-./mvnw spring-boot:run
+```console
+$ ./mvnw spring-boot:run
 ```
 어플리케이션에 추가된 새로운 RESTful 세트를 확인 하셔야 해요.Spring Boot 에서 제공된 관리 서비스가 있어요. 다음은 일반적인 출력 목록 입니다.
 ```
@@ -408,24 +432,32 @@ actuator 는 다음을 구성합니다.
 ```
 
 다음의 명령어는 어플리케이션의 상태를 실행중에 체크할 수 있어요.
-```terminal
+```console
 $ curl localhost:8080/actuator/health
 {"status":"UP"}
 ```
 
 또한 curl을 통해 종료를 호출하여, `application.properties`에 필요한 행(이전 참고사항에 표시)이 추가되지 않았을때 무슨일이 일어나는지 확인 해야해요.
-```terminal
+```console
 $ curl -X POST localhost:8080/actuator/shutdown
-{"timestamp":1401820343710,"error":"Not Found","status":404,"message":"","path":"/actuator/shutdown"}
+{
+  "timestamp": 1401820343710,
+  "error": "Not Found",
+  "status": 404,
+  "message": "",
+  "path": "/actuator/shutdown"
+}
 ```
 shutdown을 활성화 하지 않았기 때문에 요청된 엔드포인트는 사용할 수 없습니다.(엔드포인트가 존재하지 않기 때문)
 
 REST 엔드포인트와 `application.properties` 파일(`/src/main/resources`)로 세팅된 내용을 튜닝하는 방법에 대한 상세는 [엔드포인트에 대한 문서](https://docs.spring.io/spring-boot/docs/2.5.0/reference/htmlsingle/#actuator.endpoints) 를 보시면 됩니다.
 
+<br>
 
 ## Spring Boot의 Starter 보기
 Spring Boot의 “starters”중 일부를 봤는데요. [이 소스코드](https://github.com/spring-projects/spring-boot/tree/main/spring-boot-project/spring-boot-starters) 에서 모두 볼수 있어요.
 
+<br>
 
 ## JAR 와 Groovy 지원
 
@@ -465,11 +497,14 @@ Hello, World!
 
 Spring Boot는 선생님의 소스에 동적으로 주요 어노테이션을 추가하고, [Groovy Grape](http://docs.groovy-lang.org/latest/html/documentation/grape.html)를 사용하여 앱을 실행하는데 필요한 라이브러리들을 다운로드 합니다.
 
+<br>
 
 ## 요약
 
 축하해요! Spring Boot로 간단한 웹 어플리케이션을 설계하고, 선생님의 개발속도를 올리는법을 배웠어요. 몇가지 유용한 제작 서비스도 켰었구요.
 이건 Spring Boot로 뭘 할 수 있는지의 대한 작은 샘플링 들이에요. 더 많은 정보는 [Spring Boot 온라인 문서](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle)를 보세요.
+
+<br>
 
 ## 이것도 보세요
 다음의 가이드도 도움이 될 거에요.
