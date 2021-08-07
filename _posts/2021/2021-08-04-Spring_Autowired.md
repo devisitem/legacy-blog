@@ -4,9 +4,9 @@ title: -Spring- @Autowired javaDoc 번역 (@Autowired)
 categories: [Development,Spring]
 tags: [Spring,Spring Boot]
 date: 2021-08-04 11:44:00 +0900
-thumbnail: "/assets/img/bloging/spring/spring_boot_logo.png"
+thumbnail: "/assets/img/bloging/spring/spring_logo.png"
 excerpt_separator: <!--more-->
-hide: true
+hide: false
 ---
 Spring Framework 5.3.9 @Autowired
 
@@ -57,6 +57,8 @@ Spring Framework 5.0 부터 @Autowired는 기술적으로, 별개의 메소드�
 
 ## BeanPostProcessor 또는 BeanFactoryPostProcessor 내 미지원
 
-Note that actual injection is performed through a  [BeanPostProcessor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/config/BeanPostProcessor.html) which in turn means that you *cannot* use @Autowired to inject references into  [BeanPostProcessor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/config/BeanPostProcessor.html)  or  [BeanFactoryPostProcessor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/config/BeanFactoryPostProcessor.html)  types.
+실제 주입은 [BeanPostProcessor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/config/BeanPostProcessor.html) 를 통해 수행되므로 이는 결국 @Autowired를 사용하여 [BeanPostProcessor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/config/BeanPostProcessor.html) 또는 [BeanFactoryPostProcessor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/config/BeanFactoryPostProcessor.html) 타입에 참조를 주입할 수 없음을 의미합니다. [AutowiredAnnotationBeanPostProcessor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/annotation/AutowiredAnnotationBeanPostProcessor.html) 클래스에 대한 자바독스를 참조하세요. (기본적으로 이 어노테이션이 있는지 확인 합니다.)
 
-실제 주입은 [BeanPostProcessor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/config/BeanPostProcessor.html) 를 통해 수행되므로 이는 결국 [BeanPostProcessor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/config/BeanPostProcessor.html) 또는 [BeanFactoryPostProcessor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/config/BeanFactoryPostProcessor.html) 타입을 참조하여 주입할 @Autowired를 사용할 수 없음을 의미합니다.
+
+## 요약
+filed에서 @Autowired를 사용하지 않는다면, Bean은 주입되지 않는다. 위의 내용을 따르면 `@AutowiredAnnotationBeanPostProcessor`가 @Autowired 어노테이션이 있는지 확인을 하고 `BeanPostProcessor`가 주입을 한다는 이야기이다.

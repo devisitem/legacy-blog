@@ -209,4 +209,87 @@ Spring Boot 2.4.0 부터 생겨났으며 `BootstrapRegistry` 가 사용되기 �
 ### ApplicationListener.class
 
 어플리케이션 이벤트 리스너로부터 구현된 인터페이스 입니다.
-표준 `java.util.EnventListener` 로 기반된 옵저버 디자인패턴 인터페이스 입니다.
+표준 `java.util.EnventListener` 로 기반된 옵저버 디자인패턴을 위한 인터페이스 입니다. 스프링 3.0 부터 ApplicationListener는 일반적으로 관심있는 이벤트 타입을 선언할 수 있습니다. Spring ApplicationContext에 등록될때 이벤트가 그에따라 필터링 되고 리스너는 일치하는 객체만 호출 합니다.
+
+이제 SpringApplication 객체를 초기화했으니 run 메서드입니다. 위의 표에서는 1. 의 run(..) 입니다.
+
+```java
+public ConfigurableApplicationContext run(String... args) {
+	StopWatch stopWatch = new StopWatch();
+	stopWatch.start();
+	DefaultBootstrapContext bootstrapContext = createBootstrapContext();
+	ConfigurableApplicationContext context = null;
+	configureHeadlessProperty();
+	SpringApplicationRunListeners listeners = getRunListeners(args);
+	listeners.starting(bootstrapContext, this.mainApplicationClass);
+	try {
+		ApplicationArguments applicationArguments = new DefaultApplicationArguments(args);
+		ConfigurableEnvironment environment = prepareEnvironment(listeners, bootstrapContext, applicationArguments);
+		configureIgnoreBeanInfo(environment);
+		Banner printedBanner = printBanner(environment);
+		context = createApplicationContext();
+		context.setApplicationStartup(this.applicationStartup);
+		prepareContext(bootstrapContext, context, environment, listeners, applicationArguments, printedBanner);
+		refreshContext(context);
+		afterRefresh(context, applicationArguments);
+		stopWatch.stop();
+		if (this.logStartupInfo) {
+			new StartupInfoLogger(this.mainApplicationClass).logStarted(getApplicationLog(), stopWatch);
+		}
+		listeners.started(context);
+		callRunners(context, applicationArguments);
+	}
+	catch (Throwable ex) {
+		handleRunFailure(context, ex, listeners);
+		throw new IllegalStateException(ex);
+	}
+
+	try {
+		listeners.running(context);
+	}
+	catch (Throwable ex) {
+		handleRunFailure(context, ex, null);
+		throw new IllegalStateException(ex);
+	}
+	return context;
+}
+
+```
+
+## 참고 하세요
+
+스프링 어플리케이션을 실행하고 새로운 ApplicaitonContext를 생성하고, 리프레슁 합니다. 파라미터는 어플리케이션 파라미터(보통 자바 메인 메서드 에서 받음) 이며 리턴되는 ConfigurableApplicationContgext는 실행중인 ApplicationContext를 리턴합니다.
+
+## 기능
+순서대로 보면 createBootStrapContext()로 위에서 띄워준 위에서 추가한 BootStrapper들을 BootStrapContext로 초기화합니다. `configureHeadlessProperty()`는 `java.awt.headless`를 설정합니다. 기본값은 true이고, headless는 인터페이스 없이 Spring을 실행하는 옵션입니다. 여기서 설정되는 headless값은 System 프로퍼티애 추가합니다. System는 HashTable로 구현된 Proterties 클래스를 사용합니다.
+
+getRunListeners()는 SpringApplicationRunListener 타입의 이름을가진 빈들을 인스턴스화하고, 그 인스턴스들은 SpringApplicationRunListeners 의 리스너들로 등록하여 초기화된 객체를 리턴합니다.
+`listeners.stating(bootstrapContext, this.mainApplcationClass);` : 리스너를 시작합니다. 이부분은 좀 중요한데 starting()메서드와 그안에서 시작해주는 doWithListners()메서드를 볼 수 있습니다.
+
+```java
+void starting(ConfigurableBootstrapContext bootstrapContext, Class<?> mainApplicationClass) {
+	doWithListeners("spring.boot.application.starting", (listener) -> listener.starting(bootstrapContext),
+			(step) -> {
+				if (mainApplicationClass != null) {
+					step.tag("mainApplicationClass", mainApplicationClass.getName());
+				}
+			});
+}
+```
+
+
+```java
+private void doWithListeners(String stepName, Consumer<SpringApplicationRunListener> listenerAction,
+		Consumer<StartupStep> stepAction) {
+	StartupStep step = this.applicationStartup.start(stepName);
+	this.listeners.forEach(listenerAction);
+	if (stepAction != null) {
+		stepAction.accept(step);
+	}
+	step.end();
+}
+```
+
+ doWithListener 메서드는 파라미터를 세 개를 받습니다. 첫번째는 `spring.boot.application.starting`이라는 String을 받아 ApplicationStartup의 start메소드로 보내집니다. **ApplicationStartup** 은 StartupStep을 사용하여 어플리케이션 시작 단계를 쌓습니다. 코어 컨테이너와 해당 인프라 구성요소는 **ApplicationStartup을 사용하여 어플리케이션이 시작하는동안에 단계를 표시하고 처리 시간이나 실행 컨텍스트에대한 데이터를 수집할 수 있습니다.
+
+start 메서드는 새로운 단계를 생성하고 시작을 표시합니다. 단계의 이름은 현재의 액션이나 단계를 표현합니다. 이 기술적인 이름은 어플리케이션이 시작하는 동안에 동일한 단게의 다른 인스턴스를 표현하여 재사용 될 수 있고 “.”로 네임스페이스 되어야 합니다. 파라미터는 단계이름입니다.
