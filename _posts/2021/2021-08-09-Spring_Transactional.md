@@ -11,7 +11,7 @@ hide: true
 Spring Framework 5.3.9 @Transactional
 
 <!--more-->
-# @Transactional
+# @Transactionald
 스프링에서 지원하는 트랜잭션은 어떤 방식으로 동작하고 어떤순서로 어떤 구성을 갖는지를 알아봅니다.
 지원되는 트랜잭션 방식은 여러가지 지만 이번엔 어노테이션 타입의 트랜잭션을 공부합니다.
 먼저 공식문서를 통해 어떻게 정의 되어있는지 확인할게요.
