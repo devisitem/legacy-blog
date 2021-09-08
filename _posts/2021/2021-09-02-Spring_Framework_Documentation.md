@@ -6,7 +6,7 @@ tags: [Spring,Spring Boot]
 date: 2021-09-02 21:58:00 +0900
 thumbnail: "/assets/img/bloging/spring/spring_logo.png"
 excerpt_separator: <!--more-->
-hide: tru
+hide: true
 ---
 Spring Framework 5.3.9 Spring Framework Documentation
 
