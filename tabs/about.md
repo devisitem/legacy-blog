@@ -9,7 +9,7 @@ title: 웅덩이에 빠진 개발자
 ---
 
 
-
+![Desktop View]({{ "/assets/img/sample/profile.png" | relative_url }}){: width="240" .left}
 ## INTRODUCTION
 
 - 2년차 백엔드 개발자입니다.
