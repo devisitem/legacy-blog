@@ -13,11 +13,13 @@ title: 웅덩이에 빠진 개발자
 ## INTRODUCTION
 
 - 2년차 백엔드 개발자입니다.
+- Task의 근본적인 목적을 도출하여 업무를 하며, 이를 망각하여 시간을 낭비하지 않아요.
+- 항상 왜 해야하는지(어떤문제 떄문에?)를 생각하고 목적에 근접하기위해 완벽히 이해하고 수행합니다.
 - 협업과 커뮤니케이션을 중요하게 생각해요.
-- 늘 공부하고, 발전해 나아가는것을 좋아해요.
+- 지속적으로 공부하고, 발전해 나아가는것을 좋아해요.
 - 플랫폼과 OS에 국한되지 않고 문제를 해결해 나아가는 것을 좋아하며, 정확한 문제의 시작지점을 찾는것이 특기예요.
-- 저에게 문제는 저를 더욱더 발전시킬 수 있는 좋은 기회의 발판 이에요.
 - 비개발 직군과 소통하는 것이 어렵지 않아요.
+- "일"을 할줄 알아요.
 
 <br>
 
@@ -29,7 +31,7 @@ title: 웅덩이에 빠진 개발자
 
 ### Back-End
 
-- Java, Node.js
+- Java
 - Spring Boot,Spring Mvc, Spring Data JPA, Spring Security
 - JPA, SQL Mapper (My-batis), Querydsl
 - Spring Core
@@ -42,9 +44,9 @@ title: 웅덩이에 빠진 개발자
 
 ### Front-End
 
+- HTML5, CSS3, JavaScript (ECMA Script 6)
 - React.js
 - Redux (React - Hooks)
-- HTML5, CSS3, JavaScript (ECMA Script 6)
 - JSP
 
 
@@ -55,12 +57,12 @@ title: 웅덩이에 빠진 개발자
 - Git-flow, Subversion
 - Docker
 - Tomcat
+- Jenkins
 
 
 
 ### Etc
-- Elastic Search
-- Jenkins
+- Elastic Search (filebeat, logstash, kibana)
 
 
 
