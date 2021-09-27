@@ -206,3 +206,135 @@ ApplicationContext context = new ClassPathXmlApplicationContext("services.xml", 
 
 
 In the preceding example, the service layer consists of the PetStoreServiceImpl class and two data access objects of the types JpaAccountDao and JpaItemDao (based on the JPA Object-Relational Mapping standard). The property name element refers to the name of the JavaBean property, and the ref element refers to the name of another bean definition. This linkage between id and ref elements expresses the dependency between collaborating objects. For details of configuring an object’s dependencies, see [Dependencies](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-dependencies).
+
+이전의 예제에서, 외부 Bean 정의는 세개 파일 `service.xml`, `messageSource.xml`, `themeSource.xml`에서 로드 되었습니다. 모든 위치 경로는 임포팅하는 정의 파일에 상대적이므로 `service.xml`은 임포팅하는 파일로 동일한 디렉토리 또는 클래스패스 위치가 되어야하며, `messageSource.xml` 과 `themeSource.xml`은 임포팅파일의 위치 아래 resources 위치에 있어야합니다. 보시다 시피 앞의 슬래시는 무시됩니다. 하지만, 이러한 주어진 경로는 상대적이므로 슬래시를 전혀 사용하지 않는것이 좋은 형식이에요. 최상위 <beans/> 요소를 포함하는 임포트된 파일의 내용은 스프링 스키마에따라 유효한 XML Bean정의여야 합니다.
+
+> It is possible, but not recommended, to reference files in parent directories using a relative “../“ path. Doing so creates a dependency on a file that is outside the current application. In particular, this reference is not recommended for classpath: URLs (for example, classpath:../services.xml), where the runtime resolution process chooses the “nearest” classpath root and then looks into its parent directory. Classpath configuration changes may lead to the choice of a different, incorrect directory.
+>
+> You can always use fully qualified resource locations instead of relative paths: for example, file:C:/config/services.xml or classpath:/config/services.xml. However, be aware that you are coupling your application’s configuration to specific absolute locations. It is generally preferable to keep an indirection for such absolute locations — for example, through “${… }” placeholders that are resolved against JVM system properties at runtime.
+
+> “../“ 상대경로를 사용하여 부모 디렉토리에 파일을 참조가 가능하지만 추천 드리지는 않습니다. 이렇게 하면, 현재 어플리케이션 외부에있는 파일에 의존성이 생성됩니다. 특히 이참조는 런타임 완성 프로세스가 루트에 가장가까운 클래스패스를 선택한 다음 해당 상위디렉토리에서 찾는 클래스패스: URL(예를들어, 클래스패스:../services.xml)에 대해 권장되지않습니다. 클래스패스 구성 변경으로 인해 다른 잘못된 디렉토리가 선택될 수 있 습니다.
+>
+> 선생님은 언제든지 상대경로 대신에 정규화된 리소스 경로를 사용할 수 있습니다: (예를들어, 파일:C:/config/services.xml 또는 classpath:/config/service.xml). 하지만 어플리케이션의 구성을 특정 절대경로에 연결하고 있다는것을 아셔야 합니다. 일반적으로 런타임시 JVM 시스템 속성에 대해 확인되는 “${… }” 플레이스홀더를 통해 절대경로에 대한 간접참조를 유지하는 것이 좋습니다.
+
+The namespace itself provides the import directive feature. Further configuration features beyond plain bean definitions are available in a selection of XML namespaces provided by Spring — for example, the context and util namespaces.
+
+네임스페이스 그 자체는 직접 임포트하는 기능을 제공합니다. 더 나아가 일반 Bean 정의이후 구성기능은 스프링에서 제공하 는 XML 네임스페이스의 섹션에 적용 가능합니다. (예를들어, 컨텍스트 와 유틸 네임스페이스)
+
+### 그루비 Bean 정의 DSL
+
+As a further example for externalized configuration metadata, bean definitions can also be expressed in Spring’s Groovy Bean Definition DSL, as known from the Grails framework. Typically, such configuration live in a “.groovy” file with the structure shown in the following example:
+
+구성화된 구성 메타데이터 예제로서, 그레일 프레임워크에서 알려진 것 처럼 Bean 정의는 스프링의 그루비 Bean 정의 DSL에 표현될 수도 있습니다. 일반적으로 이러한 구성은 다음 예제에 표시된 구조로 “.groovy” 파일에 있습니다.
+
+```groovy
+beans {
+    dataSource(BasicDataSource) {
+        driverClassName = "org.hsqldb.jdbcDriver"
+        url = "jdbc:hsqldb:mem:grailsDB"
+        username = "sa"
+        password = ""
+        settings = [mynew:"setting"]
+    }
+    sessionFactory(SessionFactory) {
+        dataSource = dataSource
+    }
+    myService(MyService) {
+        nestedBean = { AnotherBean bean ->
+            dataSource = dataSource
+        }
+    }
+}
+```
+
+This configuration style is largely equivalent to XML bean definitions and even supports Spring’s XML configuration namespaces. It also allows for importing XML bean definition files through an importBeans directive.
+
+이 구성방식은 대체로 XML Bean 정의와 같고 스프링의 XML 구성 네임스페이스도 지원하기도 한다.
+
+
+### 1.2.3. Using the Container
+
+The ApplicationContext is the interface for an advanced factory capable of maintaining a registry of different beans and their dependencies. By using the method `T getBean(String name, Class<T> requiredType)`, you can retrieve instances of your beans.
+The `ApplicationContext` lets you read bean definitions and access them, as the following example shows:
+
+`ApplicationContext`는 다른 Bean과 그 의존성들의 레지스트리를 유지할 수 있는 고급 팩토리를 위한 인터페이스입니다. `T getBean(String name, Class<T> requiredType)` 메소드를 사용하므로써, 선생님 Bean의 인스턴스를 가져올수 있어요.
+다음의 표시된 예제로 `ApplicationContext`가 Bean 정의를 읽고 그것들을 접근하도록 합니다.
+
+```java
+// create and configure beans
+ApplicationContext context = new ClassPathXmlApplicationContext("services.xml", "daos.xml");
+
+// retrieve configured instance
+PetStoreService service = context.getBean("petStore", PetStoreService.class);
+
+// use configured instance
+List<String> userList = service.getUsernameList();
+```
+
+With Groovy configuration, bootstrapping looks very similar. It has a different context implementation class which is Groovy-aware (but also understands XML bean definitions). The following example shows Groovy configuration:
+
+그루비 구성으로 매우 비슷하게 만듭니다. 이것은 그루비를 인식하는(XML Bean정의를 이해핟하지만) 다른 구현체를 가지고있어요. 다음에 표시된 그루비 구성을 참고하세요.
+
+```java
+
+ApplicationContext context = new GenericGroovyApplicationContext("services.groovy", "daos.groovy");
+
+```
+
+The most flexible variant is `GenericApplicationContext` in combination with reader delegates — for example, with `XmlBeanDefinitionReader` for XML files, as the following example shows:
+
+가장 유연한 변형은 리더를 위임하는 것과 결합된 `GenericApplicationContext` 입니다. 예를 들어 다음 예제와 같이 XML 파일을 위한 `XMLBeanDefinitionReader` 처럼요.
+
+```java
+
+GenericApplicationContext context = new GenericApplicationContext();
+new XmlBeanDefinitionReader(context).loadBeanDefinitions("services.xml", "daos.xml");
+context.refresh();
+
+```
+
+You can also use the `GroovyBeanDefinitionReader` for Groovy files, as the following example shows:
+
+다음의 예제와 같이 그루비 파일을 위한 `GroovyBeanDefinitionReader`를 사용할수 있어요.
+
+```java
+
+GenericApplicationContext context = new GenericApplicationContext();
+new GroovyBeanDefinitionReader(context).loadBeanDefinitions("services.groovy", "daos.groovy");
+context.refresh();
+
+```
+
+You can mix and match such reader delegates on the same ApplicationContext, reading bean definitions from diverse configuration sources.
+
+You can then use getBean to retrieve instances of your beans. The ApplicationContext interface has a few other methods for retrieving beans, but, ideally, your application code should never use them. Indeed, your application code should have no calls to the getBean() method at all and thus have no dependency on Spring APIs at all. For example, Spring’s integration with web frameworks provides dependency injection for various web framework components such as controllers and JSF-managed beans, letting you declare a dependency on a specific bean through metadata (such as an autowiring annotation).
+
+다양한 구성 소스에서 Bean 정의를 읽어, 같은 `ApplicationContext`에 리더를 위임 하는것과 같이 섞거나 맞출수 있어요.
+
+Bean의 인스턴스를 가져올때 `getBean`을 사용할 수 있습니다. `ApplicationContext` 인터페이스는 빈을 가져오기위한 많지않은 다른 메소드를 가지고 있지만, 이상적으로, 어플리케이션코드는 그것을 절대 사용해선 안됩니다. 어플리케이션 코드는 `getBean()`에 호출을 가지고있지 않아야하고, 따라서 모든 Spring API의 의존성이 없어야합니다. 예를들어, 스프링과 웹프레임워크의 통합이 컨트롤러나 JSF로 관리되는 Bean 같은 다양한 웹 프레임워크 컴포넌를위한 의존성 주입을 제공하여, 메타데이터를(예: 자동연결하는 어노테이션) 통해서 특정한 Bean에 의존성을 정의하도록 합니다.
+
+
+## 1.3. Bean 개요
+A Spring IoC container manages one or more beans. These beans are created with the configuration metadata that you supply to the container (for example, in the form of XML <bean/> definitions).
+
+스프링 IoC 컨테이너는 하나이상의 Bean을 관리합니다. 이러한 Bean은 컨테이너(예: XML <bean/> 정의 양식 내)에 공급하는 구성 메타데이터로 생성 됩니다.
+
+Within the container itself, these bean definitions are represented as BeanDefinition objects, which contain (among other information) the following metadata:
+
+	* A package-qualified class name: typically, the actual implementation class of the bean being defined.
+	* Bean behavioral configuration elements, which state how the bean should behave in the container (scope, lifecycle callbacks, and so forth).
+	* References to other beans that are needed for the bean to do its work. These references are also called collaborators or dependencies.
+	* Other configuration settings to set in the newly created object — for example, the size limit of the pool or the number of connections to use in a bean that manages a connection pool.
+
+컨테이너 자체 내에서, 이러한 Bean 정의는 다음의 메타데이터를 포함하는 BeanDefinition 객체로 표시됩니다.
+
+	* 패키지 수식 클래스명: 일반적으로 정의된 Bean의 실제 구현체 클래스입니다.
+	* 컨테이너(범위, 생명주기 콜백 등) 내에서 Bean이 어떻게 동작해야만 하는지 표시하는 Bean 동작 구성요소.
+	* Bean이 작업을 수행하는데 필요한 다른빈에 대한 참조입니다. 이러한 참조는 의존성 또는 협업객체라고도 합니다.
+	* 신규 생성된 객체에 설정할 다른 구성 설정 - 예: 풀의 크기제한 또는 컨넥션 풀을 관리하는 Bean에 사용할 컨넥션 수.
+
+This metadata translates to a set of properties that make up each bean definition. The following table describes these properties:
+
+| property | Explained in… |
+| ——— | ———— |
+| Class | Instantiating Beans |
