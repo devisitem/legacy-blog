@@ -333,8 +333,38 @@ Within the container itself, these bean definitions are represented as BeanDefin
 	* Bean이 작업을 수행하는데 필요한 다른빈에 대한 참조입니다. 이러한 참조는 의존성 또는 협업객체라고도 합니다.
 	* 신규 생성된 객체에 설정할 다른 구성 설정 - 예: 풀의 크기제한 또는 컨넥션 풀을 관리하는 Bean에 사용할 컨넥션 수.
 
-This metadata translates to a set of properties that make up each bean definition. The following table describes these properties:
+	This metadata translates to a set of properties that make up each bean definition. The following table describes these properties
 
-| property | Explained in… |
-| ——— | ———— |
-| Class | Instantiating Beans |
+	| property | Explained in… |
+	| ——— | ———— |
+	| Class | [Instantiating Beans](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-class) |
+	| Name | [Naming Beans](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-beanname) |
+	| Scope | [Bean Scopes](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-scopes) |
+	| Constructor Argument | [Dependency Injection](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-collaborators) |
+	| Properties | [Dependency Injection](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-collaborators) |
+	| Autowiring mode | [Autowiring Collaborators](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-autowire) |
+	| Lazy initialization mode | [Lazy-initialized Beans](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-lazy-init) |
+	| Initialization method | [Initialization Callbacks](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-lifecycle-initializingbean) |
+	| Destruction method | [Destruction Callbacks](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-lifecycle-disposablebean) |
+
+	이 메타데이터는 각 bean 정의를 만드는 프로퍼티의 설정을 번역합니다. 다음의 테이블은 이러한 프로퍼티를 나타내요.
+
+	| 프로퍼티 | 설명링크 |
+	| ——— | ———— |
+	| 클래스 | [Bean 인스턴스화](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-class) |
+	| Bean 이름 | [Bean 이름 설정](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-beanname) |
+	| 영역 | [Bean 영역](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-scopes) |
+	| 생성자 매개변수 | [의존성 주입](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-collaborators) |
+	| 프로퍼티즈 | [의존성 주입](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-collaborators) |
+	| 자동연결 모드 | [협업객체 자동연결](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-autowire) |
+	| 지연 초기화 모드 | [Bean의 지연 초기화](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-lazy-init) |
+	| 초기화 메서드 | [초기화 콜백](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-lifecycle-initializingbean) |
+	| 제거 메소드 | [제거 콜백](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-lifecycle-disposablebean) |
+
+	In addition to bean definitions that contain information on how to create a specific bean, the `ApplicationContext` implementations also permit the registration of existing objects that are created outside the container (by users). This is done by accessing the ApplicationContext’s BeanFactory through the `getBeanFactory()` method, which returns the BeanFactory `DefaultListableBeanFactory` implementation. `DefaultListableBeanFactory` supports this registration through the `registerSingleton(..)` and `registerBeanDefinition(..)` methods. However, typical applications work solely with beans defined through regular bean definition metadata.
+
+	특정 Bean을 생성하는 방법에대한 정보를 포함하는 Bean 정의 뿐만아니라, ApplicationContext 구현체는 컨테이너 (유저로 부터) 밖에서 생성된 존재하는 객체의 등록도 허용합니다. 이것은 Beanfactory `DefaultListableBeanFactory` 구현체를 리턴하는 `getBeanFactory()`메소드를 통해서 `ApplicationContext`의 Beanfactory에 접근하여 수행됩니다. `DefaultListableBeanFactory`은 `registerSingleton(..)` 과 `registerBeanDefinition(..)` 메소드를 통해서 이 등록을 제공하지만, 일반적으로 어플리케이션은 일반 Bean정의 메타데이터를 통해 정의한 Bean으로만 동작합니다.
+
+	> Bean metadata and manually supplied singleton instances need to be registered as early as possible, in order for the container to properly reason about them during autowiring and other introspection steps. While overriding existing metadata and existing singleton instances is supported to some degree, the registration of new beans at runtime (concurrently with live access to the factory) is not officially supported and may lead to concurrent access exceptions, inconsistent state in the bean container, or both.
+
+	> Bean 메타데이터와 수동 공급된 싱글톤 인스턴스는 가능한 빨리 등록돼야
