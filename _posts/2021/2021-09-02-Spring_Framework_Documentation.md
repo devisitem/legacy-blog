@@ -367,4 +367,15 @@ Within the container itself, these bean definitions are represented as BeanDefin
 
 	> Bean metadata and manually supplied singleton instances need to be registered as early as possible, in order for the container to properly reason about them during autowiring and other introspection steps. While overriding existing metadata and existing singleton instances is supported to some degree, the registration of new beans at runtime (concurrently with live access to the factory) is not officially supported and may lead to concurrent access exceptions, inconsistent state in the bean container, or both.
 
-	> Bean 메타데이터와 수동 공급된 싱글톤 인스턴스는 가능한 빨리 등록돼야
+> Bean 메타데이터와 수동 공급된 싱글톤 인스턴스는 가능한 빨리 등록돼야 컨테이너가 자동연결 및 기타 내부검사 단계에서 이에대한 적절한 추론을 할 수 있습니다. 재정의의 경우 존재하는 메타데이터 및 싱글톤 인스턴스는 어떤 면에서는 지원이 되지만 실행 시(팩토리에 실시간으로 동시에) 새로운 Bean의 등록은 공식지원이 아니며 병렬 접근 예외가될수 있고 Bean 컨테이너에 일관성없는 상태 이거나 둘다입니다.
+
+
+## 1.3.1. Naming Beans
+
+Every bean has one or more identifiers. These identifiers must be unique within the container that hosts the bean. A bean usually has only one identifier. However, if it requires more than one, the extra ones can be considered aliases.
+
+모든 Bean은 한개이상의 식별자를 가지고 있습니다. 이러한 식별자는 Bean을 호스팅하는 컨테이너 내에서 고유해야 합니다. Bean은 보통 식별자를 한개만 가지고있지만, 한개이상이 필요한경우 별칭으로 간주될 수 있습니다.
+
+In XML-based configuration metadata, you use the id attribute, the `name` attribute, or both to specify the bean identifiers. The `id` attribute lets you specify exactly one id. Conventionally, these names are alphanumeric ('myBean', 'someService', etc.), but they can contain special characters as well. If you want to introduce other aliases for the bean, you can also specify them in the `name` attribute, separated by a comma (`,`), semicolon (`;`), or white space. As a historical note, in versions prior to Spring 3.1, the id attribute was defined as an `xsd:ID` type, which constrained possible characters. As of 3.1, it is defined as an `xsd:string` type. Note that bean `id` uniqueness is still enforced by the container, though no longer by XML parsers.
+
+XML 기반 구성 메타데이터에서, Bean 식별자 명시에 `id` 속성, `name`속성 또는 둘다 사용합니다. `id` 속성은 정확한 한개의 id를 명시하도록 합니다. 관례적으로, 이러한 이름들은 영문,숫자로('myBean', 'someService', etc.) 쓰지만, 특정한 문자열도 포함할 수 있습니다. Bean에 다른 별칭을 추가하고 싶다면, name 속성에 콤마(`,`), 세미콜론(`;`) 또는 스페이스로 구분지어서 명시할 수 도 있어요. 스프링 3.1 버전 이전에 id 속성은 `xsd:ID`타입으로 정의 됐었고, 이는 문자열을 가능하게 만들었습니다. 3.1에서 id 속성은 `xsd:string` 타입으로 정의 됐었어요. XML 파서에 의해 길지 않지만, Bean id 고유성은 컨테이너에의해 아직 강요되고 있습니다.
