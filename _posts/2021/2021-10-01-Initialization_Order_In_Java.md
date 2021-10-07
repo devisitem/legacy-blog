@@ -12,130 +12,32 @@ AbstractPlatformTransactionManager의 기능과 작업흐름
 
 <!--more-->
 
-## AbstractPlatformTransactionManager
+## Initialization Order in Java
 
 
 
-Spring은 Transaction Manager를 추상화하여 간단하게 사용할수 있어요. `DataSourceTransactionManager` 이던 `HibernateSessionMannager` 던 등등 다른 Transaction Manager를 하나로 추상화 되어있는 `AbstractPlatformTransactionManager`를 상황에 맞는 구성을 Spring이 구성해주기때문에 별다른 설정없이 사용하면 됩니다.
+### The Reason for writen to this article
 
+I wondered to Initialization order, when I had use a Spring's @ConfigurationProperties annotation. Using static block, instance block, constructor, setter (Injection field).
 
+as consequence, I realized Which order, following definition below .
 
-### 설명
+| order | applicable block | Initialization time                                      |
+| ----- | ---------------- | -------------------------------------------------------- |
+| 1     | static block     | befor allocate to memory in method area                  |
+| 2     | instance block   | between allocate to memory and before create constructor |
+| 3     | constructor      | allocate to memory on heap                               |
+| 4     | setter method    | inject for field after constructor                       |
 
-Abstract base class that implements Spring's standard transaction workflow, serving as basis for concrete platform transaction managers like org.springframework.transaction.jta.JtaTransactionManager.
-This base class provides the following workflow handling:
-s
-* determines if there is an existing transaction;
 
-* applies the appropriate propagation behavior;
 
-* suspends and resumes transactions if necessary;
+### Static Block
 
-* checks the rollback-only flag on commit;
+`static block` perform applicable code that, writen to block before Class be allocated to method area (JVM). which so that available initializing filed without set to value. therefore, static block is meaning that status for no memory address. because,
 
-* applies the appropriate modification on rollback (actual rollback or setting rollback-only);
 
-* triggers registered synchronization callbacks (if transaction synchronization is active).
 
-
-
-Subclasses have to implement specific template methods for specific states of a transaction, e.g.: begin, suspend, resume, commit, rollback. The most important of them are abstract and must be provided by a concrete implementation; for the rest, defaults are provided, so overriding is optional.
-
-Transaction synchronization is a generic mechanism for registering callbacks that get invoked at transaction completion time. This is mainly used internally by the data access support classes for JDBC, Hibernate, JPA, etc when running within a JTA transaction: They register resources that are opened within the transaction for closing at transaction completion time, allowing e.g. for reuse of the same Hibernate Session within the transaction. The same mechanism can also be leveraged for custom synchronization needs in an application.
-
-
-
-The state of this class is serializable, to allow for serializing the transaction strategy along with proxies that carry a transaction interceptor. It is up to subclasses if they wish to make their state to be serializable too. They should implement the java.io.Serializable marker interface in that case, and potentially a private readObject() method (according to Java serialization rules) if they need to restore any transient state.
-
-
-
-`org.springframework.transaction.jta.JtaTransactionManager` 같이 실제 플랫폼 트랜잭션매니저의 기반으로 사용되는 Spring의 표준 트랜잭션 작업흐름 구현체, 추상 기본  클래스입니다.
-
-이 기본 클래스는 다음의  작업흐름을 처리를 제공합니다.
-
-* 트랜잭션이 있는지 판단합니다.
-* 적절한 전파 동작을 적용합니다.
-* 필요하다면 트랜잭션을 중단하고 재개합니다.
-* 커밋 시 rollback-only 표시를 확인합니다.
-* 롤백 시 적절한 수정 사항을 적용합니다. (실제 롤백 또는  rollback-only를 설정해서)
-* 등록된 동기화 콜백을 트리거합니다. (트랜잭션 동기화가 활성화 된 경우)
-
-
-
-하위클래스는 트랜잭션의 특정 상태에대한 특정 템플릿 메서드를 구현해야합니다 (예:  중단, 재개, 커밋, 롤백전). 가장중요한 건 추상화와 실제 구현체로 제공되어야만 하는것이고, 그외에는 기본값이 제공되므로 `overriding` 선택사항 입니다.
-
-
-
-트랜잭션 동기화는 트랜잭션 완료시간에 호출되는 콜백을 등록하기위한 일반적인 메커니즘입니다. 이것은 JTA 트랜잭션 내에서 동작할때 JDBC, 하이버네이트, JPA 등등에 대한 데이터 접근클래스로부터 내부적으로 사용됩니다. (트랜잭션 완료 시간에 닫히기 위해 트랜잭션 내에서 개방된 리소스를 등록합니다. 예 : 트랜잭션 내 동일한 하이버네이트 세션의 재사용을 위해 )  
-
-
-
-이 클래스의 상태는 직렬화 가능하여  트랜잭션 인터셉터를 전달하는 프록시와 마찬가지로 트랜잭션 전략를 직렬화할 수 있습니다. 이것은 하위클래스에 달려있는데, 상태를 직렬화 되게 만들고 싶다면 그렇게하세요. 이 경우에 하위클래스는 마커 인터페이스인 `java.io.Seializable` 를 구현해야하며 일시적인 상태를 복원해야하는경우 잠재적으로 `private` readObject()  메소드 (자바 직렬화 규칙에따라 )를 구현해야합니다.
-
-
-
-### 필드
-
-* SYNCHRONIZATION_ALWAYS = 0;
-
-  * 트랜잭션 동기화를 항상 활성화며 기존 백엔드 트랜잭션이 없는 PROPAGATION_SUPPORTS인 "비어있는" 트랜잭션 까지도 적용됩니다.
-
-
-
-* SYNCHRONIZATION_ON_ACTUAL_TRANSACTION = 1;
-
-  * 실제 트랜잭션을 위해서만 트랜잭션 동기화를 활성화 하며, 기존 백엔드 트랜잭션이 없는  PROPAGATION_SUPPORTS 인 비어있는 트랜잭션에는 적용되지 않습니다.
-
-
-
-* SYNCHRONIZATION_NEVER = 2;
-
-  * 실제 트랜잭션까지도 트랜잭션동기화를 활성화하지 않습니다.
-
-### 기능
-
-AbstactPlatformTransactionManager는 트랜잭션 동기화를 등록하고 관리할 수 있습니다.
-
-
-
-#### final setTransactionSynchronizationName(String constantName)
-
-* 이 클래스의 해당 상수명으로 트랜잭션 동기화를 설정합니다.
-
-
-
-#### final setTransactionSynchronization( int transactionSynchronization)
-
-* 이 트랜잭션 매니저가 Thread-bound 트랜잭션 동기화 지원을 활성화 해야만 할때 설정합니다. 기본값은 `SYNCHRONIZATION_ALWAYS` 입니다.
-* 참고로 트랜잭션 동기화는 다른 트랜잭션 매니저에 의해 다중 동시 트랜잭션을 지원하지 않습니다. 한개의 트랜잭션 매니저만이 이것을 언제든지 허용할 수 있습니다.
-
-
-
-#### final setDefaultTimeout(int defaultTimeout)
-
-* 트랜잭션 레벨에 초단위로 명시된 타임아웃이 없는경우 이 트랜잭션 매니저가 적용해야만하는 기본 타임아웃을 명시합니다.
-* 기본값은 근본적인 트랜잭션 인프라 기본 타임아웃(예: 일반적으로, JTA Provider 의 경우 30초)이며, TransactionDefinition.TIMEOUT_DEFAULT 값으로 나타납니다.
-
-
-
-#### final setNestedTransactionAllowed(boolean nestedTransactionAllowed)
-
-* 기본값은 "false"이며, 중복 트랜잭을 허용할지 설정합니다.
-* 일반적으로 구체적인 트랜잭션 매니저 하위클래스에 의해 적절한 기본값으로 초기화 됩니다.
-
-
-
-#### final setValidateExistingTransaction(boolean validateExistingTransaction)
-
-* 기존 트랜잭션에 참여하기 전에 검증돼야하는지 설정합니다.
-* 기존 트랜잭션(예: PROPAGATION_REQUIRED 또는 PROPAGATION_SUPPORT가 기존 트랜잭션을 만나는 경우)에 참여할때, 이 외부 트랜잭션의 형질은 내부 트랜잭션영역에 까지도 적용됩니다.
-* 유효성 검사는 내부 트랜잭션 정의에서 호환되지 않는 고립레벨 및 읽기전용 설정을 감지하고 해당 예외를 throw하여 이에따라 참여를 거부합니다.
-* 기본값은 "false"이며, 내부 트랜잭션 설정을 느슨하게 무시하여, 외부 트랜잭션의 형질로 간단히 재정의 합니다.
-* "true" 플래그로 변경은 엄격한 유효성검사를 강제하도록 명령합니다.
-
-
-
-#### final setGlobalRollbackOnParticipationFailure(boolean gloabalRollbackOnParticipationFailure)
-
-* 참여하는 트랜잭션이 실패한후에 기존 트랜잭션을 `rollback-only`로 전역적으로 표시할지 설정합니다.
-* 기본값은 "true"이며, 참여하는 트랜잭션(예: PROPAGATION_REQUIRED 또는 PROPAGATION_SUPPORT가 기존 트랜잭션을 만나는 경우)이 실패한다면, 트랜잭션은 `rollback-only`로 전역적으로 표시됩니다.  그런 트랜잭션에 오직 가능한 결과는 롤백입니다.
+```java
+public class Kimchi {
+    static {
+        System.out.println("Kimchi is traditional korean food")
