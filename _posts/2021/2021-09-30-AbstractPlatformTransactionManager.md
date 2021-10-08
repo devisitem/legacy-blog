@@ -138,4 +138,6 @@ AbstactPlatformTransactionManager는 트랜잭션 동기화를 등록하고 관�
 #### final setGlobalRollbackOnParticipationFailure(boolean gloabalRollbackOnParticipationFailure)
 
 * 참여하는 트랜잭션이 실패한후에 기존 트랜잭션을 `rollback-only`로 전역적으로 표시할지 설정합니다.
-* 기본값은 "true"이며, 참여하는 트랜잭션(예: PROPAGATION_REQUIRED 또는 PROPAGATION_SUPPORT가 기존 트랜잭션을 만나는 경우)이 실패한다면, 트랜잭션은 `rollback-only`로 전역적으로 표시됩니다.  그런 트랜잭션에 오직 가능한 결과는 롤백입니다.
+* 기본값은 "true"이며, 참여하는 트랜잭션(예: PROPAGATION_REQUIRED 또는 PROPAGATION_SUPPORT가 기존 트랜잭션을 만나는 경우)이 실패한다면, 트랜잭션은 `rollback-only`로 전역적으로 표시됩니다.  그런 트랜잭션에 오직 가능한 결과는 롤백입니다.*
+* “false”로 변경시: 트랜잭션 발신자가 롤백 결정을 내립니다. 만약 참여하는 트랜잭션이 예외로 실패한다면, 호출자는 트랜잭션 내 다른경로로 계속하기로 결정할 수 있습니다. 하지만, 이는 모든 참여 자원이 데이터 액세스 실패 후에도 트랜잭션 커밋을 향해 계속할 수 있는 경우에만 작동합니다. (일반적으로 Hibernate 세션은 해당되지 않는 경우입니다. 예: JDBC insert/update/delete 동작들의 sequence)
+* **참고: ** 이 플래그는 일반적으로 데이터 접근 작업(TransactionInterceptor가 롤백룰에 따라 PlatformTransactionManager.rollback() 호출을 트리거하는 경우)으로 인해 throw 된 예외가 발생한 하위 트랜잭션에 대한 명시적 롤백시도에만 적용됩니다. 플래그가 비활성화라면 호출자는 하위 트랜잭션의 롤백룰과 관계없이 예외를 처리하고 롤백을 결정할 수 있습니다. 그러나 이 플래그는 하위트랜잭션에 명시적 `setRollbackOnly` 호출을 적용하지 않으므로,이는  항상 최종적인 글로벌 롤백(`rollback-only` 호출후 예외가 발생하지 않을 수 있기 때문에 )을 유발합니다.

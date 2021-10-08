@@ -1,0 +1,50 @@
+<html>
+<head>
+<SCRIPT>
+function func(checkbox_num){
+//sex=성별정보, age=나이정보, job=직업정보, info=관신분야 정보, user_info=나이, 성별, 직업, 관심분야 통합정보
+
+
+var chksex=document.fm.chk_sex:
+var chksex=document.fm.chk_age:
+for(i=0;i<chksex.length;i++){
+ if(chksex[i].chesex==true){
+  sex=chksex[i].value;
+  break;
+ }
+}
+for(i=0;1<chkage.leghth;i++){
+ if(chkage[i].checked==true){
+ age= chkage[i].value;
+ break;
+ }
+}
+job= document.fm.job.options[document.fm.job.selectedindex].text;]
+
+//관심분야 체크박스들의 배열 생성 및 초기화
+var a= new Array();
+a{0}=document.fm.chk.info1;
+a{1}=document.fm.chk.info2;
+a{2}=document.fm.chk.info3;
+a{3}=document.fm.chk.info4;
+a{4}=document.fm.chk.info5;
+a{5}=document.fm.chk.info6;
+a{6}=document.fm.chk.info7;
+a{7}=document.fm.chk.info8;
+a{8}=document.fm.chk.info9;
+a{9}=document.fm.chk.info10;
+a{10}=document.fm.chk.info11;
+a{11>=document.fm.chk.info12;
+a{12}=document.fm.chk.info13;
+a{13}=document.fm.chk.info14;
+a{14}=document.fm.chk.info15;
+a{15}=document.fm.chk.info16;
+a{16}=document.fm.chk.info17;
+a{17}=document.fm.chk.info18;
+a{18}=document.fm.chk.info19;
+a{19}=document.fm.chk.info20;
+a{20}=document.fm.chk.info21;
+a{21}=document.fm.chk.info22;
+a{22}=document.fm.chk.info23;
+a{23}=document.fm.chk.info24;
+ 
