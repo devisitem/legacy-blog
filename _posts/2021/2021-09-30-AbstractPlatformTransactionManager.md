@@ -146,4 +146,8 @@ AbstactPlatformTransactionManager는 트랜잭션 동기화를 등록하고 관�
 
 ## final setFailEarlyOnGlobalRollbackOnly(boolean failEarlyOnGlobalRollbackOnly)
 * 트랜잭션이 `rollback-only`로 전역적으로 표시된 경우에 조기 실패할 것 인지 설정합니다.
-* 기본값은 “false” 이며, 가장 바깥쪽의 트랜잭션 바운더리에서만 `UnexpectedRollbackExcetpion`을 발생시킵니다.
+* 기본값은 “false” 이며, 가장 바깥쪽의 트랜잭션 바운더리에서만 `UnexpectedRollbackExcetpion`을 발생시킵니다. 내부 트랜잭션 바운더리 내에서  까지 전역 rollback-only 표시자가 처음 감지하여 즉시 `UnexpectedRollbackException`을 발생시키려면 이 값을 변경하세요.
+* 참고로 스프링 2.0부터 전역  rollback-only 표시자에 대한 조기실패 동작이 통합 되었습니다. (모든 트랜잭션 매니져는 기본적으로 가장 바깥쪽의 트랜잭션 바운더리에서만 `UnexpectedRollbackException`을 발생시킵니다.) 이 허용 예를들어 동작이 실패하고 트랜잭션이 완료되지 않은 후에도 유닛 테스트를 계속할 수 있습니다. 모든 트랜잭션 매니저는 이 플래그가 명시적으로 "true"로 설정됐을 때만 조기실패 시킵니다.
+
+## final setRollbackOnCommitFailure(boolean rollbackOnCommitFailure)
+*  `doCommit`메소드 호출의 실패에 `doRollback`이 수행 해야만하는지 설정합니다. 일반적으로 필요없으므로
