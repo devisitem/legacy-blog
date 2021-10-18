@@ -92,7 +92,7 @@ The state of this class is serializable, to allow for serializing the transactio
 
   * 실제 트랜잭션까지도 트랜잭션동기화를 활성화하지 않습니다.
 
-### 기능
+## 설정기능
 
 AbstactPlatformTransactionManager는 트랜잭션 동기화를 등록하고 관리할 수 있습니다.
 
@@ -144,10 +144,72 @@ AbstactPlatformTransactionManager는 트랜잭션 동기화를 등록하고 관�
 * 하위트랜잭션의 실패처리에 대한 추천드리는 방법은 글로벌 트랜잭션이 하위트랜잭션의 시작시 가져온 세이브포인트로 롤백될 수 있도록 하는 “중복 트랜잭션” 입니다. `PROPAGATION_NESTED`는 정확히 이러한 의미를 제공합니다. 그러나, 중복 트랜잭션 지원이 가능할 때만 동작합니다. `DataSource TransactionManager` 경우지만, `JtaTransactionManager`의 경우는 아닙니다.
 
 
-## final setFailEarlyOnGlobalRollbackOnly(boolean failEarlyOnGlobalRollbackOnly)
+#### final setFailEarlyOnGlobalRollbackOnly(boolean failEarlyOnGlobalRollbackOnly)
 * 트랜잭션이 `rollback-only`로 전역적으로 표시된 경우에 조기 실패할 것 인지 설정합니다.
 * 기본값은 “false” 이며, 가장 바깥쪽의 트랜잭션 바운더리에서만 `UnexpectedRollbackExcetpion`을 발생시킵니다. 내부 트랜잭션 바운더리 내에서  까지 전역 rollback-only 표시자가 처음 감지하여 즉시 `UnexpectedRollbackException`을 발생시키려면 이 값을 변경하세요.
 * 참고로 스프링 2.0부터 전역  rollback-only 표시자에 대한 조기실패 동작이 통합 되었습니다. (모든 트랜잭션 매니져는 기본적으로 가장 바깥쪽의 트랜잭션 바운더리에서만 `UnexpectedRollbackException`을 발생시킵니다.) 이 허용 예를들어 동작이 실패하고 트랜잭션이 완료되지 않은 후에도 유닛 테스트를 계속할 수 있습니다. 모든 트랜잭션 매니저는 이 플래그가 명시적으로 "true"로 설정됐을 때만 조기실패 시킵니다.
 
-## final setRollbackOnCommitFailure(boolean rollbackOnCommitFailure)
-*  `doCommit`메소드 호출의 실패에 `doRollback`이 수행 해야만하는지 설정합니다. 일반적으로 필요없으므로
+#### final setRollbackOnCommitFailure(boolean rollbackOnCommitFailure)
+*  `doCommit`메소드 호출의 실패에 `doRollback`이 수행 해야만하는지 설정합니다. 일반적으로 필요하지 않고 후속 롤백 예외로 커밋 예외를 무시할 가능성이 있으며, 따라서 피해야합니다.
+
+## PlatformTransactionManager 구현체
+
+
+### final getTransaction(TransactionDefinition definition)
+
+```Java
+@Override
+	public final TransactionStatus getTransaction(@Nullable TransactionDefinition definition)
+			throws TransactionException {
+
+		// Use defaults if no transaction definition given.
+		TransactionDefinition def = (definition != null ? definition : TransactionDefinition.withDefaults());
+
+		Object transaction = doGetTransaction();
+		boolean debugEnabled = logger.isDebugEnabled();
+
+		if (isExistingTransaction(transaction)) {
+			// Existing transaction found -> check propagation behavior to find out how to behave.
+			return handleExistingTransaction(def, transaction, debugEnabled);
+		}
+
+		// Check definition settings for new transaction.
+		if (def.getTimeout() < TransactionDefinition.TIMEOUT_DEFAULT) {
+			throw new InvalidTimeoutException("Invalid transaction timeout", def.getTimeout());
+		}
+
+		// No existing transaction found -> check propagation behavior to find out how to proceed.
+		if (def.getPropagationBehavior() == TransactionDefinition.PROPAGATION_MANDATORY) {
+			throw new IllegalTransactionStateException(
+					"No existing transaction found for transaction marked with propagation 'mandatory'");
+		}
+		else if (def.getPropagationBehavior() == TransactionDefinition.PROPAGATION_REQUIRED ||
+				def.getPropagationBehavior() == TransactionDefinition.PROPAGATION_REQUIRES_NEW ||
+				def.getPropagationBehavior() == TransactionDefinition.PROPAGATION_NESTED) {
+			SuspendedResourcesHolder suspendedResources = suspend(null);
+			if (debugEnabled) {
+				logger.debug("Creating new transaction with name [" + def.getName() + "]: " + def);
+			}
+			try {
+				return startTransaction(def, transaction, debugEnabled, suspendedResources);
+			}
+			catch (RuntimeException | Error ex) {
+				resume(null, suspendedResources);
+				throw ex;
+			}
+		}
+		else {
+			// Create "empty" transaction: no actual transaction, but potentially synchronization.
+			if (def.getIsolationLevel() != TransactionDefinition.ISOLATION_DEFAULT && logger.isWarnEnabled()) {
+				logger.warn("Custom isolation level specified but no actual transaction initiated; " +
+						"isolation level will effectively be ignored: " + def);
+			}
+			boolean newSynchronization = (getTransactionSynchronization() == SYNCHRONIZATION_ALWAYS);
+			return prepareTransactionStatus(def, null, true, newSynchronization, debugEnabled, null);
+		}
+	}
+```
+
+이 구현체는 전파동작을 처리합니다. doGetTransaction, isExistingTransaction 및 doBegin 메서드를 위임합니다.
+
+line-6 : 트랜잭션의 정보를 가져오며 없다면 기본값으로 설정합니다.
