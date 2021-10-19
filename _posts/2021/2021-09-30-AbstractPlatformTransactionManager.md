@@ -211,5 +211,22 @@ AbstactPlatformTransactionManager는 트랜잭션 동기화를 등록하고 관�
 ```
 
 이 구현체는 전파동작을 처리합니다. doGetTransaction, isExistingTransaction 및 doBegin 메서드를 위임합니다.
+설정된 값을 먼저확인하고 없다면 기본값으로 세팅하  트랜잭션을 가져옵니다. 제일먼저 `TransactionDefinition` 기본값 세팅 후 `doGetTransaction`으로 트랜잭션을 불러옵니다.
+이 메서드에서는 먼저 살펴봐야할 메서드가 3가지정도로 나눌수 있어요. `doGetTransaction`, `isExistingTransaction`, `doBegin`을 보며 유추합니다.
 
-line-6 : 트랜잭션의 정보를 가져오며 없다면 기본값으로 설정합니다.
+
+#### doGetTransaction
+
+이메서드는 추상화되어있고 각 구현체인 Transaction Manager들에 의하여 구현되있어요. 일반적으로 `JDBC`를 사용하는 `DataSourceTransactionManager`를 예로 볼거에요.
+
+```java
+@Override
+protected Object doGetTransaction() {
+  DataSourceTransactionObject txObject = new DataSourceTransactionObject();
+  txObject.setSavepointAllowed(isNestedTransactionAllowed());
+  ConnectionHolder conHolder =
+      (ConnectionHolder) TransactionSynchronizationManager.getResource(obtainDataSource());
+  txObject.setConnectionHolder(conHolder, false);
+  return txObject;
+}
+```
