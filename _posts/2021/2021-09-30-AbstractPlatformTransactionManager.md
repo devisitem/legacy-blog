@@ -217,7 +217,11 @@ AbstactPlatformTransactionManager는 트랜잭션 동기화를 등록하고 관�
 
 #### doGetTransaction
 
-이메서드는 추상화되어있고 각 구현체인 Transaction Manager들에 의하여 구현되있어요. 일반적으로 `JDBC`를 사용하는 `DataSourceTransactionManager`를 예로 볼거에요.
+* 현재 트랜잭션 상태에대한 트랜잭션 객체를 리턴하는 메서드에요.
+* 반환된 객체는 일반적으로 변경할수 있는 패션에 해당하는 트랜잭션을 전달하여 실제 트랜잭션 매니저 구현체에 명시됩니다.
+
+
+이 메서드는 추상화되어있고 각 구현체인 Transaction Manager들에 의하여 구현되있어요. 일반적으로 `JDBC`를 사용하는 `DataSourceTransactionManager`를 예로 볼거에요.
 
 ```java
 @Override
