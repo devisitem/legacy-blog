@@ -379,3 +379,21 @@ Every bean has one or more identifiers. These identifiers must be unique within 
 In XML-based configuration metadata, you use the id attribute, the `name` attribute, or both to specify the bean identifiers. The `id` attribute lets you specify exactly one id. Conventionally, these names are alphanumeric ('myBean', 'someService', etc.), but they can contain special characters as well. If you want to introduce other aliases for the bean, you can also specify them in the `name` attribute, separated by a comma (`,`), semicolon (`;`), or white space. As a historical note, in versions prior to Spring 3.1, the id attribute was defined as an `xsd:ID` type, which constrained possible characters. As of 3.1, it is defined as an `xsd:string` type. Note that bean `id` uniqueness is still enforced by the container, though no longer by XML parsers.
 
 XML 기반 구성 메타데이터에서, Bean 식별자 명시에 `id` 속성, `name`속성 또는 둘다 사용합니다. `id` 속성은 정확한 한개의 id를 명시하도록 합니다. 관례적으로, 이러한 이름들은 영문,숫자로('myBean', 'someService', etc.) 쓰지만, 특정한 문자열도 포함할 수 있습니다. Bean에 다른 별칭을 추가하고 싶다면, name 속성에 콤마(`,`), 세미콜론(`;`) 또는 스페이스로 구분지어서 명시할 수 도 있어요. 스프링 3.1 버전 이전에 id 속성은 `xsd:ID`타입으로 정의 됐었고, 이는 문자열을 가능하게 만들었습니다. 3.1에서 id 속성은 `xsd:string` 타입으로 정의 됐었어요. XML 파서에 의해 길지 않지만, Bean id 고유성은 컨테이너에의해 아직 강요되고 있습니다.
+
+You are not required to supply a `name` or an `id` for a bean. If you do not supply a `name` or `id` explicitly, the container generates a unique name for that bean. However, if you want to refer to that bean by name, through the use of the `ref` element or a Service Locator style lookup, you must provide a name. Motivations for not supplying a name are related to using inner beans and autowiring collaborators.
+
+Bean생성을 위해 `id` 또는 `name`을 추가할 필요 없어요. `id` 또는 `name`을 명시적으로 추가하지 않는다면 컨테이너는 그 Bean에 대한 고유한 이름을 생성합니다. 그러나 `ref` 요소의 사용이나 서비스 로케이터 스타일 조회를 통해서 `name`에 의해 Bean을 참조 하고 싶다면 이름을 제공해야만 해요. 이름을 제공하지 않는것에대한 동기는 [내부 Bean](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-inner-beans) 및 [협업객체 자동연결](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-autowire)의 사용과 관련이 있습니다.
+
+### Bean 명명 규칙
+
+The convention is to use the standard Java convention for instance field names when naming beans. That is, bean names start with a lowercase letter and are camel-cased from there. Examples of such names include `accountManager`, `accountService`, `userDao`, `loginController`, and so forth.
+
+Naming beans consistently makes your configuration easier to read and understand. Also, if you use Spring AOP, it helps a lot when applying advice to a set of beans related by name.
+
+명명 규칙은 Bean의 이름을 정할때 인스턴스 필드 이름에 대한 표준 자바 규칙에 사용하는 것 입니다. 이는, Bean 이름이 소문자로 시작하고 캐멀케이스 입니다. 그런 이름의 예로 `accountManager`, `accountService`, `userDao`, `loginController` 등이 있습니다.
+
+Bean의 이름을 일관되게 지으면 구성을 더 쉽게 읽고 이해할 수 있습니다. 또한, 스프링 AOP를 사용한다면, 이름으로 연관된 Bean의 설정에 advice를 적용할 때 많은 도움을 줍니다.
+
+> With component scanning in the classpath, Spring generates bean names for unnamed components, following the rules described earlier: essentially, taking the simple class name and turning its initial character to lower-case. However, in the (unusual) special case when there is more than one character and both the first and second characters are upper case, the original casing gets preserved. These are the same rules as defined by java.beans.Introspector.decapitalize (which Spring uses here).
+
+> 클래스패스 안에 컴포넌트를 스캔하여 스프링은  규칙이 더 일찍 표현한 다음의 이름이없는 컴포넌트에대한 Bean이름을 생성합니다. : 필수적으로, 간단한 클래스명을 받고
