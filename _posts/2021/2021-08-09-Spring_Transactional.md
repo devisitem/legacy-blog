@@ -60,3 +60,9 @@ public @interface Transactional
 
 현재 트랜잭션을 지원하며, 존재하지 않는다면 트랜잭션 없이 실행합니다. 같은 이름의 EJB 트랜잭션 속성과 유사합니다.
 참고 : 트랜잭션 동기화가 있는 트랜잭션 매니저의 경우 SUPPORTS는 동기화가 적용되는 트랜잭션 범위를 정의하므로 트랜잭션이 없는 것과 약간 다릅니다. 결과적으로, 같은 자원(JDBC 연결, Hibernate 세션 등등)은 지정된 전체 범위를 위해 공유 됩니다. 참고로 이건 트랜잭션 매니저의 실제 동기화 구성에 의존합니다.
+
+**NOT_SUPPORTED**
+
+현재 트랜잭션을 지원하지 않습니다. 오히려 항상 트랜잭션이 없이 실행합니다. 같은이름의 EJB 트랜잭션 속성과 유사합니다.
+참고: 실제 트랜잭션 중단은 모든 트랜잭션 매니저에서 기본적으로 동작하지 않아요. 이건 특히 `org.springframework.transaction.jta.JtaTransactionManager`에 적용 되며,  `javax.transaction.TransactionManager `를 사용할 수 있어야 합니다. (표준자바 EE 에서).
+참고로 트랜잭션 동기화는 `PROPAGATION_NOT_SUPPORTED`영역 내에서 사용할 수 없습니다. 존재하는 동기화는 적절하게 중단되고 재개 됩니다.

@@ -212,7 +212,7 @@ AbstactPlatformTransactionManager는 트랜잭션 동기화를 등록하고 관�
 
 이 구현체는 전파동작을 처리합니다. doGetTransaction, isExistingTransaction 및 doBegin 메서드를 위임합니다.
 설정된 값을 먼저확인하고 없다면 기본값으로 세팅하  트랜잭션을 가져옵니다. 제일먼저 `TransactionDefinition` 기본값 세팅 후 `doGetTransaction`으로 트랜잭션을 불러옵니다.
-이 메서드에서는 먼저 살펴봐야할 메서드가 3가지정도로 나눌수 있어요. `doGetTransaction`, `isExistingTransaction`, `doBegin`을 보며 유추합니다.
+이 메서드에서는 먼저 살펴봐야할 메서드가 3가지정도로 나눌수 있어요. `doGetTransaction`, `handleExistingTransaction`, `startTransaction`을 보며 유추합니다.
 
 
 #### doGetTransaction
@@ -234,3 +234,107 @@ protected Object doGetTransaction() {
   return txObject;
 }
 ```
+`line 4`에서 세이브포인트를 이 트랜잭션내에서 허용될 것인지를 정하고 매개변수로 중첩트랜잭션의 허용 여부을 보냅니다. `line 5`에 `ConnnectionHolder`가 컨넥션 및 세이브 포인트를 생성합니다. 아래 코드를 보시면 세이브포인트의 네이밍을 확인할 수 있죠.
+
+```java
+public Savepoint createSavepoint() throws SQLException {
+		this.savepointCounter++;
+		return getConnection().setSavepoint(SAVEPOINT_NAME_PREFIX + this.savepointCounter);
+	}
+```
+트랜잭션 내에서 `SAVEPOINT_0`, `SAVEPOINT_1` .. 이런식으로 생성되면서 갯수를 체크하죠. `ConnectionHolder`는 현재 설정된 DataSource로 `Connnection`을 생성하여 할당 합니다. 결과적으로 세이브포인트 사용 여부와 컨넥션을 가지고 트랜잭션 객체를 반환해요.
+
+#### handleExistingTransaction
+트랜잭션이 존재하는지 확인하고 존재한다면 `handleExistingTransaction`으로 보내버립니다.
+
+```java
+private TransactionStatus handleExistingTransaction(
+			TransactionDefinition definition, Object transaction, boolean debugEnabled)
+			throws TransactionException {
+
+		if (definition.getPropagationBehavior() == TransactionDefinition.PROPAGATION_NEVER) {
+			throw new IllegalTransactionStateException(
+					"Existing transaction found for transaction marked with propagation 'never'");
+		}
+
+		if (definition.getPropagationBehavior() == TransactionDefinition.PROPAGATION_NOT_SUPPORTED) {
+			if (debugEnabled) {
+				logger.debug("Suspending current transaction");
+			}
+			Object suspendedResources = suspend(transaction);
+			boolean newSynchronization = (getTransactionSynchronization() == SYNCHRONIZATION_ALWAYS);
+			return prepareTransactionStatus(
+					definition, null, false, newSynchronization, debugEnabled, suspendedResources);
+		}
+
+		if (definition.getPropagationBehavior() == TransactionDefinition.PROPAGATION_REQUIRES_NEW) {
+			if (debugEnabled) {
+				logger.debug("Suspending current transaction, creating new transaction with name [" +
+						definition.getName() + "]");
+			}
+			SuspendedResourcesHolder suspendedResources = suspend(transaction);
+			try {
+				return startTransaction(definition, transaction, debugEnabled, suspendedResources);
+			}
+			catch (RuntimeException | Error beginEx) {
+				resumeAfterBeginException(transaction, suspendedResources, beginEx);
+				throw beginEx;
+			}
+		}
+
+		if (definition.getPropagationBehavior() == TransactionDefinition.PROPAGATION_NESTED) {
+			if (!isNestedTransactionAllowed()) {
+				throw new NestedTransactionNotSupportedException(
+						"Transaction manager does not allow nested transactions by default - " +
+						"specify 'nestedTransactionAllowed' property with value 'true'");
+			}
+			if (debugEnabled) {
+				logger.debug("Creating nested transaction with name [" + definition.getName() + "]");
+			}
+			if (useSavepointForNestedTransaction()) {
+				// Create savepoint within existing Spring-managed transaction,
+				// through the SavepointManager API implemented by TransactionStatus.
+				// Usually uses JDBC 3.0 savepoints. Never activates Spring synchronization.
+				DefaultTransactionStatus status =
+						prepareTransactionStatus(definition, transaction, false, false, debugEnabled, null);
+				status.createAndHoldSavepoint();
+				return status;
+			}
+			else {
+				// Nested transaction through nested begin and commit/rollback calls.
+				// Usually only for JTA: Spring synchronization might get activated here
+				// in case of a pre-existing JTA transaction.
+				return startTransaction(definition, transaction, debugEnabled, null);
+			}
+		}
+
+		// Assumably PROPAGATION_SUPPORTS or PROPAGATION_REQUIRED.
+		if (debugEnabled) {
+			logger.debug("Participating in existing transaction");
+		}
+		if (isValidateExistingTransaction()) {
+			if (definition.getIsolationLevel() != TransactionDefinition.ISOLATION_DEFAULT) {
+				Integer currentIsolationLevel = TransactionSynchronizationManager.getCurrentTransactionIsolationLevel();
+				if (currentIsolationLevel == null || currentIsolationLevel != definition.getIsolationLevel()) {
+					Constants isoConstants = DefaultTransactionDefinition.constants;
+					throw new IllegalTransactionStateException("Participating transaction with definition [" +
+							definition + "] specifies isolation level which is incompatible with existing transaction: " +
+							(currentIsolationLevel != null ?
+									isoConstants.toCode(currentIsolationLevel, DefaultTransactionDefinition.PREFIX_ISOLATION) :
+									"(unknown)"));
+				}
+			}
+			if (!definition.isReadOnly()) {
+				if (TransactionSynchronizationManager.isCurrentTransactionReadOnly()) {
+					throw new IllegalTransactionStateException("Participating transaction with definition [" +
+							definition + "] is not marked as read-only but existing transaction is");
+				}
+			}
+		}
+		boolean newSynchronization = (getTransactionSynchronization() != SYNCHRONIZATION_NEVER);
+		return prepareTransactionStatus(definition, transaction, false, newSynchronization, debugEnabled, null);
+	}
+```
+`PROPAGATION_NEVER`은 현재 트랜잭션이 존재한다면 바로 예외를 throwing 하고,  `PROPAGATION_NOT_SUPPORTED`는 현재 트랜잭션을 중지합니다.
+`PROPAGATION_REQUIRES_NEW`는 현재 진행중인 트랜잭션을 중단하고 새로운 커넥션으로 트랜잭션을 시작하기 때문에 `startTransaction()`로 보냅니다.
+이처럼 다는 설명하지 못하지만 각 전파옵션과 현재 진행중인 트랜잭션의 유무를 판단하여 트랜잭션(상태)를 리턴합니다.
