@@ -396,4 +396,20 @@ Bean의 이름을 일관되게 지으면 구성을 더 쉽게 읽고 이해할 �
 
 > With component scanning in the classpath, Spring generates bean names for unnamed components, following the rules described earlier: essentially, taking the simple class name and turning its initial character to lower-case. However, in the (unusual) special case when there is more than one character and both the first and second characters are upper case, the original casing gets preserved. These are the same rules as defined by java.beans.Introspector.decapitalize (which Spring uses here).
 
-> 클래스패스 안에 컴포넌트를 스캔하여 스프링은  규칙이 더 일찍 표현한 다음의 이름이없는 컴포넌트에대한 Bean이름을 생성합니다. : 필수적으로, 간단한 클래스명을 받고
+> 클래스패스에서 컴포넌트 스캐닝을 통해, 스프링은 앞에서 설명한 규칙에 따라 이름이 없는 컴포넌트에 대한 Bean 이름을 생성합니다 (기본적으로 간단한 클래스명을 취하고, 초기 문자열을 소문자로 바꾸는것 입니다.). 하지만, 한개 이상의 문자열이 있고, 첫번째나 두번째 문자열 둘다 대문자인 특별한 경우 원본 대소문자는 유지 됩니다. `java.beans.Introspector.decapitalize` (스프링이 여기서 사용하는)에 의해 정의된 것과 동일한 규칙입니다.
+
+
+
+### Aliasing a Bean outside the Bean Definition
+
+In a bean definition itself, you can supply more than one name for the bean, by using a combination of up to one name specified by the id attribute and any number of other names in the name attribute. These names can be equivalent aliases to the same bean and are useful for some situations, such as letting each component in an application refer to a common dependency by using a bean name that is specific to that component itself.
+
+Specifying all aliases where the bean is actually defined is not always adequate, however. It is sometimes desirable to introduce an alias for a bean that is defined elsewhere. This is commonly the case in large systems where configuration is split amongst each subsystem, with each subsystem having its own set of object definitions. In XML-based configuration metadata, you can use the <alias/> element to accomplish this. The following example shows how to do so:
+
+```xml
+<alias name="fromName" alias="toName"/>
+```
+
+### Bean 정의 외부에서 Bean 별칭 정하기
+
+ Bean정의 자체에서,
