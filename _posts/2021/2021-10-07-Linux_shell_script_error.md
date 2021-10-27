@@ -1,6 +1,6 @@
 ---
 layout: post
-title: -Linux- /bin/bash^M: bad interpreter: 그런 파일이나 디렉터리가 없습니다.
+title: "-Linux- /bin/bash^M: bad interpreter: 그런 파일이나 디렉터리가 없습니다."
 categories: [Development,Linux]
 tags: [Linux]
 date: 2021-10-07 18:40:00 +0900
