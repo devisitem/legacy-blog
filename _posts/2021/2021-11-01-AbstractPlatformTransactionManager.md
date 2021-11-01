@@ -157,7 +157,7 @@ AbstactPlatformTransactionManager는 트랜잭션 동기화를 등록하고 관�
 
 ### final getTransaction(TransactionDefinition definition)
 
-```Java
+```java
 @Override
 	public final TransactionStatus getTransaction(@Nullable TransactionDefinition definition)
 			throws TransactionException {
