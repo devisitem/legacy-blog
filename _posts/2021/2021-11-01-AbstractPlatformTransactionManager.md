@@ -1,12 +1,12 @@
 ---
 layout: post
-title: -Spring- 스프링 프레임워크 코어 (Spring Core)
+title: -Spring- TransactionManager (트랜잭션 관리자)
 categories: [Development,Spring]
 tags: [Spring,Spring Boot]
-date: 2021-09-02 21:58:00 +0900
+date: 2021-11-01 18:58:00 +0900
 thumbnail: "/assets/img/bloging/spring/spring_logo.png"
 excerpt_separator: <!--more-->
-hide: true
+hide: false
 ---
 AbstractPlatformTransactionManager의 기능과 작업흐름
 
@@ -212,7 +212,7 @@ AbstactPlatformTransactionManager는 트랜잭션 동기화를 등록하고 관�
 
 이 구현체는 전파동작을 처리합니다. doGetTransaction, isExistingTransaction 및 doBegin 메서드를 위임합니다.
 설정된 값을 먼저확인하고 없다면 기본값으로 세팅하  트랜잭션을 가져옵니다. 제일먼저 `TransactionDefinition` 기본값 세팅 후 `doGetTransaction`으로 트랜잭션을 불러옵니다.
-이 메서드에서는 먼저 살펴봐야할 메서드가 3가지정도로 나눌수 있어요. `doGetTransaction`, `handleExistingTransaction`, `startTransaction`을 보며 유추합니다.
+이 메서드에서는 먼저 살펴봐야할 메서드가 3가지정도로 나눌수 있어요. `doGetTransaction`, `handleExistingTransaction`, `doBegin`을 보며 유추합니다.
 
 
 #### doGetTransaction
@@ -397,4 +397,40 @@ protected void doBegin(Object transaction, TransactionDefinition definition) {
     throw new CannotCreateTransactionException("Could not open JDBC Connection for transaction", ex);
   }
 }
+```
+
+이 메서드는 주어진 트랜잭션 정의에따라 의미하  새로운 트랜잭션을 시작합니다. 이 추상 트랜잭션 매니저에의해 이미 처리된기 때문  전파동작을 적용하는것에 대해 걱정할 필요없습니다. 이 메소드는 트랜잭션 매니저가 실제로 새로운 트랜잭션을 시작하기로 결정할때 호출합니다. 이전 트랜잭션이 없거나, 이전트랜잭션이 중단됐거나 둘중 하나입니다.
+
+특별한 경우는 세이브 포인트 없이 중첩된 트랜잭션 입니다. `useSavepointForNestedTransaction()`이 "false"를 리턴 한다면, 이 메소드는 필요할때 중첩된 트랜잭션을 시작을 호출합니다. 그런 흐름에, 활성트랜잭션이 있습니다. (이 메소드의 구현체는 이를 감지하고 적절한 중첩 트랜잭션을 시작해야합니다).
+
+#### final commit(TransactionStatus status)
+이 커밋 구현은 기존 트랜잭션 및 프로그래밍 방식 롤백 요청에 참여하는 것을 처리합니다. `isRollbackOnly`및 `doCommit`그리고 `rollback`에 위임합니다.
+
+```java
+@Override
+	public final void commit(TransactionStatus status) throws TransactionException {
+		if (status.isCompleted()) {
+			throw new IllegalTransactionStateException(
+					"Transaction is already completed - do not call commit or rollback more than once per transaction");
+		}
+
+		DefaultTransactionStatus defStatus = (DefaultTransactionStatus) status;
+		if (defStatus.isLocalRollbackOnly()) {
+			if (defStatus.isDebug()) {
+				logger.debug("Transactional code has requested rollback");
+			}
+			processRollback(defStatus, false);
+			return;
+		}
+
+		if (!shouldCommitOnGlobalRollbackOnly() && defStatus.isGlobalRollbackOnly()) {
+			if (defStatus.isDebug()) {
+				logger.debug("Global transaction is marked as rollback-only but transactional code requested commit");
+			}
+			processRollback(defStatus, true);
+			return;
+		}
+
+		processCommit(defStatus);
+	}
 ```
