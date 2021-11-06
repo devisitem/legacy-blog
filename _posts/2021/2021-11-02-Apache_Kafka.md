@@ -44,3 +44,15 @@ hide: true
 1. 다른 시스템으로부터 데이터의 지속적인 `import/export`를 포함하여 이벤트 스트림에 **발행** 및 **구독**합니다.
 2. 이벤트 스트림을 원하는만큼 내구성 있고 안정적으로 저장합니다.
 3. 이벤트 스트림이 발생 시 또는 소급하여 처리합니다.
+
+그리고 이 모든 기능성은 분산되고 높은 확장가능성과 탄력적이며 내결함성이 있으며 안전한 방식 으로 제공됩니다. Kafka는 베어 메탈하드웨어, 가상 머신, 컨테이너, 온프레미스 및 클라우드에 배포할 수 있습니다. Kafka 환경을 자체 관리하거나 다양한 공급업체에서 제공하는 완전 관리형 서비스를 사용할 수 있습니다.
+
+### Kafka는 간단히 말해 어떻게 동작 하나요?
+
+카프카는 고성능 [TCP 네트워크 프로토콜](https://kafka.apache.org/protocol.html)을 통해 통신하는 서버와 클라이언트로 구성된 분산 시스템입니다. 이는 베어메탈 하드웨어, 가상머신, 컨테이너 온프레미스 및 클라우드에 배포 할 수 있어요.
+
+**`서버`** : 카프카는 다중 데이터센터 또는 클라우드 범위에 걸칠 수 있는 한개 이상의 서버의 클러스터로 동작 합니다. 이러한 서버중 일부는 브로커라고하는 스토리지 계층을 형성 합니다. 다른 서버는 [카프카 연결](“https://kafka.apache.org/documentation/#connect”)을 실행하여 이벤트 스트림으로 데이터를 지속적으로 가져오거나 내보내고 카프카를 RDB 및 기타 다른 Kafka 클러스터와 같은 기존 시스템과 통합합니다.
+
+To let you implement mission-critical use cases, a Kafka cluster is highly scalable and fault-tolerant: if any of its servers fails, the other servers will take over their work to ensure continuous operations without any data loss.
+
+`미션 크리티컬`한 사용사례를 구현하도록, 카프카 클러스터는 높은 확장성 및
