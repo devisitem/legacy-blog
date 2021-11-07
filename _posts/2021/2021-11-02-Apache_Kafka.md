@@ -55,4 +55,4 @@ hide: true
 
 To let you implement mission-critical use cases, a Kafka cluster is highly scalable and fault-tolerant: if any of its servers fails, the other servers will take over their work to ensure continuous operations without any data loss.
 
-`미션 크리티컬`한 사용사례를 구현하도록, 카프카 클러스터는 높은 확장성 및
+`미션 크리티컬`한 사용사례를 구현하도록, 카프카 클러스터는 높은 확장성 및 내결함성이 있습니다. (만약 해당서버의 어떤 문제라도 발생한다면, 다른 서버는 데이터 손실없이 지속적으로 작동을 보장하여 작업을 대신합니다.
