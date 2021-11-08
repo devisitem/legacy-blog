@@ -51,8 +51,16 @@ hide: true
 
 카프카는 고성능 [TCP 네트워크 프로토콜](https://kafka.apache.org/protocol.html)을 통해 통신하는 서버와 클라이언트로 구성된 분산 시스템입니다. 이는 베어메탈 하드웨어, 가상머신, 컨테이너 온프레미스 및 클라우드에 배포 할 수 있어요.
 
-**`서버`** : 카프카는 다중 데이터센터 또는 클라우드 범위에 걸칠 수 있는 한개 이상의 서버의 클러스터로 동작 합니다. 이러한 서버중 일부는 브로커라고하는 스토리지 계층을 형성 합니다. 다른 서버는 [카프카 연결](“https://kafka.apache.org/documentation/#connect”)을 실행하여 이벤트 스트림으로 데이터를 지속적으로 가져오거나 내보내고 카프카를 RDB 및 기타 다른 Kafka 클러스터와 같은 기존 시스템과 통합합니다.
+**`서버`** : 카프카는 다중 데이터센터 또는 클라우드 범위에 걸칠 수 있는 한개 이상의 서버의 클러스터로 동작 합니다. 이러한 서버중 일부는 브로커라고하는 스토리지 계층을 형성 합니다. 다른 서버는 [카프카 연결](“https://kafka.apache.org/documentation/#connect”)을 실행하여 이벤트 스트림으로 데이터를 지속적으로 가져오거나 내보내고 카프카를 RDB 및 기타 다른 Kafka 클러스터와 같은 기존 시스템과 통합합니다. `미션 크리티컬`한 사용사례를 구현할 수 있도록, 카프카 클러스터는 높은 확장성 및 내결함성이 있습니다. (만약 해당서버의 어떤 문제라도 발생한다면, 다른 서버는 작업을 인계받아 데이터 손실없이 지속적으로 작동을 보장합니다.
 
-To let you implement mission-critical use cases, a Kafka cluster is highly scalable and fault-tolerant: if any of its servers fails, the other servers will take over their work to ensure continuous operations without any data loss.
+**`클라이언트`** : 네트워크 문제 또는 시스템 오류가 발생한 경우에도 이벤트 스트림을 병렬에 대규모 내결함성 방식으로 읽고, 쓰고, 처리하는 분산 어플리케이션 및 마이크로 서비스를 작성할 수 있습니다. 카프카는 카프카 커뮤니티에서 제공하는 [수십개의 클라이언트](https://cwiki.apache.org/confluence/display/KAFKA/Clients)로 확장된 일부 클라이언트와 함께 제공됩니다(클라이언트는 Go, Python, C/C++ 및 많은 다른 프로그래밍 언어, 더높은 레벨의 [카프카 스트림](https://kafka.apache.org/documentation/streams/) 라이브러리를 포함하는 Java 및 Scala 심지어 REST API까지도 이용가능 합니다).
 
-`미션 크리티컬`한 사용사례를 구현하도록, 카프카 클러스터는 높은 확장성 및 내결함성이 있습니다. (만약 해당서버의 어떤 문제라도 발생한다면, 다른 서버는 데이터 손실없이 지속적으로 작동을 보장하여 작업을 대신합니다.
+
+### 주요 개념 및 용어
+
+**이벤트**는 선생님의 비즈니스 또는 세상에 “뭔가 일어난” 사실을 기록해요. 이것을 문서에서는 기록 또는 메세지라고 부릅니다. 데이터를 카프카에 읽거나 쓸 때, 이 이벤트의 형식에 합니다. 개념적으로, 이벤트는 key, value, timestamp 및 선택적인 메타데이터 헤더를 갖고 있어요. 이게 그 예제 이벤트에요.
+* Event key: “Alice”
+* Event value: “Made a payment of $200 to Bob”
+* Event timestamp: “Jun. 25, 2020 at 2:06 pm.”
+
+`프로듀서`는 카프카에 이벤트를 발행(쓰기)하는 그런 클라이언트 어플리케이션이고, `Consumer`는 이러한 이벤트를 구독(읽기 및 처리)하는 어플리케이션 입니다. 카프카에서, 프로듀서와 컨슈머는  
