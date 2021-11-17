@@ -82,7 +82,7 @@ content: "다음 페이지";
 }
 </style>
 <div class="post-navigation d-flex justify-content-between">
-  <a href="#" class="btn btn-outline-primary">
+  <a href="#" class="btn btn-outline-primary" style="margin: 0 auto; color .35s ease-in-out,background-color .35s ease-in-out,border-color .135s ease-in-out,box-shadow .35s ease-in-out">
     <p>카프카 시작하기</p>
   </a>
 </div>
